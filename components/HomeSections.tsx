@@ -155,10 +155,10 @@ export function FinalCTA({
 }) {
   return (
     <section className="bg-white px-4 py-20 sm:px-6 sm:py-24">
-      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-deep px-6 py-16 text-center sm:px-12 sm:py-20">
+      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-deep to-[#0F3C80] px-6 py-16 text-center sm:px-12 sm:py-20">
         <div
           aria-hidden
-          className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(127,221,180,0.22),transparent)]"
+          className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(156,195,245,0.22),transparent)]"
         />
         <div className="relative">
           <h2 className="mx-auto max-w-2xl text-3xl headline text-white sm:text-5xl">

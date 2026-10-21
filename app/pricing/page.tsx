@@ -31,7 +31,7 @@ const comparison: { feature: string; offline: Cell; cloud: Cell }[] = [
 ];
 
 function CellValue({ value }: { value: Cell }) {
-  if (value === true) return <Check className="mx-auto size-5 text-emerald" strokeWidth={3} aria-label="Yes" />;
+  if (value === true) return <Check className="mx-auto size-5 text-brand" strokeWidth={3} aria-label="Yes" />;
   if (value === false) return <Minus className="mx-auto size-5 text-faint" aria-label="No" />;
   return <span>{value}</span>;
 }

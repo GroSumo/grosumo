@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
-/* Palette: neutral white/gray pages, green used only as an accent. */
+/* Palette: neutral white/gray pages, blue used only as an accent. Emerald/amber/coral are data colours, not brand. */
 @theme {
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, monospace;
 
-  --color-ink: #101418;     /* headlines and strong text */
-  --color-slate: #5B6472;   /* body text */
+  --color-ink: #0F172A;     /* headlines and strong text */
+  --color-slate: #475569;   /* body text */
   --color-faint: #8B93A0;   /* captions, axis labels */
-  --color-line: #E8EBEF;    /* hairlines and borders */
-  --color-wash: #F7F9FB;    /* alternate section background */
-  --color-soft: #E7F4EE;    /* pill badges, eyebrows, icon tiles */
-  --color-brand: #0E8A60;   /* buttons, links, accent phrase */
-  --color-brand-dark: #0A6B4B;
-  --color-deep: #0A3D2B;    /* footer, final CTA band, dark card headers */
-  --color-mint: #7FDDB4;    /* accents on deep green */
+  --color-line: #E2E8F0;    /* hairlines and borders */
+  --color-wash: #F8FAFC;    /* alternate section background */
+  --color-soft: #E8F0FC;    /* pill badges, eyebrows, icon tiles, selected states */
+  --color-brand: #005BC7;   /* buttons, links, accent phrase */
+  --color-brand-dark: #004A9F;
+  --color-deep: #0B2A5B;    /* footer, final CTA band, dark card headers */
+  --color-mint: #9CC3F5;    /* light blue accent on deep navy */
   --color-emerald: #10B981; /* positive data */
   --color-amber: #D97706;   /* warnings */
   --color-coral: #E4572E;   /* negatives */
 
-  --shadow-card: 0 1px 2px rgba(16, 20, 24, 0.04), 0 8px 24px -8px rgba(16, 20, 24, 0.08);
-  --shadow-lift: 0 2px 4px rgba(16, 20, 24, 0.04), 0 24px 48px -16px rgba(16, 20, 24, 0.16);
-  --shadow-brand: 0 10px 24px -8px rgba(14, 138, 96, 0.45);
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -8px rgba(15, 23, 42, 0.08);
+  --shadow-lift: 0 2px 4px rgba(15, 23, 42, 0.04), 0 24px 48px -16px rgba(15, 23, 42, 0.16);
+  --shadow-brand: 0 10px 24px -8px rgba(0, 91, 199, 0.4);
 }
 
 @utility headline {

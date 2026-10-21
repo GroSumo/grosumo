@@ -138,7 +138,7 @@ export default function DashboardMock() {
                   {monthlySales.map((v, i) => (
                     <div key={months[i]} className="flex h-full flex-1 flex-col items-center justify-end gap-1.5">
                       <div
-                        className={`w-full rounded-t-[4px] ${i === monthlySales.length - 1 ? "bg-brand" : "bg-brand/20"}`}
+                        className={`w-full rounded-t-[4px] ${i === monthlySales.length - 1 ? "bg-brand" : "bg-[#C7DCF7]"}`}
                         style={{ height: `${(v / max) * 100}%` }}
                       />
                       <span className="font-mono text-[9px] text-faint">{months[i].slice(0, 1)}</span>

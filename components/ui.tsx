@@ -56,7 +56,7 @@ export function ButtonLink({
   );
 }
 
-/** Rounded-full soft-green label used for eyebrows and badges. */
+/** Rounded-full soft-blue label used for eyebrows and badges. */
 export function Eyebrow({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <span className={`inline-flex items-center gap-1.5 rounded-full bg-soft px-3.5 py-1 text-[13.5px] font-semibold text-brand ${className}`}>
@@ -65,7 +65,7 @@ export function Eyebrow({ children, className = "" }: { children: React.ReactNod
   );
 }
 
-/** Near-black headline with only its final phrase in brand green. */
+/** Near-black headline with only its final phrase in brand blue. */
 export function Accented({ title, accent }: { title: React.ReactNode; accent?: React.ReactNode }) {
   return (
     <>

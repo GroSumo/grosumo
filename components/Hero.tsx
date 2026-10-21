@@ -125,7 +125,7 @@ export default function Hero() {
         </div>
 
         <Reveal delay={200} className="relative mx-auto w-full max-w-md">
-          {/* Soft green glow behind the bill */}
+          {/* Soft blue glow behind the bill */}
           <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 size-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-soft blur-3xl" />
 
           {/* Vertical margin reserves room so the floating cards sit outside the bill's text. */}
@@ -143,14 +143,14 @@ export default function Hero() {
             <BillCard />
 
             <div className="absolute -right-8 top-[calc(100%-8px)] z-20 hidden w-[17rem] items-center gap-3 rounded-2xl border border-line bg-white p-3.5 shadow-lift md:flex">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-emerald/15 text-emerald">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-soft text-brand">
                 <MessageCircle className="size-[18px]" aria-hidden />
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-[13px] font-bold text-ink">Bill sent on WhatsApp</p>
                 <p className="font-mono text-[11px] text-faint">INV-2219 · ₹1,812</p>
               </div>
-              <CheckCheck className="size-4 shrink-0 text-emerald" aria-label="Delivered" />
+              <CheckCheck className="size-4 shrink-0 text-brand" aria-label="Delivered" />
             </div>
           </div>
         </Reveal>

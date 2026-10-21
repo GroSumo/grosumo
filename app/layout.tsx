@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Mono, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -32,6 +32,10 @@ export const metadata: Metadata = {
     description:
       "GST billing, stock, purchases, accounts and customer credit in one platform. Offline edition: software free, pay only AMC. Cloud edition: ₹9,999/yr all-in.",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#005BC7",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
