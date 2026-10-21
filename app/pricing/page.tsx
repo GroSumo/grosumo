@@ -1,153 +1,165 @@
-import { Nav, Footer, PageHero, WA_LINK } from "@/components/ui";
-import { Reveal } from "@/components/motion";
+import type { Metadata } from "next";
+import { Check, ChevronDown, Minus } from "lucide-react";
+import { BothInclude, EditionCards } from "@/components/Editions";
+import { FinalCTA } from "@/components/HomeSections";
+import Reveal from "@/components/Reveal";
+import { Container, PageHeader, SectionHeading } from "@/components/ui";
+import { PRICE, SUPPORT_EMAIL } from "@/lib/site";
 
-export const metadata = { title: "Pricing — grosumoERP" };
+export const metadata: Metadata = {
+  title: "Editions & pricing — free offline billing software or cloud at ₹9,999/yr",
+  description:
+    "Offline edition: GST billing software that works without internet — software free forever, pay only ₹1,999/yr AMC. Cloud edition: ₹9,999/yr all-in, data hosted in India. Compare both editions.",
+};
 
-const INCLUDED = [
-  "All 18 modules — POS, billing, stock, accounts, everything",
-  "Unlimited bills, items and customers",
-  "GST-compliant invoicing",
-  "Automatic daily backups on your machine",
-  "Phone & mobile access on your shop Wi-Fi",
-  "Free help migrating from Tally, Vyapar or Excel"
+type Cell = string | boolean;
+
+const comparison: { feature: string; offline: Cell; cloud: Cell }[] = [
+  { feature: "Price", offline: `Software ${PRICE.offlineSoftware} + ${PRICE.offlineAmc}/yr AMC`, cloud: `${PRICE.cloud}/yr all-in` },
+  { feature: "Where your data lives", offline: "On your own PC", cloud: "Secure servers in India" },
+  { feature: "Internet required", offline: "No — works fully offline", cloud: "Yes" },
+  { feature: "Access from anywhere", offline: false, cloud: true },
+  { feature: "Use on multiple devices", offline: "On the PC it's installed on", cloud: "Any device with a browser" },
+  { feature: "Backups", offline: "Automatic daily backups on your PC", cloud: "Automatic cloud backups" },
+  { feature: "Updates", offline: "Included with AMC", cloud: "Automatic, always up to date" },
+  { feature: "Modules included", offline: "All modules", cloud: "All modules" },
+  { feature: "Bills, items & customers", offline: "Unlimited", cloud: "Unlimited" },
+  { feature: "GST invoicing & reports", offline: true, cloud: true },
+  { feature: "WhatsApp sharing", offline: true, cloud: true },
+  { feature: "Support", offline: "WhatsApp & phone, with AMC", cloud: "WhatsApp & phone, included" },
+  { feature: "Runs on", offline: "Windows PC", cloud: "Any modern browser" },
 ];
 
-const FAQ: [string, string][] = [
-  ["What does the ₹1,999/yr AMC include?", "The Annual Maintenance Contract covers three things: software updates (every new feature and fix), support (phone and mobile help when you're stuck), and your license renewal so the software keeps running. It's the same ₹1,999/yr for founding members and standard customers alike."],
-  ["What does \"lifetime free subscription\" mean?", "The ₹2,999/yr subscription is the licence fee for the software itself. Founding 1000 members never pay it — not the first year, not ever. You still pay the ₹1,999/yr AMC to stay updated and supported, but the subscription is ₹0 for the life of your shop. That's ₹2,999 saved every single year, forever."],
-  ["What happens after the 1,000 founding slots are gone?", "The Founding 1000 offer closes for good — no extensions, no second batch. New shops after that pay the standard ₹2,999/yr subscription plus the ₹1,999/yr AMC. Anyone who claimed a founding slot keeps their lifetime-free subscription regardless."],
-  ["Do I need the internet?", "No. Billing, stock and accounts run fully offline. Internet is only used for optional extras like WhatsApp sharing or emailing a backup."],
-  ["What happens if I let the AMC lapse?", "Your data is always yours — it lives on your machine and stays readable. There's a grace period after expiry, so you're never locked out overnight. Renew the AMC to resume updates and support."],
-  ["Are grosumo services included?", "Services — CA & accounting, legal, marketing — are separate and optional. Because they work from your ERP's clean books, they're faster and cheaper than starting from a shoebox of bills."],
-  ["What do I need to run it?", "A regular Windows PC or laptop at the shop. Installation takes about ten minutes."]
+function CellValue({ value }: { value: Cell }) {
+  if (value === true) return <Check className="mx-auto size-5 text-gain" strokeWidth={3} aria-label="Yes" />;
+  if (value === false) return <Minus className="mx-auto size-5 text-faint" aria-label="No" />;
+  return <span>{value}</span>;
+}
+
+const faq = [
+  {
+    q: "Is the offline software really free?",
+    a: "Yes — the software is free, forever, for everyone. There is no licence fee and no per-bill or per-user charge. The only charge is the ₹1,999/yr AMC.",
+  },
+  {
+    q: "What does the AMC cover?",
+    a: "The annual maintenance contract (₹1,999/yr) covers software updates, support from our team on WhatsApp and phone, and your yearly licence renewal.",
+  },
+  {
+    q: "What happens if I don't renew the AMC?",
+    a: "The offline software keeps working and your data stays yours, on your PC. You'll miss new updates and support. After a grace period, features that depend on an active licence pause until you renew — your bills and records are never locked away from you.",
+  },
+  {
+    q: "What's included in the Cloud price?",
+    a: "₹9,999/yr covers everything: hosting in India, automatic cloud backups, updates and support. There's no separate AMC for Cloud.",
+  },
+  {
+    q: "Can I switch between editions later?",
+    a: "Yes. You can move from Offline to Cloud, or Cloud to Offline, whenever it suits you — we help you move your data across.",
+  },
+  {
+    q: "Do both editions support GST?",
+    a: "Yes. Both editions include GST-compliant invoicing and GST reports. The features are the same — only where the software runs is different.",
+  },
+  {
+    q: "What do I need to run the offline edition?",
+    a: "A Windows PC. No internet connection is needed for day-to-day billing; you only need it to download updates.",
+  },
+  {
+    q: "Can I bring my data from my current billing app or spreadsheets?",
+    a: "Yes. We help you bring in your items, customers and opening balances when we set you up.",
+  },
 ];
 
-export default function Pricing() {
+export default function PricingPage() {
   return (
-    <main>
-      <Nav />
-      <PageHero
-        eyebrow="Pricing"
-        title="One price. And the first 1,000 shops"
-        accent="never pay it."
-        sub="One license per shop: ₹2,999/yr subscription plus ₹1,999/yr AMC. Claim a Founding 1000 slot and the subscription is ₹0 for life — you only ever pay the AMC."
+    <>
+      <PageHeader
+        eyebrow="Editions & pricing"
+        title={
+          <>
+            Free on your PC. <span className="text-brand">₹9,999/yr</span> in the cloud.
+          </>
+        }
+        intro="Two editions of the same ERP. Every module, unlimited bills — the only difference is where it runs."
       />
-      <section className="bg-white">
-        <div className="mx-auto max-w-page px-6 py-20">
-          <div className="mx-auto grid max-w-[840px] items-stretch gap-5 md:grid-cols-2">
-            {/* Founding 1000 */}
-            <Reveal delay={90}>
-              <div className="card relative h-full border-brand p-8 text-center ring-1 ring-brand">
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-brand px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
-                  Limited — first 1,000 shops only
-                </span>
-                <div className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-slate">
-                  Founding 1000
-                </div>
-                <div className="mt-3 text-[38px] font-bold leading-none text-brand">
-                  ₹0 subscription for life
-                </div>
-                <div className="mt-2 font-mono text-[13px] text-slate">just ₹1,999/yr AMC</div>
-                <p className="mt-4 text-[14px] leading-relaxed text-slate">
-                  The first 1,000 shops never pay the ₹2,999 subscription — not this
-                  year, not ever. Only the yearly AMC that keeps you updated and
-                  supported.
-                </p>
-                <ul className="mt-5 space-y-2 text-left text-[14px] text-slate">
-                  {[
-                    "₹0 subscription — for the life of your shop",
-                    "₹1,999/yr AMC: updates, support, licence renewal",
-                    "Every one of the 18 modules included"
-                  ].map((x) => (
-                    <li key={x} className="flex gap-2.5">
-                      <span className="mt-[2px] font-bold text-brand">✓</span> {x}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={WA_LINK}
-                  target="_blank"
-                  rel="noopener"
-                  className="btn btn-green mt-6 w-full"
-                >
-                  Claim founding slot
-                </a>
-              </div>
-            </Reveal>
-            {/* Standard */}
-            <Reveal delay={180}>
-              <div className="card h-full p-8 text-center">
-                <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate">
-                  Standard
-                </div>
-                <div className="mt-3 text-[38px] font-bold leading-none">
-                  ₹2,999<span className="text-[20px] font-medium text-slate">/yr</span>
-                </div>
-                <div className="mt-2 font-mono text-[13px] text-slate">+ ₹1,999/yr AMC</div>
-                <p className="mt-4 text-[14px] leading-relaxed text-slate">
-                  Subscription plus AMC once the founding slots are gone. Still one
-                  price per shop, still offline, still yours.
-                </p>
-                <ul className="mt-5 space-y-2 text-left text-[14px] text-slate">
-                  {[
-                    "₹2,999/yr subscription (licence for the software)",
-                    "₹1,999/yr AMC: updates, support, licence renewal",
-                    "Every one of the 18 modules included"
-                  ].map((x) => (
-                    <li key={x} className="flex gap-2.5">
-                      <span className="mt-[2px] font-bold text-brand">✓</span> {x}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          </div>
 
-          <Reveal className="mt-8 text-center">
-            <p className="font-mono text-[13px] text-brand">
-              Founding members save ₹2,999 every single year — forever.
-            </p>
-          </Reveal>
-
-          <Reveal className="mx-auto mt-14 max-w-[760px]">
-            <div className="card p-8">
-              <div className="text-[17px] font-bold">Every plan includes</div>
-              <ul className="mt-5 grid gap-3 md:grid-cols-2">
-                {INCLUDED.map((x) => (
-                  <li key={x} className="flex gap-2.5 text-[14.5px] text-slate">
-                    <span className="mt-[2px] font-bold text-brand">✓</span> {x}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-          <Reveal className="mt-10 text-center">
-            <a href={WA_LINK} target="_blank" rel="noopener" className="btn btn-green">Claim your founding slot</a>
-            <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.15em] text-slate">
-              grosumo services (CA · legal · marketing) priced separately — ask us
-            </p>
-          </Reveal>
-        </div>
+      <section className="bg-mint pb-20 sm:pb-28">
+        <Container className="max-w-5xl">
+          <EditionCards showAnchors />
+          <BothInclude />
+          <p className="mt-6 text-center text-sm text-muted">Prices are per business, per year. Applicable GST extra.</p>
+        </Container>
       </section>
-      <section className="bg-wash">
-        <div className="mx-auto max-w-[780px] px-6 py-20">
-          <Reveal className="text-center">
-            <span className="eyebrow text-brand">Questions</span>
-            <h2 className="h-display mt-4 text-[clamp(28px,4vw,42px)]">Fair questions, straight answers.</h2>
+
+      {/* Comparison */}
+      <section id="compare" className="scroll-mt-20 bg-white py-20 sm:py-28">
+        <Container className="max-w-5xl">
+          <SectionHeading center eyebrow="Compare" title="Offline vs Cloud, side by side" />
+          <Reveal className="mt-12 overflow-x-auto rounded-2xl border border-line shadow-card">
+            <table className="w-full min-w-[560px] border-collapse text-left text-[15px]">
+              <caption className="sr-only">Comparison of the Offline and Cloud editions</caption>
+              <thead>
+                <tr className="bg-mint">
+                  <th scope="col" className="px-5 py-4 text-sm font-semibold text-muted">
+                    Feature
+                  </th>
+                  <th scope="col" className="w-[32%] px-5 py-4 text-center">
+                    <span className="block text-base font-bold text-ink">Offline</span>
+                    <span className="mt-0.5 block text-xs font-semibold text-brand">Software free</span>
+                  </th>
+                  <th scope="col" className="w-[32%] px-5 py-4 text-center">
+                    <span className="block text-base font-bold text-ink">Cloud</span>
+                    <span className="mt-0.5 block text-xs font-semibold text-muted">All-in</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.map(row => (
+                  <tr key={row.feature} className="border-t border-line">
+                    <th scope="row" className="px-5 py-4 font-medium text-ink">
+                      {row.feature}
+                    </th>
+                    <td className="bg-brand-soft/40 px-5 py-4 text-center text-muted">
+                      <CellValue value={row.offline} />
+                    </td>
+                    <td className="px-5 py-4 text-center text-muted">
+                      <CellValue value={row.cloud} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </Reveal>
-          <div className="mt-10 space-y-3">
-            {FAQ.map(([q, a]) => (
-              <details key={q} className="card overflow-hidden !rounded-xl">
-                <summary className="cursor-pointer list-none px-6 py-5 text-[15.5px] font-semibold [&::-webkit-details-marker]:hidden">
+        </Container>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-mint py-20 sm:py-28">
+        <Container className="max-w-3xl">
+          <SectionHeading center eyebrow="FAQ" title="Questions about editions & pricing" />
+          <div className="mt-12 space-y-3">
+            {faq.map(({ q, a }) => (
+              <details key={q} className="group rounded-2xl border border-line bg-white shadow-card open:shadow-lift">
+                <summary className="flex cursor-pointer items-center justify-between gap-4 px-6 py-5 text-base font-semibold text-ink">
                   {q}
+                  <ChevronDown className="size-5 shrink-0 text-brand transition-transform group-open:rotate-180" aria-hidden />
                 </summary>
-                <p className="px-6 pb-5 text-[14.5px] leading-relaxed text-slate">{a}</p>
+                <p className="px-6 pb-6 text-[15px] leading-relaxed text-muted">{a}</p>
               </details>
             ))}
           </div>
-        </div>
+          <p className="mt-8 text-center text-sm text-muted">
+            Still have a question? Email{" "}
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="font-semibold text-brand hover:underline">
+              {SUPPORT_EMAIL}
+            </a>{" "}
+            or message us on WhatsApp.
+          </p>
+        </Container>
       </section>
-      <Footer />
-    </main>
+
+      <FinalCTA title="Start free today. Upgrade to Cloud whenever you like." />
+    </>
   );
 }

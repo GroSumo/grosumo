@@ -1,142 +1,173 @@
-"use client";
+import {
+  BarChart3,
+  BookOpen,
+  LayoutDashboard,
+  Package,
+  Receipt,
+  RefreshCw,
+  Settings,
+  ShoppingCart,
+  Users,
+} from "lucide-react";
+import CountUp from "./CountUp";
 
-const BARS = [42, 58, 47, 66, 54, 78, 62, 84, 70, 92, 76, 88];
-const MONTHS = ["J", "A", "S", "O", "N", "D", "J", "F", "M", "A", "M", "J"];
-
-const NAVI = ["Dashboard", "POS", "Sales", "Quotations", "Purchases", "Inventory", "Customers", "Accounts", "Reports"];
-
-const TOP_ITEMS = [
-  { n: "Sunflower Oil 1L", v: "₹48,200", pct: 92 },
-  { n: "Atta 10kg", v: "₹36,900", pct: 74 },
-  { n: "Kurti style #04", v: "₹31,400", pct: 63 },
-  { n: "Toor Dal 1kg", v: "₹22,800", pct: 46 }
+const sidebar = [
+  { icon: LayoutDashboard, label: "Dashboard", active: true },
+  { icon: Receipt, label: "Billing" },
+  { icon: Package, label: "Stock" },
+  { icon: ShoppingCart, label: "Purchases" },
+  { icon: BookOpen, label: "Accounts" },
+  { icon: Users, label: "Customers" },
+  { icon: BarChart3, label: "Reports" },
 ];
 
-export function DashboardMock() {
+const tiles = [
+  { label: "Today's sales", value: 48250, delta: "+12% vs yesterday", up: true },
+  { label: "Profit today", value: 6920, delta: "14.3% margin", up: true },
+  { label: "Receivables", value: 342800, delta: "₹41,200 overdue", up: false },
+  { label: "Stock value", value: 1864000, delta: "1,284 items", up: true },
+];
+
+const months = ["Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"];
+const monthlySales = [3.2, 3.6, 3.1, 4.0, 4.4, 3.9, 4.8, 5.1, 4.6, 5.4, 5.9, 6.3]; // ₹ lakh
+
+const bills = [
+  { no: "INV-2481", party: "Sri Lakshmi Traders", mode: "UPI", amt: "₹12,480" },
+  { no: "INV-2480", party: "Walk-in customer", mode: "Cash", amt: "₹1,935" },
+  { no: "INV-2479", party: "Ganesh Provisions", mode: "Credit", amt: "₹28,600" },
+  { no: "INV-2478", party: "Annapurna Stores", mode: "UPI", amt: "₹7,215" },
+];
+
+const modeStyle: Record<string, string> = {
+  UPI: "bg-brand-soft text-brand",
+  Cash: "bg-[#EEF2F0] text-muted",
+  Credit: "bg-[#FDECE6] text-loss",
+};
+
+export default function DashboardMock() {
+  const max = Math.max(...monthlySales);
+
   return (
     <div className="relative">
-      {/* floating KPI cards */}
-      <div className="glass absolute -top-7 right-4 z-10 hidden px-5 py-3.5 text-left lg:block">
-        <div className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-haze">Capital rotation</div>
-        <div className="mt-0.5 flex items-baseline gap-2">
-          <span className="font-mono text-[26px] font-medium text-mint">6.2×</span>
-          <span className="text-[11.5px] text-emerald">↑ faster than last year</span>
+      {/* Floating insight cards */}
+      <div className="absolute -bottom-8 -left-6 z-10 hidden w-52 rounded-2xl border border-line bg-white p-4 shadow-lift lg:block xl:-left-14">
+        <div className="flex items-center gap-2 text-xs font-medium text-muted">
+          <RefreshCw className="size-3.5 text-brand" aria-hidden /> Capital rotation
         </div>
+        <p className="mt-1.5 font-mono text-2xl font-medium text-ink">
+          <CountUp value={6.2} decimals={1} suffix="×" />
+        </p>
+        <p className="mt-1 text-xs text-gain">Stock money turned 6.2 times this year</p>
       </div>
-      <div className="glass absolute -left-6 bottom-16 z-10 hidden px-5 py-3.5 text-left lg:block">
-        <div className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-haze">Dead stock alert</div>
-        <div className="mt-0.5 flex items-baseline gap-2">
-          <span className="font-mono text-[22px] font-medium text-amber">₹1.8L</span>
-          <span className="text-[11.5px] text-haze">idle 90+ days</span>
+      <div className="absolute -right-6 -top-10 z-10 hidden w-56 rounded-2xl border border-line bg-white px-4 py-3 shadow-lift lg:block xl:-right-14">
+        <div className="flex items-center gap-2 text-xs font-medium text-muted">
+          <span className="size-2 rounded-full bg-loss" aria-hidden /> Dead stock
         </div>
+        <p className="mt-1.5 font-mono text-2xl font-medium text-ink">₹1.8L</p>
+        <p className="mt-1 text-xs text-loss">Idle 90+ days · 37 items</p>
       </div>
 
-      {/* the app */}
-      <div className="app-frame text-left">
-        {/* window bar */}
-        <div className="flex items-center justify-between border-b border-line bg-wash px-4 py-2.5">
-          <div className="flex items-center gap-1.5">
-            <span className="h-[9px] w-[9px] rounded-full bg-[#E5ECE8]" />
-            <span className="h-[9px] w-[9px] rounded-full bg-[#E5ECE8]" />
-            <span className="h-[9px] w-[9px] rounded-full bg-[#E5ECE8]" />
+      <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-lift ring-1 ring-brand/5">
+        {/* Window chrome */}
+        <div className="flex items-center gap-3 border-b border-line bg-mint px-4 py-3">
+          <div className="flex gap-1.5" aria-hidden>
+            <span className="size-2.5 rounded-full bg-[#F87171]" />
+            <span className="size-2.5 rounded-full bg-[#FBBF24]" />
+            <span className="size-2.5 rounded-full bg-[#34D399]" />
           </div>
-          <span className="rounded-md bg-white px-3 py-1 font-mono text-[10.5px] text-slate">
-            grosumoERP · localhost:3000
-          </span>
-          <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-brand">
-            <span className="live-dot h-[7px] w-[7px] rounded-full bg-emerald" /> offline · local
-          </span>
+          <div className="mx-auto w-full max-w-xs rounded-md border border-line bg-white px-3 py-1 text-center font-mono text-[11px] text-faint">
+            grosumoERP · Dashboard
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-[168px_1fr]">
-          {/* sidebar */}
-          <aside className="hidden flex-col bg-deeper py-4 text-[12.5px] text-haze md:flex">
-            <div className="mb-3 px-4">
-              <div className="text-[13px] font-semibold text-white">Sri Lakshmi Traders</div>
-              <div className="font-mono text-[10px] uppercase tracking-wider text-haze">Kadapa · FY 26–27</div>
+        <div className="flex">
+          {/* Sidebar */}
+          <aside className="hidden w-48 shrink-0 border-r border-line bg-mint/60 p-3 md:block">
+            <div className="mb-4 flex items-center gap-2 px-2 pt-1">
+              <span className="flex size-7 items-center justify-center rounded-lg bg-brand font-bold text-white">g</span>
+              <span className="text-sm font-semibold text-ink">Lakshmi Stores</span>
             </div>
-            {NAVI.map((n, i) => (
-              <div
-                key={n}
-                className={`px-4 py-[7px] ${i === 0 ? "border-l-2 border-mint bg-white/5 font-medium text-white" : ""}`}
-              >
-                {n}
-              </div>
-            ))}
+            <ul className="space-y-0.5">
+              {sidebar.map(({ icon: Icon, label, active }) => (
+                <li
+                  key={label}
+                  className={`flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] ${
+                    active ? "bg-white font-semibold text-brand shadow-sm" : "text-muted"
+                  }`}
+                >
+                  <Icon className="size-4" aria-hidden />
+                  {label}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 flex items-center gap-2 rounded-lg border border-line bg-white px-2.5 py-2 text-[11px] text-muted">
+              <Settings className="size-3.5" aria-hidden /> Backup done · 9:00 PM
+            </div>
           </aside>
 
-          {/* main */}
-          <div className="bg-white p-4 md:p-5">
-            {/* stat row */}
-            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-              {[
-                ["Today's sales", "₹34,760", "+12% vs avg", "text-emerald"],
-                ["Profit today", "₹6,120", "after purchases", "text-emerald"],
-                ["Receivables", "₹56,300", "₹6.5k over 45d", "text-amber"],
-                ["Stock value", "₹8.2L", "1,240 items", "text-slate"]
-              ].map(([l, v, s, c]) => (
-                <div key={l} className="rounded-xl border border-line bg-wash/60 px-3.5 py-3">
-                  <div className="font-mono text-[10px] uppercase tracking-wider text-slate">{l}</div>
-                  <div className="mt-0.5 font-mono text-[19px] font-medium text-ink">{v}</div>
-                  <div className={`text-[10.5px] ${c}`}>{s}</div>
+          {/* Main */}
+          <div className="min-w-0 flex-1 p-4 sm:p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-base font-bold tracking-tight text-ink">Good evening 👋</p>
+                <p className="text-xs text-faint">Here&apos;s how the shop is doing today</p>
+              </div>
+              <span className="rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-white">+ New bill</span>
+            </div>
+
+            <div className="mt-5 grid grid-cols-2 gap-3 xl:grid-cols-4">
+              {tiles.map(t => (
+                <div key={t.label} className="rounded-xl border border-line bg-white p-3 sm:p-4">
+                  <p className="text-[11px] font-medium uppercase tracking-wide text-faint">{t.label}</p>
+                  <p className="mt-1.5 font-mono text-base font-medium text-ink sm:text-lg">
+                    <CountUp value={t.value} prefix="₹" format="inr" />
+                  </p>
+                  <p className={`mt-1 text-[11px] font-medium ${t.up ? "text-gain" : "text-loss"}`}>{t.delta}</p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-3 grid gap-3 lg:grid-cols-[1.5fr_1fr]">
-              {/* revenue chart */}
-              <div className="rounded-xl border border-line p-4">
-                <div className="mb-3 flex items-baseline justify-between">
-                  <span className="text-[13px] font-semibold">Sales, last 12 months</span>
-                  <span className="font-mono text-[10.5px] text-slate">₹ per month</span>
+            <div className="mt-4 grid gap-4 lg:grid-cols-[1.35fr_1fr]">
+              {/* 12-month bar chart */}
+              <div className="rounded-xl border border-line bg-white p-4">
+                <div className="flex items-baseline justify-between">
+                  <p className="text-sm font-semibold text-ink">Sales, last 12 months</p>
+                  <p className="font-mono text-[11px] text-faint">₹ lakh</p>
                 </div>
-                <div className="flex h-[130px] items-end gap-[6px]">
-                  {BARS.map((b, i) => (
-                    <div key={i} className="flex flex-1 flex-col items-center gap-1.5">
+                <div className="mt-4 flex h-36 items-end gap-1.5 sm:gap-2" role="img" aria-label="Bar chart of monthly sales rising from 3.2 to 6.3 lakh rupees">
+                  {monthlySales.map((v, i) => (
+                    <div key={months[i]} className="flex h-full flex-1 flex-col items-center justify-end gap-1.5">
                       <div
-                        className="bar-grow w-full rounded-t-[4px]"
-                        style={{
-                          height: `${b}%`,
-                          animationDelay: `${i * 60}ms`,
-                          background:
-                            i === BARS.length - 1
-                              ? "linear-gradient(180deg,#5EEAB4,#12B981)"
-                              : "linear-gradient(180deg,#BCE9D6,#8FD6B9)"
-                        }}
+                        className={`w-full rounded-t-[4px] ${i === monthlySales.length - 1 ? "bg-brand" : "bg-brand/20"}`}
+                        style={{ height: `${(v / max) * 100}%` }}
                       />
-                      <span className="font-mono text-[9px] text-slate">{MONTHS[i]}</span>
+                      <span className="font-mono text-[9px] text-faint">{months[i].slice(0, 1)}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* top items */}
-              <div className="rounded-xl border border-line p-4">
-                <div className="mb-3 flex items-baseline justify-between">
-                  <span className="text-[13px] font-semibold">Fast movers</span>
-                  <span className="font-mono text-[10.5px] text-slate">30 days</span>
-                </div>
-                <div className="space-y-3">
-                  {TOP_ITEMS.map((t) => (
-                    <div key={t.n}>
-                      <div className="mb-1 flex justify-between text-[12px]">
-                        <span className="text-ink/85">{t.n}</span>
-                        <span className="font-mono text-slate">{t.v}</span>
+              {/* Recent bills */}
+              <div className="rounded-xl border border-line bg-white">
+                <p className="border-b border-line px-4 py-3 text-sm font-semibold text-ink">Recent bills</p>
+                <ul>
+                  {bills.map(b => (
+                    <li key={b.no} className="flex items-center gap-3 border-b border-line px-4 py-2.5 last:border-0">
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-[13px] font-medium text-ink">{b.party}</p>
+                        <p className="font-mono text-[10px] text-faint">{b.no}</p>
                       </div>
-                      <div className="h-[6px] w-full overflow-hidden rounded-full bg-wash">
-                        <div
-                          className="h-full rounded-full"
-                          style={{ width: `${t.pct}%`, background: "linear-gradient(90deg,#12B981,#5EEAB4)" }}
-                        />
-                      </div>
-                    </div>
+                      <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${modeStyle[b.mode]}`}>{b.mode}</span>
+                      <span className="font-mono text-[13px] text-ink">{b.amt}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <p className="mt-3 text-center text-xs text-faint">Illustrative screen with sample figures.</p>
     </div>
   );
 }

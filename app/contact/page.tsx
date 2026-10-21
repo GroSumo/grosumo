@@ -1,50 +1,65 @@
-import { Nav, Footer, PageHero } from "@/components/ui";
-import { Reveal } from "@/components/motion";
-import { ContactForm } from "@/components/contact-form";
+import type { Metadata } from "next";
+import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import ContactForm from "./ContactForm";
+import { Container, PageHeader } from "@/components/ui";
+import { LOCATION, SUPPORT_EMAIL, SUPPORT_PHONE, WA_LINK } from "@/lib/site";
 
-export const metadata = { title: "Contact — grosumo" };
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Talk to the grosumoERP team on WhatsApp, email or phone. Get started with the free Offline edition or the Cloud edition.",
+};
 
-export default function Contact() {
+const channels = [
+  { icon: MessageCircle, label: "WhatsApp", value: "Start a chat", href: WA_LINK },
+  { icon: Mail, label: "Email", value: SUPPORT_EMAIL, href: `mailto:${SUPPORT_EMAIL}` },
+  { icon: Phone, label: "Phone", value: SUPPORT_PHONE },
+  { icon: MapPin, label: "Location", value: LOCATION },
+  { icon: Clock, label: "Hours", value: "Mon–Sat, 9 AM – 6 PM IST" },
+];
+
+export default function ContactPage() {
   return (
-    <main>
-      <Nav />
-      <PageHero
+    <>
+      <PageHeader
         eyebrow="Contact"
-        title="Talk to a person,"
-        accent="not a portal."
-        sub="Tell us about your shop — what you sell, how you bill today — and we'll set you up with grosumoERP and, if slots remain, your Founding 1000 lifetime-free subscription."
+        title="Let's get your business running"
+        intro="WhatsApp is the fastest way to reach us. Tell us a little about your business and which edition you're considering."
       />
-      <section className="bg-white">
-        <div className="mx-auto grid max-w-[980px] gap-8 px-6 py-20 md:grid-cols-2">
-          <Reveal>
-            <div className="card h-full p-8">
-              <h2 className="text-[20px] font-bold">Reach us directly</h2>
-              <div className="mt-6 space-y-5 text-[15px]">
-                <div>
-                  <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate">Email</div>
-                  <a href="mailto:hello@grosumo.com" className="mt-1 block font-medium text-brand">hello@grosumo.com</a>
-                </div>
-                <div>
-                  <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate">WhatsApp / Phone</div>
-                  <a href="https://wa.me/918106140617" target="_blank" rel="noopener" className="mt-1 block font-medium text-brand">+91 81061 40617</a>
-                </div>
-                <div>
-                  <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate">Office</div>
-                  <div className="mt-1">grosumo · Kadapa, Andhra Pradesh, India</div>
-                </div>
-              </div>
-              <p className="mt-8 rounded-xl bg-wash p-4 text-[13.5px] leading-relaxed text-slate">
-                Already on Tally, Vyapar or Excel? Mention it — migration help
-                (items, customers, opening balances) is free.
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <ContactForm />
-          </Reveal>
-        </div>
+      <section className="bg-mint pb-20 sm:pb-28">
+        <Container className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
+          <ul className="space-y-3">
+            {channels.map(({ icon: Icon, label, value, href }) => {
+              const inner = (
+                <>
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                    <Icon className="size-5" aria-hidden />
+                  </span>
+                  <span>
+                    <span className="block text-xs font-medium text-faint">{label}</span>
+                    <span className="block text-[15px] font-semibold text-ink">{value}</span>
+                  </span>
+                </>
+              );
+              return (
+                <li key={label}>
+                  {href ? (
+                    <a
+                      href={href}
+                      {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      className="flex items-center gap-4 rounded-2xl border border-line bg-white p-4 shadow-card transition-colors hover:border-brand"
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <div className="flex items-center gap-4 rounded-2xl border border-line bg-white p-4 shadow-card">{inner}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          <ContactForm />
+        </Container>
       </section>
-      <Footer />
-    </main>
+    </>
   );
 }

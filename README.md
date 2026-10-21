@@ -1,22 +1,36 @@
-# grosumoERP — website (Next.js 14, TypeScript, Tailwind)
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Run
-    npm install
-    npm run dev   # http://localhost:3000
+## Getting Started
 
-## Pages
-- /            Home — hero dashboard, suite grid, intelligence rows, offline, services, pricing teaser
-- /product     18 modules in 4 groups + "a day with grosumoERP"
-- /pricing     Year 1 free / Year 2 discounted / Year 3 standard + FAQ
-- /services    Accounting & CA, Legal, Marketing
-- /contact     Direct contact + enquiry form (mailto — wire to your backend later)
+First, run the development server:
 
-## Structure
-- app/globals.css          design system (dark evergreen theme, buttons, cards, animations)
-- components/ui.tsx        Nav, Footer, PageHero (shared)
-- components/DashboardMock.tsx  the hero product mock
-- components/home.tsx      homepage sections
-- components/motion.tsx    Reveal + CountUp helpers
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-All figures are sample data (labeled on the page). Replace the phone number
-placeholder in app/contact/page.tsx.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

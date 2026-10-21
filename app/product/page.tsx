@@ -1,118 +1,105 @@
-import { Nav, Footer, PageHero, WA_LINK } from "@/components/ui";
-import { Reveal } from "@/components/motion";
-import { FinalCTA } from "@/components/home";
+import type { Metadata } from "next";
+import { Cloud, HardDrive } from "lucide-react";
+import Intelligence from "@/components/Intelligence";
+import { FinalCTA, MODULES } from "@/components/HomeSections";
+import Reveal from "@/components/Reveal";
+import { ButtonLink, CheckItem, Container, PageHeader, SectionHeading } from "@/components/ui";
 
-export const metadata = { title: "Product — grosumoERP" };
+export const metadata: Metadata = {
+  title: "Product — GST billing, stock, accounts & customer credit",
+  description:
+    "grosumoERP brings GST billing, stock, purchases, accounts, customer credit and reports into one shop ERP for India. Run it offline on your own PC or in the cloud.",
+};
 
-const GROUPS: { id: string; cat: string; blurb: string; mods: [string, string][] }[] = [
-  {
-    id: "sell",
-    cat: "Sell & bill",
-    blurb: "Everything between \"how much?\" and money in the drawer.",
-    mods: [
-      ["POS billing", "Fast counter billing with GST rates per line, discounts, and cash/UPI/card split payments. Built for queues."],
-      ["GST invoices", "Compliant invoices printed or shared on WhatsApp in one click, with proper books written underneath."],
-      ["Quotations", "Professional quotes that convert to invoices the moment the customer says yes — no re-entry."],
-      ["Returns & exchanges", "Reversals that put stock back and correct the ledger automatically, every time."]
-    ]
-  },
-  {
-    id: "stock",
-    cat: "Stock & purchases",
-    blurb: "Know what's on the shelf, what it cost, and when to reorder.",
-    mods: [
-      ["Inventory", "A live item catalog where every sale, purchase and return updates stock instantly."],
-      ["Purchases & suppliers", "Supplier bills, outstanding dues and full purchase history against every item."],
-      ["Stock transfers", "Move stock between locations with a clean trail of what went where."],
-      ["Adjustments", "When the physical count disagrees, adjust with a reason — audited, not erased."]
-    ]
-  },
-  {
-    id: "money",
-    cat: "Accounts & insight",
-    blurb: "Real books, closed daily — and read like an analyst.",
-    mods: [
-      ["Double-entry accounts", "Journals, ledgers and a general ledger with built-in integrity checks. Your CA gets books, not a shoebox."],
-      ["Day close", "Cash, UPI and card tallied every evening. Profit or deficit, known tonight."],
-      ["Expenses & commissions", "Every rupee out — rent, salaries, staff commissions — categorised and counted."],
-      ["Reports & insights", "Sales, stock, profit and rotation reports on demand, shareable to WhatsApp."]
-    ]
-  },
-  {
-    id: "people",
-    cat: "Customers & team",
-    blurb: "The relationships that keep the shop running.",
-    mods: [
-      ["Customer ledgers", "Credit (udhaar) tracked per customer, aged by the day, with pending statements to WhatsApp."],
-      ["Leads", "Enquiries and follow-ups that don't slip through."],
-      ["Employees", "Staff records and commission tracking in the same system."],
-      ["Backups & license", "Automatic daily local backups, one-click restore, and offline license activation."]
-    ]
-  }
-];
+const details: Record<string, string[]> = {
+  "GST billing": ["CGST / SGST / IGST calculated automatically", "HSN codes and tax rates per item", "Print, PDF or WhatsApp the bill", "Cash, UPI and credit sales"],
+  Stock: ["Stock updates with every sale and purchase", "Low-stock alerts", "Stock value at cost", "Sleeping-stock report"],
+  Purchases: ["Supplier bills and returns", "Supplier dues and payments", "Purchase price history", "Input GST captured for reports"],
+  Accounts: ["Cash and bank books", "Expense tracking", "Party ledgers", "Daily profit, worked out per bill"],
+  "Customer credit": ["Credit limit per customer", "Receivables aging", "One-tap WhatsApp reminders", "Statements you can share"],
+  Reports: ["Sales and profit reports", "GST reports for filing", "Stock and movement reports", "Export for your CA"],
+};
 
-export default function Product() {
+export default function ProductPage() {
   return (
-    <main>
-      <Nav />
-      <PageHero
-        eyebrow="The product"
-        title="Eighteen modules."
-        accent="One system."
-        sub="Every module shares one database on your machine — so a sale updates stock, books and customer ledgers in the same second. No sync, no integrations, no internet."
+    <>
+      <PageHeader
+        eyebrow="grosumoERP"
+        title={
+          <>
+            Everything your shop runs on, <span className="text-brand">in one ERP</span>
+          </>
+        }
+        intro="Billing, stock, purchases, accounts and customer credit — all connected, so every bill updates everything else. The same product whether you run it offline or in the cloud."
       />
-      <section className="bg-white">
-        <div className="mx-auto max-w-page space-y-20 px-6 py-20">
-          {GROUPS.map((g, gi) => (
-            <div key={g.id} id={g.id}>
-              <Reveal>
-                <span className="eyebrow text-brand">{`0${gi + 1}`} · {g.cat}</span>
-                <h2 className="h-display mt-3 text-[clamp(26px,3.4vw,40px)]">{g.blurb}</h2>
-              </Reveal>
-              <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-                {g.mods.map(([t, d], i) => (
-                  <Reveal key={t} delay={i * 70}>
-                    <div className="card h-full p-6">
-                      <div className="text-[16px] font-bold">{t}</div>
-                      <p className="mt-2 text-[13.5px] leading-relaxed text-slate">{d}</p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="bg-wash">
-        <div className="mx-auto max-w-page px-6 py-20">
-          <Reveal className="mx-auto max-w-[640px] text-center">
-            <span className="eyebrow text-brand">A day with grosumoERP</span>
-            <h2 className="h-display mt-4 text-[clamp(28px,4vw,44px)]">
-              Morning shutter to <span className="h-accent text-brand">evening close.</span>
-            </h2>
-          </Reveal>
-          <div className="mx-auto mt-12 grid max-w-[980px] gap-5 md:grid-cols-3">
-            {[
-              ["9:30 AM", "Open", "Yesterday's close is on the dashboard. Two items hit reorder level overnight — the purchase order is one click."],
-              ["All day", "Sell", "Bills fly at the counter — GST, discounts, credit — while stock, ledgers and customer accounts update themselves."],
-              ["9:00 PM", "Close", "Cash, UPI and card tallied. Today's profit on screen. Backup done automatically. Shutter down."]
-            ].map(([t, h, d], i) => (
-              <Reveal key={h} delay={i * 90}>
-                <div className="card h-full p-7">
-                  <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-brand">{t}</div>
-                  <div className="mt-1 text-[20px] font-bold">{h}</div>
-                  <p className="mt-2 text-[14px] leading-relaxed text-slate">{d}</p>
+
+      <section className="bg-white py-20 sm:py-28">
+        <Container>
+          <SectionHeading eyebrow="Modules" title="Every module, in both editions" />
+          <div className="mt-14 grid gap-5 md:grid-cols-2">
+            {MODULES.map(({ icon: Icon, title, desc }, i) => (
+              <Reveal key={title} delay={(i % 2) * 60} className="h-full">
+                <div className="h-full rounded-2xl border border-line bg-white p-7 shadow-card">
+                  <div className="flex items-center gap-3">
+                    <span className="flex size-11 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                      <Icon className="size-5" aria-hidden />
+                    </span>
+                    <h3 className="text-xl font-bold tracking-tight text-ink">{title}</h3>
+                  </div>
+                  <p className="mt-4 text-[15px] leading-relaxed text-muted">{desc}</p>
+                  <ul className="mt-5 grid gap-2.5 text-ink sm:grid-cols-2">
+                    {details[title]?.map(p => (
+                      <CheckItem key={p}>{p}</CheckItem>
+                    ))}
+                  </ul>
                 </div>
               </Reveal>
             ))}
           </div>
-          <Reveal className="mt-10 text-center">
-            <a href={WA_LINK} target="_blank" rel="noopener" className="btn btn-green">Claim founding slot</a>
-          </Reveal>
-        </div>
+        </Container>
       </section>
+
+      <div className="border-t border-line">
+        <Intelligence />
+      </div>
+
+      <section className="bg-mint py-20 sm:py-28">
+        <Container className="max-w-5xl">
+          <SectionHeading center eyebrow="Two editions" title="Run it where it suits you" />
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {[
+              {
+                icon: HardDrive,
+                title: "Offline",
+                price: "Software free · ₹1,999/yr AMC",
+                body: "Installed on your Windows PC. Bill with zero internet, keep every record on your own machine, with automatic daily backups.",
+              },
+              {
+                icon: Cloud,
+                title: "Cloud",
+                price: "₹9,999/yr all-in",
+                body: "Open it from the shop, home or on the road, on any device. Hosted in India with automatic cloud backups.",
+              },
+            ].map(({ icon: Icon, title, price, body }) => (
+              <Reveal key={title} className="h-full">
+                <div className="h-full rounded-2xl border border-line bg-white p-7 shadow-card">
+                  <span className="flex size-11 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                    <Icon className="size-5" aria-hidden />
+                  </span>
+                  <h3 className="mt-5 text-xl font-bold tracking-tight text-ink">{title} edition</h3>
+                  <p className="mt-1 font-mono text-sm text-brand">{price}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted">{body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-10 flex justify-center">
+            <ButtonLink href="/pricing">Compare editions</ButtonLink>
+          </div>
+        </Container>
+      </section>
+
       <FinalCTA />
-      <Footer />
-    </main>
+    </>
   );
 }

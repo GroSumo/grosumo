@@ -1,125 +1,122 @@
 import Link from "next/link";
+import { ArrowRight, Check, MessageCircle } from "lucide-react";
+import { WA_LINK } from "@/lib/site";
 
-export const WHATSAPP_NUMBER = "918106140617"; // country code + number, no + or spaces
+const base =
+  "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-[15px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
-/** Build a wa.me deep-link with a prefilled message. */
-export const waLink = (text: string) =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+const variants = {
+  primary: "bg-brand text-white shadow-sm hover:bg-brand-dark",
+  secondary: "border border-line bg-white text-ink hover:border-brand hover:text-brand",
+  light: "bg-white text-deep hover:bg-brand-soft",
+  ghostDark: "border border-white/25 text-white hover:bg-white/10",
+} as const;
 
-// Founding 1000 claim — the default CTA across the site
-export const WA_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  "Hi grosumo! I want to claim my Founding 1000 slot for grosumoERP."
-)}`;
+type Variant = keyof typeof variants;
 
-// Non-founding contexts (e.g. services enquiries)
-export const WA_LINK_SERVICES = waLink(
-  "Hi grosumo! I'd like to know more about your services."
-);
-
-export function Nav() {
-  return (
-    <nav className="sticky top-0 z-50 border-b border-linedark bg-abyss/90 text-fog backdrop-blur-md">
-      <div className="mx-auto flex h-[64px] max-w-page items-center justify-between px-6">
-        <Link href="/" className="flex items-baseline text-[21px] font-light tracking-tight">
-          <span
-            aria-hidden
-            className="relative top-[4px] mr-[2px] inline-block h-[24px] w-[24px] rotate-45 rounded-full border-[2.5px] border-mint border-t-transparent"
-          />
-          rosumo<b className="font-semibold text-mint">ERP</b>
-        </Link>
-        <div className="hidden items-center gap-8 text-[14.5px] font-medium text-haze md:flex">
-          <Link href="/product" className="hover:text-mint">Product</Link>
-          <Link href="/pricing" className="hover:text-mint">Pricing</Link>
-          <Link href="/services" className="hover:text-mint">Services</Link>
-          <Link href="/contact" className="hover:text-mint">Contact</Link>
-        </div>
-        <div className="flex items-center gap-3">
-          <Link href="/contact" className="hidden text-[14px] font-medium text-haze hover:text-mint md:block">
-            Talk to us
-          </Link>
-          <a
-            href={WA_LINK}
-            target="_blank"
-            rel="noopener"
-            className="btn btn-solid !px-5 !py-2.5 !text-[14px]"
-          >
-            Claim founding slot
-          </a>
-        </div>
-      </div>
-    </nav>
-  );
-}
-
-const FOOT: [string, [string, string][]][] = [
-  ["Product", [["Overview", "/product"], ["Sell & bill", "/product#sell"], ["Stock & purchases", "/product#stock"], ["Accounts & reports", "/product#money"], ["Pricing", "/pricing"]]],
-  ["Services", [["Accounting & CA", "/services"], ["Legal & registrations", "/services"], ["Marketing & design", "/services"]]],
-  ["Company", [["Contact", "/contact"], ["About grosumo", "/contact"], ["Privacy", "#"], ["Terms", "#"]]]
-];
-
-export function Footer() {
-  return (
-    <footer className="bg-abyss text-fog">
-      <div className="mx-auto max-w-page px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
-          <div>
-            <div className="flex items-baseline text-[20px] font-light">
-              <span
-                aria-hidden
-                className="relative top-[4px] mr-[2px] inline-block h-[22px] w-[22px] rotate-45 rounded-full border-[2.5px] border-mint border-t-transparent"
-              />
-              rosumo<b className="font-semibold text-mint">ERP</b>
-            </div>
-            <p className="mt-4 max-w-[300px] text-[14px] leading-relaxed text-haze">
-              The complete business suite for Indian SMEs and MSMEs — billing,
-              stock, accounts and insight, running on your own machine. Built by
-              grosumo, Kadapa, Andhra Pradesh.
-            </p>
-            <p className="mt-4 font-mono text-[13px] text-mint">hello@grosumo.com</p>
-          </div>
-          {FOOT.map(([h, items]) => (
-            <div key={h}>
-              <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-haze">{h}</div>
-              <ul className="space-y-2.5 text-[14px]">
-                {items.map(([label, href]) => (
-                  <li key={label}>
-                    <Link href={href} className="text-fog/80 hover:text-mint">{label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-linedark pt-6 font-mono text-[12px] text-haze">
-          <span>© 2026 grosumo. All rights reserved.</span>
-          <span>Made in India 🇮🇳 · Your data stays on your machine</span>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-export function PageHero({
-  eyebrow,
-  title,
-  accent,
-  sub
+/** Primary CTA — always opens WhatsApp in a new tab. */
+export function WhatsAppButton({
+  href = WA_LINK,
+  children = "Start free on WhatsApp",
+  variant = "primary",
+  className = "",
 }: {
-  eyebrow: string;
-  title: string;
-  accent?: string;
-  sub: string;
+  href?: string;
+  children?: React.ReactNode;
+  variant?: Variant;
+  className?: string;
 }) {
   return (
-    <header className="hero-dark relative text-fog">
-      <div className="grid-lines pointer-events-none absolute inset-0" />
-      <div className="relative mx-auto max-w-page px-6 pb-20 pt-16 text-center md:pt-20">
-        <span className="eyebrow text-mint">{eyebrow}</span>
-        <h1 className="h-display mx-auto mt-5 max-w-[760px] text-[clamp(36px,5.4vw,60px)]">
-          {title} {accent && <span className="h-accent text-mint">{accent}</span>}
-        </h1>
-        <p className="mx-auto mt-5 max-w-[560px] text-[17.5px] leading-relaxed text-haze">{sub}</p>
-      </div>
-    </header>
+    <a href={href} target="_blank" rel="noopener noreferrer" className={`${base} ${variants[variant]} ${className}`}>
+      <MessageCircle className="size-[18px]" aria-hidden />
+      {children}
+    </a>
+  );
+}
+
+export function ButtonLink({
+  href,
+  children,
+  variant = "secondary",
+  className = "",
+}: {
+  href: string;
+  children: React.ReactNode;
+  variant?: Variant;
+  className?: string;
+}) {
+  return (
+    <Link href={href} className={`${base} ${variants[variant]} ${className}`}>
+      {children}
+      <ArrowRight className="size-4" aria-hidden />
+    </Link>
+  );
+}
+
+export function Pill({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <span className={`inline-flex items-center gap-1.5 rounded-full border border-brand/15 bg-brand-soft px-3 py-1 text-xs font-semibold text-brand ${className}`}>
+      {children}
+    </span>
+  );
+}
+
+export function Eyebrow({ children }: { children: React.ReactNode }) {
+  return <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-brand">{children}</p>;
+}
+
+export function SectionHeading({
+  eyebrow,
+  title,
+  intro,
+  center = false,
+}: {
+  eyebrow?: string;
+  title: React.ReactNode;
+  intro?: React.ReactNode;
+  center?: boolean;
+}) {
+  return (
+    <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
+      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+      <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h2>
+      {intro && <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{intro}</p>}
+    </div>
+  );
+}
+
+export function CheckItem({ children, tone = "brand" }: { children: React.ReactNode; tone?: "brand" | "light" }) {
+  return (
+    <li className="flex items-start gap-2.5 text-[15px] leading-snug">
+      <span
+        className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full ${
+          tone === "light" ? "bg-white/15 text-white" : "bg-brand-soft text-brand"
+        }`}
+      >
+        <Check className="size-3" strokeWidth={3} aria-hidden />
+      </span>
+      <span>{children}</span>
+    </li>
+  );
+}
+
+export function Container({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <div className={`mx-auto w-full max-w-6xl px-4 sm:px-6 ${className}`}>{children}</div>;
+}
+
+/** Standard interior-page header on the light wash. */
+export function PageHeader({ eyebrow, title, intro }: { eyebrow: string; title: React.ReactNode; intro?: React.ReactNode }) {
+  return (
+    <section className="relative overflow-hidden bg-mint pb-14 pt-32 sm:pb-20 sm:pt-40">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(26,122,94,0.14),transparent)]"
+      />
+      <Container className="relative text-center">
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <h1 className="mx-auto mt-4 max-w-3xl text-4xl font-bold tracking-tight text-ink sm:text-5xl">{title}</h1>
+        {intro && <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted">{intro}</p>}
+      </Container>
+    </section>
   );
 }
