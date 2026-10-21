@@ -97,7 +97,7 @@ export function Services() {
                   href={waLink(msg)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 text-sm font-semibold text-brand hover:underline"
+                  className="mt-5 text-sm font-semibold text-brandink hover:underline"
                 >
                   Ask on WhatsApp →
                 </a>
@@ -129,7 +129,7 @@ export function Steps() {
           {steps.map((s, i) => (
             <Reveal as="li" key={s.n} delay={i * 80} className="h-full">
               <div className="relative h-full rounded-2xl border border-line bg-white p-7 shadow-card">
-                <span className="font-mono text-sm font-medium text-brand">{s.n}</span>
+                <span className="font-mono text-sm font-medium text-brandink">{s.n}</span>
                 <h3 className="mt-3 text-lg font-bold tracking-tight text-ink">{s.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-slate">{s.desc}</p>
               </div>
@@ -155,10 +155,10 @@ export function FinalCTA({
 }) {
   return (
     <section className="bg-white px-4 py-20 sm:px-6 sm:py-24">
-      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-deep to-[#0F3C80] px-6 py-16 text-center sm:px-12 sm:py-20">
+      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-deep to-[#0B3A66] px-6 py-16 text-center sm:px-12 sm:py-20">
         <div
           aria-hidden
-          className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(156,195,245,0.22),transparent)]"
+          className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(7,159,243,0.35),transparent)]"
         />
         <div className="relative">
           <h2 className="mx-auto max-w-2xl text-3xl headline text-white sm:text-5xl">

@@ -6,8 +6,8 @@ const base =
   "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 const variants = {
-  primary: "bg-brand text-white shadow-brand hover:bg-brand-dark",
-  secondary: "border-2 border-line bg-white text-ink hover:border-brand hover:text-brand",
+  primary: "bg-brandink text-white shadow-brand hover:bg-brand-dark",
+  secondary: "border-2 border-line bg-white text-ink hover:border-brand hover:text-brandink",
   light: "bg-white text-deep hover:bg-soft",
   ghostDark: "border-2 border-white/25 text-white hover:border-mint hover:text-mint",
 } as const;
@@ -59,7 +59,7 @@ export function ButtonLink({
 /** Rounded-full soft-blue label used for eyebrows and badges. */
 export function Eyebrow({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full bg-soft px-3.5 py-1 text-[13.5px] font-semibold text-brand ${className}`}>
+    <span className={`inline-flex items-center gap-1.5 rounded-full bg-soft px-3.5 py-1 text-[13.5px] font-semibold text-brandink ${className}`}>
       {children}
     </span>
   );
@@ -73,7 +73,7 @@ export function Accented({ title, accent }: { title: React.ReactNode; accent?: R
       {accent && (
         <>
           {" "}
-          <span className="text-brand">{accent}</span>
+          <span className="text-brandink">{accent}</span>
         </>
       )}
     </>

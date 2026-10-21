@@ -73,7 +73,7 @@ function BillCard() {
               key={m}
               aria-pressed={m === "UPI"}
               className={`rounded-full border-2 py-2 text-center text-sm font-bold ${
-                m === "UPI" ? "border-brand bg-brand text-white" : "border-line bg-white text-slate"
+                m === "UPI" ? "border-brand bg-brandink text-white" : "border-line bg-white text-slate"
               }`}
             >
               {m}
@@ -126,7 +126,7 @@ export default function Hero() {
 
         <Reveal delay={200} className="relative mx-auto w-full max-w-md">
           {/* Soft blue glow behind the bill */}
-          <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 size-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-soft blur-3xl" />
+          <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 size-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/15 blur-3xl" />
 
           {/* Vertical margin reserves room so the floating cards sit outside the bill's text. */}
           <div className="relative md:mb-16 md:mt-20">

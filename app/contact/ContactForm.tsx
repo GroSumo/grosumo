@@ -56,7 +56,7 @@ export default function ContactForm() {
               aria-pressed={edition === opt}
               onClick={() => setEdition(opt)}
               className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
-                edition === opt ? "border-brand bg-brand text-white" : "border-line bg-white text-slate hover:border-brand hover:text-brand"
+                edition === opt ? "border-brand bg-brandink text-white" : "border-line bg-white text-slate hover:border-brand hover:text-brandink"
               }`}
             >
               {opt}
@@ -72,7 +72,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-5 py-3.5 text-[15px] font-bold text-white shadow-brand transition-colors hover:bg-brand-dark"
+        className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brandink px-5 py-3.5 text-[15px] font-bold text-white shadow-brand transition-colors hover:bg-brand-dark"
       >
         <MessageCircle className="size-[18px]" aria-hidden />
         Continue on WhatsApp

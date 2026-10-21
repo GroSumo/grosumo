@@ -29,7 +29,7 @@ export default function AboutPage() {
         <Container className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <h2 className="text-3xl headline text-ink">
-              Why we <span className="text-brand">exist</span>
+              Why we <span className="text-brandink">exist</span>
             </h2>
             <div className="mt-6 space-y-5 text-base leading-relaxed text-slate sm:text-lg">
               <p>

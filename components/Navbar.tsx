@@ -51,7 +51,7 @@ export default function Navbar() {
             <Link
               key={href}
               href={href}
-              className={`text-sm font-medium transition-colors hover:text-brand ${pathname === href ? "text-brand" : "text-slate"}`}
+              className={`text-sm font-medium transition-colors hover:text-brandink ${pathname === href ? "text-brandink" : "text-slate"}`}
             >
               {label}
             </Link>
@@ -59,7 +59,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a href={WA_TALK_LINK} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate hover:text-brand">
+          <a href={WA_TALK_LINK} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate hover:text-brandink">
             Talk to us
           </a>
           <WhatsAppButton className="!px-4 !py-2 !text-sm">Start free</WhatsAppButton>

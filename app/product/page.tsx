@@ -86,7 +86,7 @@ export default function ProductPage() {
                     <Icon className="size-5" aria-hidden />
                   </span>
                   <h3 className="mt-5 text-xl font-bold tracking-tight text-ink">{title} edition</h3>
-                  <p className="mt-1 font-mono text-sm text-brand">{price}</p>
+                  <p className="mt-1 font-mono text-sm text-brandink">{price}</p>
                   <p className="mt-3 text-[15px] leading-relaxed text-slate">{body}</p>
                 </div>
               </Reveal>

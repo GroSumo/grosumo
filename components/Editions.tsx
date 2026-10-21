@@ -29,7 +29,7 @@ export function EditionCards({ showAnchors = false }: { showAnchors?: boolean })
           id={showAnchors ? "offline" : undefined}
           className="relative flex h-full scroll-mt-28 flex-col rounded-2xl border-2 border-brand bg-white p-7 shadow-lift sm:p-9"
         >
-          <span className="absolute -top-3.5 left-7 rounded-full bg-brand px-3.5 py-1 text-[13px] font-bold text-white shadow-brand sm:left-9">
+          <span className="absolute -top-3.5 left-7 rounded-full bg-brandink px-3.5 py-1 text-[13px] font-bold text-white shadow-brand sm:left-9">
             Software free
           </span>
           <div className="flex items-center gap-3">
@@ -45,8 +45,8 @@ export function EditionCards({ showAnchors = false }: { showAnchors?: boolean })
           <div className="mt-7">
             <p className="text-sm font-medium text-slate">Software</p>
             <p className="mt-2 flex items-baseline gap-2">
-              <span className="text-5xl headline tabular-nums text-ink">{PRICE.offlineSoftware}</span>
-              <span className="text-base font-semibold text-brand">forever</span>
+              <span className="text-5xl headline tabular-nums text-brandink">{PRICE.offlineSoftware}</span>
+              <span className="text-base font-semibold text-brandink">forever</span>
             </p>
             <p className="mt-2 text-[15px] text-slate">
               + <span className="font-mono font-medium text-ink">{PRICE.offlineAmc}</span>/yr AMC — updates, support and license renewal
@@ -84,7 +84,7 @@ export function EditionCards({ showAnchors = false }: { showAnchors?: boolean })
           <div className="mt-7">
             <p className="text-sm font-medium text-slate">All-in</p>
             <p className="mt-2 flex items-baseline gap-2">
-              <span className="text-5xl headline tabular-nums text-ink">{PRICE.cloud}</span>
+              <span className="text-5xl headline tabular-nums text-brandink">{PRICE.cloud}</span>
               <span className="text-base font-semibold text-slate">/yr</span>
             </p>
             <p className="mt-2 text-[15px] text-slate">Hosting, backups, updates and support included</p>
@@ -137,7 +137,7 @@ export default function EditionsSection() {
           <BothInclude />
           <p className="mt-6 text-center text-sm text-slate">
             Not sure which one fits?{" "}
-            <Link href="/pricing#compare" className="font-semibold text-brand hover:underline">
+            <Link href="/pricing#compare" className="font-semibold text-brandink hover:underline">
               Compare the editions side by side
             </Link>
             .

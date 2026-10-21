@@ -104,7 +104,7 @@ export default function PricingPage() {
                   </th>
                   <th scope="col" className="w-[32%] px-5 py-4 text-center">
                     <span className="block text-base font-bold text-ink">Offline</span>
-                    <span className="mt-0.5 block text-xs font-semibold text-brand">Software free</span>
+                    <span className="mt-0.5 block text-xs font-semibold text-brandink">Software free</span>
                   </th>
                   <th scope="col" className="w-[32%] px-5 py-4 text-center">
                     <span className="block text-base font-bold text-ink">Cloud</span>
@@ -150,7 +150,7 @@ export default function PricingPage() {
           </div>
           <p className="mt-8 text-center text-sm text-slate">
             Still have a question? Email{" "}
-            <a href={`mailto:${SUPPORT_EMAIL}`} className="font-semibold text-brand hover:underline">
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="font-semibold text-brandink hover:underline">
               {SUPPORT_EMAIL}
             </a>{" "}
             or message us on WhatsApp.

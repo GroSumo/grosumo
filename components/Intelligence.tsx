@@ -145,7 +145,7 @@ function ReceivablesAging() {
             <CountUp value={total} prefix="₹" format="inr" />
           </p>
         </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-soft px-3 py-1 text-xs font-semibold text-brand">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-soft px-3 py-1 text-xs font-semibold text-brandink">
           <MessageCircle className="size-3.5" aria-hidden /> Send reminders
         </span>
       </div>

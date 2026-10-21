@@ -39,7 +39,7 @@ const bills = [
 ];
 
 const modeStyle: Record<string, string> = {
-  UPI: "bg-soft text-brand",
+  UPI: "bg-soft text-brandink",
   Cash: "bg-wash text-slate",
   Credit: "bg-coral/10 text-coral",
 };
@@ -92,7 +92,7 @@ export default function DashboardMock() {
                 <li
                   key={label}
                   className={`flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] ${
-                    active ? "bg-white font-semibold text-brand shadow-sm" : "text-slate"
+                    active ? "border-l-2 border-brand bg-soft font-semibold text-brandink" : "border-l-2 border-transparent text-slate"
                   }`}
                 >
                   <Icon className="size-4" aria-hidden />
@@ -112,7 +112,7 @@ export default function DashboardMock() {
                 <p className="text-base font-bold tracking-tight text-ink">Good evening 👋</p>
                 <p className="text-xs text-faint">Here&apos;s how the shop is doing today</p>
               </div>
-              <span className="rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-white">+ New bill</span>
+              <span className="rounded-full bg-brandink px-3 py-1.5 text-xs font-semibold text-white">+ New bill</span>
             </div>
 
             <div className="mt-5 grid grid-cols-2 gap-3 xl:grid-cols-4">
@@ -138,7 +138,7 @@ export default function DashboardMock() {
                   {monthlySales.map((v, i) => (
                     <div key={months[i]} className="flex h-full flex-1 flex-col items-center justify-end gap-1.5">
                       <div
-                        className={`w-full rounded-t-[4px] ${i === monthlySales.length - 1 ? "bg-brand" : "bg-[#C7DCF7]"}`}
+                        className={`w-full rounded-t-[4px] ${i === monthlySales.length - 1 ? "bg-brand" : "bg-[#BFE5FC]"}`}
                         style={{ height: `${(v / max) * 100}%` }}
                       />
                       <span className="font-mono text-[9px] text-faint">{months[i].slice(0, 1)}</span>

@@ -1,32 +1,25 @@
+import Image from 'next/image';
+
+/** Logo mark (white G-arrow on logo blue, from /public/logo.png) in a rounded tile, next to the wordmark. */
 export default function Logo({ size = 36, dark = false }: { size?: number; dark?: boolean }) {
-  const color = dark ? '#9CC3F5' : '#005BC7';
-  const textColor = dark ? '#FFFFFF' : '#0F172A';
-  const o = size * 0.8;
+  const tile = Math.round(size * 1.25);
 
   return (
-    <span
-      role="img"
-      aria-label="Grosumo"
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: size * 0.04,
-        fontFamily: 'var(--font-sans)',
-        fontSize: size * 0.9,
-        fontWeight: 300,
-        letterSpacing: -0.5,
-        lineHeight: 1,
-        color: textColor,
-      }}
-    >
-      <span aria-hidden>grosum</span>
-
-      {/* Final O with upward arrow */}
-      <svg aria-hidden width={o} height={o} viewBox="-0.4 -0.4 0.8 0.8" fill="none" style={{ marginTop: size * 0.08 }}>
-        <circle cx="0" cy="0" r="0.33" stroke={color} strokeWidth="0.065" />
-        <line x1="0" y1="0.22" x2="0" y2="-0.22" stroke={color} strokeWidth="0.065" strokeLinecap="round" />
-        <polyline points="-0.14,-0.06 0,-0.23 0.14,-0.06" stroke={color} strokeWidth="0.065" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+    <span role="img" aria-label="Grosumo" className="inline-flex items-center" style={{ gap: size * 0.35 }}>
+      <span
+        aria-hidden
+        className="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-xl bg-brand"
+        style={{ width: tile, height: tile }}
+      >
+        <Image src="/logo.png" alt="" width={tile} height={tile} priority className="size-full object-cover" />
+      </span>
+      <span
+        aria-hidden
+        className={`font-bold tracking-tight ${dark ? 'text-white' : 'text-ink'}`}
+        style={{ fontSize: size * 0.85, lineHeight: 1 }}
+      >
+        grosumo
+      </span>
     </span>
   );
 }

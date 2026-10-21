@@ -24,6 +24,10 @@ export const metadata: Metadata = {
     "inventory and billing software",
   ],
   applicationName: "grosumoERP",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     type: "website",
     siteName: "grosumoERP",
@@ -35,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#005BC7",
+  themeColor: "#079FF3",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
