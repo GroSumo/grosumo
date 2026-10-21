@@ -46,20 +46,20 @@ export default function Navbar() {
           <Logo size={26} />
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Main" className="hidden items-center gap-8 lg:flex">
           {nav.map(({ label, href }) => (
             <Link
               key={href}
               href={href}
-              className={`text-sm font-medium transition-colors hover:text-brand ${pathname === href ? "text-brand" : "text-muted"}`}
+              className={`text-sm font-medium transition-colors hover:text-brand ${pathname === href ? "text-brand" : "text-slate"}`}
             >
               {label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
-          <a href={WA_TALK_LINK} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-muted hover:text-brand">
+        <div className="hidden items-center gap-3 lg:flex">
+          <a href={WA_TALK_LINK} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate hover:text-brand">
             Talk to us
           </a>
           <WhatsAppButton className="!px-4 !py-2 !text-sm">Start free</WhatsAppButton>
@@ -67,7 +67,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="-mr-2 rounded-lg p-2 text-ink md:hidden"
+          className="-mr-2 rounded-lg p-2 text-ink lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -78,7 +78,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div id="mobile-menu" className="border-t border-line bg-white px-4 pb-6 pt-2 md:hidden">
+        <div id="mobile-menu" className="border-t border-line bg-white px-4 pb-6 pt-2 lg:hidden">
           <nav aria-label="Mobile" className="flex flex-col">
             {nav.map(({ label, href }) => (
               <Link key={href} href={href} className="border-b border-line py-3 text-base font-medium text-ink">

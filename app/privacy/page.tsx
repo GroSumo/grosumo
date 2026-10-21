@@ -9,7 +9,8 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <LegalPage
-      title="Privacy Policy"
+      title="Privacy"
+      accent="Policy"
       intro="Your data, your choice — cloud or your own PC."
       sections={[
         {

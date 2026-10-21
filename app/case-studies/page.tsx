@@ -10,7 +10,8 @@ export default function CaseStudiesPage() {
   return (
     <ComingSoon
       eyebrow="Case studies"
-      title="Customer stories, coming soon"
+      title="Customer stories,"
+      accent="coming soon"
       body="We'll publish real stories here only with our customers' permission. Want to hear how grosumoERP could work for your business? Ask us."
     />
   );

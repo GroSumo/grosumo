@@ -1,7 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import CountUp from "./CountUp";
 import Reveal from "./Reveal";
-import { CheckItem, Container, SectionHeading } from "./ui";
+import { CheckItem, Container, Eyebrow, SectionHeading } from "./ui";
 
 /* ---------- Visuals (all sample data) ---------- */
 
@@ -10,15 +10,15 @@ function RotationRing() {
   const c = 2 * Math.PI * r;
   const pct = 6.2 / 8; // against an 8× yearly goal
   const groups = [
-    { label: "Fast movers", value: "11.4×", tone: "text-gain" },
+    { label: "Fast movers", value: "11.4×", tone: "text-emerald" },
     { label: "Store average", value: "6.2×", tone: "text-ink" },
-    { label: "Slow movers", value: "1.3×", tone: "text-loss" },
+    { label: "Slow movers", value: "1.3×", tone: "text-coral" },
   ];
   return (
     <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-center">
       <div className="relative size-44 shrink-0">
         <svg viewBox="0 0 180 180" className="size-full -rotate-90" aria-hidden>
-          <circle cx="90" cy="90" r={r} fill="none" stroke="var(--color-brand-soft)" strokeWidth="16" />
+          <circle cx="90" cy="90" r={r} fill="none" stroke="var(--color-soft)" strokeWidth="16" />
           <circle
             cx="90"
             cy="90"
@@ -34,13 +34,13 @@ function RotationRing() {
           <span className="font-mono text-4xl font-medium text-ink">
             <CountUp value={6.2} decimals={1} suffix="×" />
           </span>
-          <span className="text-xs text-muted">per year · goal 8×</span>
+          <span className="text-xs text-slate">per year · goal 8×</span>
         </div>
       </div>
       <ul className="w-full max-w-[220px] space-y-3">
         {groups.map(g => (
           <li key={g.label} className="flex items-center justify-between border-b border-line pb-2 text-sm last:border-0">
-            <span className="text-muted">{g.label}</span>
+            <span className="text-slate">{g.label}</span>
             <span className={`font-mono font-medium ${g.tone}`}>{g.value}</span>
           </li>
         ))}
@@ -84,12 +84,12 @@ function ProfitCalendar() {
           );
         })}
       </div>
-      <div className="mt-4 flex items-center justify-between text-xs text-muted">
+      <div className="mt-4 flex items-center justify-between text-xs text-slate">
         <span className="inline-flex items-center gap-1.5">
-          <span className="size-2.5 rounded-sm bg-gain" /> Profit day
+          <span className="size-2.5 rounded-sm bg-emerald" /> Profit day
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="size-2.5 rounded-sm bg-loss" /> Deficit day
+          <span className="size-2.5 rounded-sm bg-coral" /> Deficit day
         </span>
         <span className="font-mono">32 / 35 in profit</span>
       </div>
@@ -110,15 +110,15 @@ function SleepingStock() {
       <div className="flex items-end justify-between">
         <div>
           <p className="text-xs font-medium uppercase tracking-wide text-faint">Idle 90+ days</p>
-          <p className="font-mono text-3xl font-medium text-loss">₹1.8L</p>
+          <p className="font-mono text-3xl font-medium text-coral">₹1.8L</p>
         </div>
-        <p className="text-right text-xs text-muted">37 items · top 4 shown</p>
+        <p className="text-right text-xs text-slate">37 items · top 4 shown</p>
       </div>
       <ul className="mt-5 divide-y divide-line rounded-xl border border-line">
         {sleeping.map(s => (
           <li key={s.item} className="flex items-center gap-3 px-4 py-3">
             <span className="min-w-0 flex-1 truncate text-sm text-ink">{s.item}</span>
-            <span className="rounded-full bg-[#FDECE6] px-2 py-0.5 font-mono text-[11px] text-loss">{s.days}d</span>
+            <span className="rounded-full bg-coral/10 px-2 py-0.5 font-mono text-[11px] text-coral">{s.days}d</span>
             <span className="w-20 text-right font-mono text-sm text-ink">{s.value}</span>
           </li>
         ))}
@@ -128,10 +128,10 @@ function SleepingStock() {
 }
 
 const aging = [
-  { bucket: "0–30 days", amount: 186400, color: "bg-gain" },
+  { bucket: "0–30 days", amount: 186400, color: "bg-emerald" },
   { bucket: "31–60 days", amount: 79600, color: "bg-brand" },
-  { bucket: "61–90 days", amount: 35600, color: "bg-[#F2A541]" },
-  { bucket: "90+ days", amount: 41200, color: "bg-loss" },
+  { bucket: "61–90 days", amount: 35600, color: "bg-amber" },
+  { bucket: "90+ days", amount: 41200, color: "bg-coral" },
 ];
 
 function ReceivablesAging() {
@@ -145,7 +145,7 @@ function ReceivablesAging() {
             <CountUp value={total} prefix="₹" format="inr" />
           </p>
         </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1 text-xs font-semibold text-brand">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-soft px-3 py-1 text-xs font-semibold text-brand">
           <MessageCircle className="size-3.5" aria-hidden /> Send reminders
         </span>
       </div>
@@ -157,7 +157,7 @@ function ReceivablesAging() {
       <ul className="mt-5 grid grid-cols-2 gap-3">
         {aging.map(a => (
           <li key={a.bucket} className="rounded-xl border border-line p-3">
-            <p className="inline-flex items-center gap-1.5 text-xs text-muted">
+            <p className="inline-flex items-center gap-1.5 text-xs text-slate">
               <span className={`size-2 rounded-full ${a.color}`} /> {a.bucket}
             </p>
             <p className="mt-1 font-mono text-sm font-medium text-ink">₹{a.amount.toLocaleString("en-IN")}</p>
@@ -207,25 +207,26 @@ export default function Intelligence() {
       <Container>
         <SectionHeading
           eyebrow="Business intelligence, built in"
-          title="Not just bills. Answers."
+          title="Not just bills."
+          accent="Answers."
           intro="The numbers a shop owner actually needs — worked out automatically from the bills you already make, in both editions."
         />
 
         <div className="mt-16 space-y-20 sm:space-y-28">
           {rows.map((row, i) => (
             <div key={row.eyebrow} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-              <Reveal className={i % 2 === 1 ? "lg:order-2" : ""}>
-                <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-brand">{row.eyebrow}</p>
-                <h3 className="mt-3 text-2xl font-bold tracking-tight text-ink sm:text-3xl">{row.title}</h3>
-                <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{row.body}</p>
+              <Reveal className={`min-w-0 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                <Eyebrow>{row.eyebrow}</Eyebrow>
+                <h3 className="mt-4 text-2xl headline text-ink sm:text-3xl">{row.title}</h3>
+                <p className="mt-4 text-base leading-relaxed text-slate sm:text-lg">{row.body}</p>
                 <ul className="mt-6 space-y-3 text-ink">
                   {row.points.map(p => (
                     <CheckItem key={p}>{p}</CheckItem>
                   ))}
                 </ul>
               </Reveal>
-              <Reveal delay={100} className={i % 2 === 1 ? "lg:order-1" : ""}>
-                <div className="flex min-h-[300px] items-center rounded-2xl border border-line bg-mint p-6 sm:p-10">
+              <Reveal delay={100} className={`min-w-0 ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                <div className="flex min-h-[300px] items-center rounded-2xl border border-line bg-wash p-6 sm:p-10">
                   <div className="w-full rounded-2xl bg-white p-5 shadow-card sm:p-7">{row.visual}</div>
                 </div>
               </Reveal>

@@ -31,7 +31,7 @@ const comparison: { feature: string; offline: Cell; cloud: Cell }[] = [
 ];
 
 function CellValue({ value }: { value: Cell }) {
-  if (value === true) return <Check className="mx-auto size-5 text-gain" strokeWidth={3} aria-label="Yes" />;
+  if (value === true) return <Check className="mx-auto size-5 text-emerald" strokeWidth={3} aria-label="Yes" />;
   if (value === false) return <Minus className="mx-auto size-5 text-faint" aria-label="No" />;
   return <span>{value}</span>;
 }
@@ -76,32 +76,30 @@ export default function PricingPage() {
     <>
       <PageHeader
         eyebrow="Editions & pricing"
-        title={
-          <>
-            Free on your PC. <span className="text-brand">₹9,999/yr</span> in the cloud.
-          </>
-        }
+        title="Free on your PC, or"
+        accent="₹9,999/yr in the cloud"
         intro="Two editions of the same ERP. Every module, unlimited bills — the only difference is where it runs."
       />
 
-      <section className="bg-mint pb-20 sm:pb-28">
+      <section className="bg-wash py-16 sm:py-24">
         <Container className="max-w-5xl">
           <EditionCards showAnchors />
           <BothInclude />
-          <p className="mt-6 text-center text-sm text-muted">Prices are per business, per year. Applicable GST extra.</p>
+          <p className="mt-6 text-center text-sm text-slate">Prices are per business, per year. Applicable GST extra.</p>
         </Container>
       </section>
 
       {/* Comparison */}
       <section id="compare" className="scroll-mt-20 bg-white py-20 sm:py-28">
         <Container className="max-w-5xl">
-          <SectionHeading center eyebrow="Compare" title="Offline vs Cloud, side by side" />
+          <SectionHeading center eyebrow="Compare" title="Offline vs Cloud,"
+            accent="side by side" />
           <Reveal className="mt-12 overflow-x-auto rounded-2xl border border-line shadow-card">
             <table className="w-full min-w-[560px] border-collapse text-left text-[15px]">
               <caption className="sr-only">Comparison of the Offline and Cloud editions</caption>
               <thead>
-                <tr className="bg-mint">
-                  <th scope="col" className="px-5 py-4 text-sm font-semibold text-muted">
+                <tr className="bg-wash">
+                  <th scope="col" className="px-5 py-4 text-sm font-semibold text-slate">
                     Feature
                   </th>
                   <th scope="col" className="w-[32%] px-5 py-4 text-center">
@@ -110,7 +108,7 @@ export default function PricingPage() {
                   </th>
                   <th scope="col" className="w-[32%] px-5 py-4 text-center">
                     <span className="block text-base font-bold text-ink">Cloud</span>
-                    <span className="mt-0.5 block text-xs font-semibold text-muted">All-in</span>
+                    <span className="mt-0.5 block text-xs font-semibold text-slate">All-in</span>
                   </th>
                 </tr>
               </thead>
@@ -120,10 +118,10 @@ export default function PricingPage() {
                     <th scope="row" className="px-5 py-4 font-medium text-ink">
                       {row.feature}
                     </th>
-                    <td className="bg-brand-soft/40 px-5 py-4 text-center text-muted">
+                    <td className="bg-soft/40 px-5 py-4 text-center text-slate">
                       <CellValue value={row.offline} />
                     </td>
-                    <td className="px-5 py-4 text-center text-muted">
+                    <td className="px-5 py-4 text-center text-slate">
                       <CellValue value={row.cloud} />
                     </td>
                   </tr>
@@ -135,9 +133,10 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-mint py-20 sm:py-28">
+      <section className="bg-wash py-20 sm:py-28">
         <Container className="max-w-3xl">
-          <SectionHeading center eyebrow="FAQ" title="Questions about editions & pricing" />
+          <SectionHeading center eyebrow="FAQ" title="Questions about"
+            accent="editions & pricing" />
           <div className="mt-12 space-y-3">
             {faq.map(({ q, a }) => (
               <details key={q} className="group rounded-2xl border border-line bg-white shadow-card open:shadow-lift">
@@ -145,11 +144,11 @@ export default function PricingPage() {
                   {q}
                   <ChevronDown className="size-5 shrink-0 text-brand transition-transform group-open:rotate-180" aria-hidden />
                 </summary>
-                <p className="px-6 pb-6 text-[15px] leading-relaxed text-muted">{a}</p>
+                <p className="px-6 pb-6 text-[15px] leading-relaxed text-slate">{a}</p>
               </details>
             ))}
           </div>
-          <p className="mt-8 text-center text-sm text-muted">
+          <p className="mt-8 text-center text-sm text-slate">
             Still have a question? Email{" "}
             <a href={`mailto:${SUPPORT_EMAIL}`} className="font-semibold text-brand hover:underline">
               {SUPPORT_EMAIL}
@@ -159,7 +158,7 @@ export default function PricingPage() {
         </Container>
       </section>
 
-      <FinalCTA title="Start free today. Upgrade to Cloud whenever you like." />
+      <FinalCTA title="Start free today." accent="Upgrade to Cloud whenever you like." />
     </>
   );
 }

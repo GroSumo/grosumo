@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import EditionsSection from "@/components/Editions";
 import Intelligence from "@/components/Intelligence";
-import { FinalCTA, Modules, Services, Steps } from "@/components/HomeSections";
+import { DashboardSection, FinalCTA, Modules, Services, StatBand, Steps } from "@/components/HomeSections";
 
 export const metadata: Metadata = {
   title: { absolute: "grosumoERP — GST billing software, cloud or offline (free software)" },
@@ -14,6 +14,8 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <StatBand />
+      <DashboardSection />
       <Modules />
       <EditionsSection />
       <Intelligence />

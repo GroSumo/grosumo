@@ -25,28 +25,26 @@ export default function ProductPage() {
     <>
       <PageHeader
         eyebrow="grosumoERP"
-        title={
-          <>
-            Everything your shop runs on, <span className="text-brand">in one ERP</span>
-          </>
-        }
+        title="Everything your shop runs on,"
+        accent="in one ERP"
         intro="Billing, stock, purchases, accounts and customer credit — all connected, so every bill updates everything else. The same product whether you run it offline or in the cloud."
       />
 
       <section className="bg-white py-20 sm:py-28">
         <Container>
-          <SectionHeading eyebrow="Modules" title="Every module, in both editions" />
+          <SectionHeading eyebrow="Modules" title="Every module,"
+            accent="in both editions" />
           <div className="mt-14 grid gap-5 md:grid-cols-2">
             {MODULES.map(({ icon: Icon, title, desc }, i) => (
               <Reveal key={title} delay={(i % 2) * 60} className="h-full">
                 <div className="h-full rounded-2xl border border-line bg-white p-7 shadow-card">
                   <div className="flex items-center gap-3">
-                    <span className="flex size-11 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                    <span className="flex size-11 items-center justify-center rounded-xl bg-soft text-brand">
                       <Icon className="size-5" aria-hidden />
                     </span>
                     <h3 className="text-xl font-bold tracking-tight text-ink">{title}</h3>
                   </div>
-                  <p className="mt-4 text-[15px] leading-relaxed text-muted">{desc}</p>
+                  <p className="mt-4 text-[15px] leading-relaxed text-slate">{desc}</p>
                   <ul className="mt-5 grid gap-2.5 text-ink sm:grid-cols-2">
                     {details[title]?.map(p => (
                       <CheckItem key={p}>{p}</CheckItem>
@@ -63,9 +61,10 @@ export default function ProductPage() {
         <Intelligence />
       </div>
 
-      <section className="bg-mint py-20 sm:py-28">
+      <section className="bg-wash py-20 sm:py-28">
         <Container className="max-w-5xl">
-          <SectionHeading center eyebrow="Two editions" title="Run it where it suits you" />
+          <SectionHeading center eyebrow="Two editions" title="Run it"
+            accent="where it suits you" />
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {[
               {
@@ -83,12 +82,12 @@ export default function ProductPage() {
             ].map(({ icon: Icon, title, price, body }) => (
               <Reveal key={title} className="h-full">
                 <div className="h-full rounded-2xl border border-line bg-white p-7 shadow-card">
-                  <span className="flex size-11 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                  <span className="flex size-11 items-center justify-center rounded-xl bg-soft text-brand">
                     <Icon className="size-5" aria-hidden />
                   </span>
                   <h3 className="mt-5 text-xl font-bold tracking-tight text-ink">{title} edition</h3>
                   <p className="mt-1 font-mono text-sm text-brand">{price}</p>
-                  <p className="mt-3 text-[15px] leading-relaxed text-muted">{body}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-slate">{body}</p>
                 </div>
               </Reveal>
             ))}

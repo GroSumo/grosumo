@@ -1,4 +1,6 @@
 import { BarChart3, BookOpen, Calculator, HandCoins, Megaphone, Package, Receipt, Scale, Share2, ShoppingCart } from "lucide-react";
+import CountUp from "./CountUp";
+import DashboardMock from "./DashboardMock";
 import Reveal from "./Reveal";
 import { Container, SectionHeading, WhatsAppButton } from "./ui";
 import { WA_TALK_LINK, waLink } from "@/lib/site";
@@ -18,28 +20,29 @@ export function Modules() {
       <Container>
         <SectionHeading
           eyebrow="Everything in one place"
-          title="The whole shop, in one platform"
+          title="The whole shop,"
+          accent="in one platform"
           intro="Stop juggling your current billing app, a stock register and spreadsheets. grosumoERP keeps them in one system that talks to itself."
         />
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {MODULES.map(({ icon: Icon, title, desc }, i) => (
             <Reveal key={title} delay={(i % 3) * 60} className="h-full">
               <div className="h-full rounded-2xl border border-line bg-white p-6 shadow-card transition-shadow hover:shadow-lift">
-                <span className="flex size-11 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                <span className="flex size-11 items-center justify-center rounded-xl bg-soft text-brand">
                   <Icon className="size-5" aria-hidden />
                 </span>
                 <h3 className="mt-5 text-lg font-bold tracking-tight text-ink">{title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">{desc}</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-slate">{desc}</p>
               </div>
             </Reveal>
           ))}
         </div>
         <Reveal className="mt-5">
-          <div className="flex flex-col items-start gap-3 rounded-2xl border border-line bg-mint p-6 sm:flex-row sm:items-center">
+          <div className="flex flex-col items-start gap-3 rounded-2xl border border-line bg-wash p-6 sm:flex-row sm:items-center">
             <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-white text-brand shadow-sm">
               <Share2 className="size-5" aria-hidden />
             </span>
-            <p className="text-[15px] text-muted">
+            <p className="text-[15px] text-slate">
               <span className="font-semibold text-ink">WhatsApp sharing everywhere.</span> Send bills, statements and payment reminders straight
               from the app — your customers already use it.
             </p>
@@ -73,22 +76,23 @@ const services = [
 
 export function Services() {
   return (
-    <section className="bg-mint py-20 sm:py-28">
+    <section className="bg-white py-20 sm:py-28">
       <Container>
         <SectionHeading
           eyebrow="Beyond software"
-          title="Help with the rest of the business"
+          title="Help with the rest"
+          accent="of the business"
           intro="Software is one part of running a business. When you need a hand with the books, the paperwork or getting the word out, we can connect you."
         />
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {services.map(({ icon: Icon, title, desc, msg }, i) => (
             <Reveal key={title} delay={i * 60} className="h-full">
               <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-7 shadow-card">
-                <span className="flex size-11 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                <span className="flex size-11 items-center justify-center rounded-xl bg-soft text-brand">
                   <Icon className="size-5" aria-hidden />
                 </span>
                 <h3 className="mt-5 text-lg font-bold tracking-tight text-ink">{title}</h3>
-                <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted">{desc}</p>
+                <p className="mt-2 flex-1 text-[15px] leading-relaxed text-slate">{desc}</p>
                 <a
                   href={waLink(msg)}
                   target="_blank"
@@ -118,16 +122,16 @@ const steps = [
 
 export function Steps() {
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section className="bg-wash py-20 sm:py-28">
       <Container>
-        <SectionHeading center eyebrow="Get running" title="Up and billing in three steps" />
+        <SectionHeading center eyebrow="Get running" title="Up and billing" accent="in three steps" />
         <ol className="mt-14 grid gap-5 md:grid-cols-3">
           {steps.map((s, i) => (
             <Reveal as="li" key={s.n} delay={i * 80} className="h-full">
               <div className="relative h-full rounded-2xl border border-line bg-white p-7 shadow-card">
                 <span className="font-mono text-sm font-medium text-brand">{s.n}</span>
                 <h3 className="mt-3 text-lg font-bold tracking-tight text-ink">{s.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">{s.desc}</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-slate">{s.desc}</p>
               </div>
             </Reveal>
           ))}
@@ -141,10 +145,12 @@ export function Steps() {
 }
 
 export function FinalCTA({
-  title = "Your data, your choice — cloud or your own PC.",
+  title = "Your data, your choice —",
+  accent = "cloud or your own PC.",
   body = "Start with the free Offline edition today, or go Cloud for ₹9,999/yr. Either way, it's one WhatsApp message to get going.",
 }: {
   title?: string;
+  accent?: string;
   body?: string;
 }) {
   return (
@@ -152,10 +158,12 @@ export function FinalCTA({
       <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-deep px-6 py-16 text-center sm:px-12 sm:py-20">
         <div
           aria-hidden
-          className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(16,185,129,0.28),transparent)]"
+          className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(127,221,180,0.22),transparent)]"
         />
         <div className="relative">
-          <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-5xl">{title}</h2>
+          <h2 className="mx-auto max-w-2xl text-3xl headline text-white sm:text-5xl">
+            {title} <span className="text-mint">{accent}</span>
+          </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/70">{body}</p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <WhatsAppButton variant="light" className="px-7 py-3.5" />
@@ -165,6 +173,49 @@ export function FinalCTA({
           </div>
         </div>
       </div>
+    </section>
+  );
+}
+
+const stats = [
+  { value: 0, prefix: "₹", label: "Offline software, forever" },
+  { value: 1999, prefix: "₹", suffix: "/yr", label: "Offline AMC — updates & support" },
+  { value: 9999, prefix: "₹", suffix: "/yr", label: "Cloud edition, all-in" },
+  { value: 18, label: "Modules in both editions" },
+];
+
+export function StatBand() {
+  return (
+    <section className="border-y border-line bg-white">
+      <Container className="grid grid-cols-2 divide-line py-10 lg:grid-cols-4 lg:divide-x">
+        {stats.map(s => (
+          <div key={s.label} className="px-4 py-4 text-center lg:py-2">
+            <p className="text-3xl headline tabular-nums text-ink sm:text-4xl">
+              <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} format="inr" />
+            </p>
+            <p className="mt-2 text-sm text-slate">{s.label}</p>
+          </div>
+        ))}
+      </Container>
+    </section>
+  );
+}
+
+export function DashboardSection() {
+  return (
+    <section className="bg-wash py-20 sm:py-28">
+      <Container>
+        <SectionHeading
+          center
+          eyebrow="One dashboard"
+          title="Your whole business,"
+          accent="at a glance"
+          intro="Today's sales, profit, money owed to you and stock value — the moment you open the app, in either edition."
+        />
+        <Reveal className="mx-auto mt-16 max-w-5xl">
+          <DashboardMock />
+        </Reveal>
+      </Container>
     </section>
   );
 }

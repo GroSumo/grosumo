@@ -10,7 +10,8 @@ export default function DocsPage() {
   return (
     <ComingSoon
       eyebrow="Docs"
-      title="Help guides are coming soon"
+      title="Help guides are"
+      accent="coming soon"
       body="Step-by-step guides for both editions are being written. Until then, our team answers every question on WhatsApp."
     />
   );

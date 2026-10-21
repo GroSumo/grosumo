@@ -9,7 +9,8 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <LegalPage
-      title="Terms of Service"
+      title="Terms of"
+      accent="Service"
       intro="The key terms for using grosumoERP, in plain language."
       sections={[
         {

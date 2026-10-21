@@ -22,16 +22,17 @@ export default function ContactPage() {
     <>
       <PageHeader
         eyebrow="Contact"
-        title="Let's get your business running"
+        title="Let's get your business"
+        accent="running"
         intro="WhatsApp is the fastest way to reach us. Tell us a little about your business and which edition you're considering."
       />
-      <section className="bg-mint pb-20 sm:pb-28">
+      <section className="bg-wash py-16 sm:py-24">
         <Container className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
           <ul className="space-y-3">
             {channels.map(({ icon: Icon, label, value, href }) => {
               const inner = (
                 <>
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-soft text-brand">
                     <Icon className="size-5" aria-hidden />
                   </span>
                   <span>

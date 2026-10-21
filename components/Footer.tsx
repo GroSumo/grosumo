@@ -41,10 +41,10 @@ export default function Footer() {
             <p className="mt-5 max-w-xs text-[15px] leading-relaxed text-white/65">
               GST billing, stock, purchases, accounts and customer credit for Indian businesses.
             </p>
-            <p className="mt-4 text-[15px] font-semibold text-white">Your data, your choice — cloud or your own PC.</p>
+            <p className="mt-4 text-[15px] font-semibold text-white">Your data, your choice — <span className="text-mint">cloud or your own PC.</span></p>
             <ul className="mt-6 space-y-2.5 text-sm text-white/65">
               <li>
-                <a href={`mailto:${SUPPORT_EMAIL}`} className="inline-flex items-center gap-2 hover:text-white">
+                <a href={`mailto:${SUPPORT_EMAIL}`} className="inline-flex items-center gap-2 hover:text-mint">
                   <Mail className="size-4" aria-hidden /> {SUPPORT_EMAIL}
                 </a>
               </li>
@@ -52,7 +52,7 @@ export default function Footer() {
                 <Phone className="size-4" aria-hidden /> {SUPPORT_PHONE}
               </li>
               <li>
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-white">
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-mint">
                   <MessageCircle className="size-4" aria-hidden /> Chat on WhatsApp
                 </a>
               </li>
@@ -64,11 +64,11 @@ export default function Footer() {
 
           {columns.map(col => (
             <div key={col.heading}>
-              <p className="font-mono text-xs uppercase tracking-[0.14em] text-white/45">{col.heading}</p>
+              <p className="font-mono text-xs uppercase tracking-[0.14em] text-mint">{col.heading}</p>
               <ul className="mt-4 space-y-3">
                 {col.links.map(l => (
                   <li key={l.href}>
-                    <Link href={l.href} className="text-sm text-white/70 transition-colors hover:text-white">
+                    <Link href={l.href} className="text-sm text-white/70 transition-colors hover:text-mint">
                       {l.label}
                     </Link>
                   </li>

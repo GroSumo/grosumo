@@ -39,9 +39,9 @@ const bills = [
 ];
 
 const modeStyle: Record<string, string> = {
-  UPI: "bg-brand-soft text-brand",
-  Cash: "bg-[#EEF2F0] text-muted",
-  Credit: "bg-[#FDECE6] text-loss",
+  UPI: "bg-soft text-brand",
+  Cash: "bg-wash text-slate",
+  Credit: "bg-coral/10 text-coral",
 };
 
 export default function DashboardMock() {
@@ -51,25 +51,25 @@ export default function DashboardMock() {
     <div className="relative">
       {/* Floating insight cards */}
       <div className="absolute -bottom-8 -left-6 z-10 hidden w-52 rounded-2xl border border-line bg-white p-4 shadow-lift lg:block xl:-left-14">
-        <div className="flex items-center gap-2 text-xs font-medium text-muted">
+        <div className="flex items-center gap-2 text-xs font-medium text-slate">
           <RefreshCw className="size-3.5 text-brand" aria-hidden /> Capital rotation
         </div>
         <p className="mt-1.5 font-mono text-2xl font-medium text-ink">
           <CountUp value={6.2} decimals={1} suffix="×" />
         </p>
-        <p className="mt-1 text-xs text-gain">Stock money turned 6.2 times this year</p>
+        <p className="mt-1 text-xs text-emerald">Stock money turned 6.2 times this year</p>
       </div>
       <div className="absolute -right-6 -top-10 z-10 hidden w-56 rounded-2xl border border-line bg-white px-4 py-3 shadow-lift lg:block xl:-right-14">
-        <div className="flex items-center gap-2 text-xs font-medium text-muted">
-          <span className="size-2 rounded-full bg-loss" aria-hidden /> Dead stock
+        <div className="flex items-center gap-2 text-xs font-medium text-slate">
+          <span className="size-2 rounded-full bg-coral" aria-hidden /> Dead stock
         </div>
         <p className="mt-1.5 font-mono text-2xl font-medium text-ink">₹1.8L</p>
-        <p className="mt-1 text-xs text-loss">Idle 90+ days · 37 items</p>
+        <p className="mt-1 text-xs text-coral">Idle 90+ days · 37 items</p>
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-lift ring-1 ring-brand/5">
         {/* Window chrome */}
-        <div className="flex items-center gap-3 border-b border-line bg-mint px-4 py-3">
+        <div className="flex items-center gap-3 border-b border-line bg-wash px-4 py-3">
           <div className="flex gap-1.5" aria-hidden>
             <span className="size-2.5 rounded-full bg-[#F87171]" />
             <span className="size-2.5 rounded-full bg-[#FBBF24]" />
@@ -82,7 +82,7 @@ export default function DashboardMock() {
 
         <div className="flex">
           {/* Sidebar */}
-          <aside className="hidden w-48 shrink-0 border-r border-line bg-mint/60 p-3 md:block">
+          <aside className="hidden w-48 shrink-0 border-r border-line bg-wash/60 p-3 md:block">
             <div className="mb-4 flex items-center gap-2 px-2 pt-1">
               <span className="flex size-7 items-center justify-center rounded-lg bg-brand font-bold text-white">g</span>
               <span className="text-sm font-semibold text-ink">Lakshmi Stores</span>
@@ -92,7 +92,7 @@ export default function DashboardMock() {
                 <li
                   key={label}
                   className={`flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] ${
-                    active ? "bg-white font-semibold text-brand shadow-sm" : "text-muted"
+                    active ? "bg-white font-semibold text-brand shadow-sm" : "text-slate"
                   }`}
                 >
                   <Icon className="size-4" aria-hidden />
@@ -100,7 +100,7 @@ export default function DashboardMock() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 flex items-center gap-2 rounded-lg border border-line bg-white px-2.5 py-2 text-[11px] text-muted">
+            <div className="mt-6 flex items-center gap-2 rounded-lg border border-line bg-white px-2.5 py-2 text-[11px] text-slate">
               <Settings className="size-3.5" aria-hidden /> Backup done · 9:00 PM
             </div>
           </aside>
@@ -122,7 +122,7 @@ export default function DashboardMock() {
                   <p className="mt-1.5 font-mono text-base font-medium text-ink sm:text-lg">
                     <CountUp value={t.value} prefix="₹" format="inr" />
                   </p>
-                  <p className={`mt-1 text-[11px] font-medium ${t.up ? "text-gain" : "text-loss"}`}>{t.delta}</p>
+                  <p className={`mt-1 text-[11px] font-medium ${t.up ? "text-emerald" : "text-coral"}`}>{t.delta}</p>
                 </div>
               ))}
             </div>

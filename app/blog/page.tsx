@@ -10,7 +10,8 @@ export default function BlogPage() {
   return (
     <ComingSoon
       eyebrow="Blog"
-      title="Articles are on the way"
+      title="Articles are"
+      accent="on the way"
       body="We're writing practical guides on GST billing, stock control and customer credit for Indian shops. Check back soon."
     />
   );

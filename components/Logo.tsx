@@ -1,6 +1,6 @@
 export default function Logo({ size = 36, dark = false }: { size?: number; dark?: boolean }) {
-  const color = dark ? '#2EA87E' : '#1A7A5E';
-  const textColor = dark ? '#FFFFFF' : '#0A0F0D';
+  const color = dark ? '#7FDDB4' : '#0E8A60';
+  const textColor = dark ? '#FFFFFF' : '#101418';
   const o = size * 0.8;
 
   return (
