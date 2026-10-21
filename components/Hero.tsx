@@ -2,7 +2,7 @@ import { CheckCheck, MessageCircle, TrendingUp } from "lucide-react";
 import Reveal from "./Reveal";
 import { Accented, ButtonLink, Container, Eyebrow, WhatsAppButton } from "./ui";
 
-const trust = ["All 18 modules included", "10-minute setup", "No per-user charges"];
+const trust = ["All 6 modules included", "10-minute setup", "No per-user charges"];
 
 // Sample bill — prices exclusive of GST at 5% (2.5% CGST + 2.5% SGST).
 const items = [

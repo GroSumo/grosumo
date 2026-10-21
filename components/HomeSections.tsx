@@ -181,7 +181,7 @@ const stats = [
   { value: 0, prefix: "₹", label: "Offline software, forever" },
   { value: 1999, prefix: "₹", suffix: "/yr", label: "Offline AMC — updates & support" },
   { value: 9999, prefix: "₹", suffix: "/yr", label: "Cloud edition, all-in" },
-  { value: 18, label: "Modules in both editions" },
+  { value: MODULES.length, label: "Modules in both editions" },
 ];
 
 export function StatBand() {
