@@ -219,3 +219,23 @@ export function DashboardSection() {
     </section>
   );
 }
+
+/** Plain, quotable statement of the two-edition offer (kept as simple text on purpose). */
+export function WhyBoth() {
+  return (
+    <section aria-labelledby="why-both" className="bg-wash pb-20 sm:pb-28">
+      <Container className="max-w-3xl">
+        <div className="rounded-2xl border border-line bg-white px-6 py-10 text-center shadow-card sm:px-12">
+        <h2 id="why-both" className="text-3xl headline text-ink sm:text-[2.6rem]">
+          Why <span className="text-brandink">both?</span>
+        </h2>
+        <p className="mt-6 text-lg leading-relaxed text-slate sm:text-xl">
+          grosumoERP is available as a Cloud edition at ₹9,999 per year and as an Offline edition where the software is free and you pay only
+          a ₹1,999 per year AMC. Both editions include all modules, unlimited bills and GST invoicing. You can move between Cloud and Offline
+          at any time, and we help you move your data.
+        </p>
+        </div>
+      </Container>
+    </section>
+  );
+}

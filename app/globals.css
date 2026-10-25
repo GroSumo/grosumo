@@ -9,7 +9,7 @@
 
   --color-ink: #0F172A;     /* headlines and strong text */
   --color-slate: #475569;   /* body text */
-  --color-faint: #8B93A0;   /* captions, axis labels */
+  --color-faint: #64748B;   /* captions, axis labels (4.8:1 on white) */
   --color-line: #E2E8F0;    /* hairlines and borders */
   --color-wash: #F8FAFC;    /* alternate section background */
   --color-soft: #E6F5FE;    /* pill badges, icon tile backgrounds, highlighted rows */
@@ -79,3 +79,23 @@ body {
 
 details > summary { list-style: none; }
 details > summary::-webkit-details-marker { display: none; }
+
+/* Rendered markdown in guides */
+.guide-prose { color: var(--color-slate); font-size: 1.0625rem; line-height: 1.75; max-width: 46rem; }
+.guide-prose > * + * { margin-top: 1.1em; }
+.guide-prose h2 { margin-top: 2.2em; color: var(--color-ink); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; scroll-margin-top: 6rem; }
+.guide-prose h3 { margin-top: 1.8em; color: var(--color-ink); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; scroll-margin-top: 6rem; }
+.guide-prose h4 { margin-top: 1.5em; color: var(--color-ink); font-weight: 700; }
+.guide-prose strong { color: var(--color-ink); font-weight: 650; }
+.guide-prose a { color: var(--color-brandink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.guide-prose ul, .guide-prose ol { padding-left: 1.4em; }
+.guide-prose ul { list-style: disc; }
+.guide-prose ol { list-style: decimal; }
+.guide-prose li + li { margin-top: 0.4em; }
+.guide-prose li::marker { color: var(--color-brand); }
+.guide-prose blockquote { border-left: 3px solid var(--color-brand); background: var(--color-soft); border-radius: 0 0.75rem 0.75rem 0; padding: 0.9em 1.2em; color: var(--color-ink); font-size: 0.95rem; }
+.guide-prose blockquote p { margin: 0; }
+.guide-prose table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; font-size: 0.95rem; }
+.guide-prose th, .guide-prose td { border-bottom: 1px solid var(--color-line); padding: 0.65em 0.9em; text-align: left; }
+.guide-prose thead th { background: var(--color-wash); color: var(--color-ink); font-weight: 700; }
+.guide-prose code { background: var(--color-wash); border-radius: 0.35rem; padding: 0.1em 0.35em; font-family: var(--font-mono); font-size: 0.9em; }

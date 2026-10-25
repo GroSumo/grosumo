@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
 import ComingSoon from "@/components/ComingSoon";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Docs",
-  description: "Help and setup guides for grosumoERP, Offline and Cloud editions.",
-};
+  description: "Help and setup guides for grosumoERP Offline and Cloud editions. Coming soon.",
+  path: "/docs",
+  noindex: true,
+});
 
 export default function DocsPage() {
   return (

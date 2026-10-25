@@ -71,7 +71,6 @@ function BillCard() {
           {["Cash", "UPI", "Credit"].map(m => (
             <span
               key={m}
-              aria-pressed={m === "UPI"}
               className={`rounded-full border-2 py-2 text-center text-sm font-bold ${
                 m === "UPI" ? "border-brand bg-brandink text-white" : "border-line bg-white text-slate"
               }`}
@@ -89,30 +88,31 @@ export default function Hero() {
   return (
     <section className="overflow-hidden bg-white pb-20 pt-32 sm:pb-24 sm:pt-40">
       <Container className="grid items-center gap-14 lg:grid-cols-[1.08fr_1fr] lg:gap-16">
+        {/* Text renders immediately (no reveal) so the headline paints as the LCP without waiting for JS. */}
         <div className="text-center lg:text-left">
-          <Reveal>
+          <div>
             <Eyebrow>Built for shops across India</Eyebrow>
-          </Reveal>
-          <Reveal delay={60}>
+          </div>
+          <div>
             <h1 className="mt-6 text-[2.5rem] headline text-ink sm:text-6xl xl:text-[4.1rem]">
               <Accented title="GST billing, stock & accounts —" accent="cloud or offline" />
             </h1>
-          </Reveal>
-          <Reveal delay={120}>
+          </div>
+          <div>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate lg:mx-0">
               One ERP that runs your whole shop. Use it in the cloud from anywhere — or offline on your own PC, where the software is free forever
               and you pay only ₹1,999/yr AMC.
             </p>
-          </Reveal>
-          <Reveal delay={180}>
+          </div>
+          <div>
             <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
               <WhatsAppButton className="w-full px-7 py-3.5 sm:w-auto">Start free</WhatsAppButton>
               <ButtonLink href="/pricing" className="w-full px-7 py-3.5 sm:w-auto">
                 Compare editions
               </ButtonLink>
             </div>
-          </Reveal>
-          <Reveal delay={240}>
+          </div>
+          <div>
             <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-medium text-slate lg:justify-start">
               {trust.map(t => (
                 <li key={t} className="inline-flex items-center gap-2">
@@ -121,7 +121,7 @@ export default function Hero() {
                 </li>
               ))}
             </ul>
-          </Reveal>
+          </div>
         </div>
 
         <Reveal delay={200} className="relative mx-auto w-full max-w-md">

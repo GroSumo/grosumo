@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import ContactForm from "./ContactForm";
 import { Container, PageHeader } from "@/components/ui";
 import { LOCATION, SUPPORT_EMAIL, SUPPORT_PHONE, WA_LINK } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Talk to the grosumoERP team on WhatsApp, email or phone. Get started with the free Offline edition or the Cloud edition.",
-};
+export const metadata = pageMetadata({
+  title: "Contact Us — Start on WhatsApp",
+  description: "Talk to the grosumoERP team on WhatsApp or email. Start with the free Offline edition or the Cloud edition at ₹9,999/yr.",
+  path: "/contact",
+});
 
 const channels = [
   { icon: MessageCircle, label: "WhatsApp", value: "Start a chat", href: WA_LINK },

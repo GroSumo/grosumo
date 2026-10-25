@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { FinalCTA } from "@/components/HomeSections";
 import Reveal from "@/components/Reveal";
 import { Container, PageHeader } from "@/components/ui";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "Grosumo builds grosumoERP — GST billing and shop ERP software for Indian businesses, made in India, available offline or in the cloud.",
-};
+export const metadata = pageMetadata({
+  title: "About Us — Shop ERP Made in India",
+  description: "Grosumo builds grosumoERP, GST billing and shop ERP software made in India, available as a Cloud edition or a free Offline edition.",
+  path: "/about",
+});
 
 const values = [
   { title: "Your data, your choice", desc: "Keep it on your own PC or in our India-hosted cloud. Switch later if your needs change — we help you move." },

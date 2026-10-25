@@ -1,23 +1,27 @@
-import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import EditionsSection from "@/components/Editions";
 import Intelligence from "@/components/Intelligence";
-import { DashboardSection, FinalCTA, Modules, Services, StatBand, Steps } from "@/components/HomeSections";
+import { DashboardSection, FinalCTA, Modules, Services, StatBand, Steps, WhyBoth } from "@/components/HomeSections";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata, softwareApplicationLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: { absolute: "grosumoERP — GST billing software, cloud or offline (free software)" },
-  description:
-    "GST billing software and shop ERP for India. Offline edition: billing software that works without internet — software free forever, ₹1,999/yr AMC. Cloud edition: ₹9,999/yr, access from anywhere.",
-};
+export const metadata = pageMetadata({
+  title: "grosumoERP — GST Billing & Inventory Software | Cloud or Offline",
+  description: "GST billing & inventory software for Indian shops. Cloud edition ₹9,999/yr, or Offline edition: software free, pay only ₹1,999/yr AMC.",
+  path: "/",
+  absoluteTitle: true,
+});
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={softwareApplicationLd()} />
       <Hero />
       <StatBand />
       <DashboardSection />
       <Modules />
       <EditionsSection />
+      <WhyBoth />
       <Intelligence />
       <Steps />
       <Services />

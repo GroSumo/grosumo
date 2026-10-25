@@ -1,16 +1,18 @@
-import type { Metadata } from "next";
-import { Check, ChevronDown, Minus } from "lucide-react";
+import { Check, Minus } from "lucide-react";
 import { BothInclude, EditionCards } from "@/components/Editions";
+import Faq from "@/components/Faq";
 import { FinalCTA } from "@/components/HomeSections";
 import Reveal from "@/components/Reveal";
 import { Container, PageHeader, SectionHeading } from "@/components/ui";
+import { PRICING_FAQ } from "@/lib/faq";
+import { pageMetadata } from "@/lib/seo";
 import { PRICE, SUPPORT_EMAIL } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Editions & pricing — free offline billing software or cloud at ₹9,999/yr",
-  description:
-    "Offline edition: GST billing software that works without internet — software free forever, pay only ₹1,999/yr AMC. Cloud edition: ₹9,999/yr all-in, data hosted in India. Compare both editions.",
-};
+export const metadata = pageMetadata({
+  title: "Pricing: Free Offline or ₹9,999/yr Cloud",
+  description: "grosumoERP pricing: Offline edition software free + ₹1,999/yr AMC, or Cloud edition ₹9,999/yr all-in. Compare both editions side by side.",
+  path: "/pricing",
+});
 
 type Cell = string | boolean;
 
@@ -36,40 +38,6 @@ function CellValue({ value }: { value: Cell }) {
   return <span>{value}</span>;
 }
 
-const faq = [
-  {
-    q: "Is the offline software really free?",
-    a: "Yes — the software is free, forever, for everyone. There is no licence fee and no per-bill or per-user charge. The only charge is the ₹1,999/yr AMC.",
-  },
-  {
-    q: "What does the AMC cover?",
-    a: "The annual maintenance contract (₹1,999/yr) covers software updates, support from our team on WhatsApp and phone, and your yearly licence renewal.",
-  },
-  {
-    q: "What happens if I don't renew the AMC?",
-    a: "The offline software keeps working and your data stays yours, on your PC. You'll miss new updates and support. After a grace period, features that depend on an active licence pause until you renew — your bills and records are never locked away from you.",
-  },
-  {
-    q: "What's included in the Cloud price?",
-    a: "₹9,999/yr covers everything: hosting in India, automatic cloud backups, updates and support. There's no separate AMC for Cloud.",
-  },
-  {
-    q: "Can I switch between editions later?",
-    a: "Yes. You can move from Offline to Cloud, or Cloud to Offline, whenever it suits you — we help you move your data across.",
-  },
-  {
-    q: "Do both editions support GST?",
-    a: "Yes. Both editions include GST-compliant invoicing and GST reports. The features are the same — only where the software runs is different.",
-  },
-  {
-    q: "What do I need to run the offline edition?",
-    a: "A Windows PC. No internet connection is needed for day-to-day billing; you only need it to download updates.",
-  },
-  {
-    q: "Can I bring my data from my current billing app or spreadsheets?",
-    a: "Yes. We help you bring in your items, customers and opening balances when we set you up.",
-  },
-];
 
 export default function PricingPage() {
   return (
@@ -83,6 +51,7 @@ export default function PricingPage() {
 
       <section className="bg-wash py-16 sm:py-24">
         <Container className="max-w-5xl">
+          <h2 className="sr-only">Choose an edition</h2>
           <EditionCards showAnchors />
           <BothInclude />
           <p className="mt-6 text-center text-sm text-slate">Prices are per business, per year. Applicable GST extra.</p>
@@ -137,16 +106,8 @@ export default function PricingPage() {
         <Container className="max-w-3xl">
           <SectionHeading center eyebrow="FAQ" title="Questions about"
             accent="editions & pricing" />
-          <div className="mt-12 space-y-3">
-            {faq.map(({ q, a }) => (
-              <details key={q} className="group rounded-2xl border border-line bg-white shadow-card open:shadow-lift">
-                <summary className="flex cursor-pointer items-center justify-between gap-4 px-6 py-5 text-base font-semibold text-ink">
-                  {q}
-                  <ChevronDown className="size-5 shrink-0 text-brand transition-transform group-open:rotate-180" aria-hidden />
-                </summary>
-                <p className="px-6 pb-6 text-[15px] leading-relaxed text-slate">{a}</p>
-              </details>
-            ))}
+          <div className="mt-12">
+            <Faq items={PRICING_FAQ} />
           </div>
           <p className="mt-8 text-center text-sm text-slate">
             Still have a question? Email{" "}

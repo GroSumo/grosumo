@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
 import { Cloud, HardDrive } from "lucide-react";
 import Intelligence from "@/components/Intelligence";
 import { FinalCTA, MODULES } from "@/components/HomeSections";
 import Reveal from "@/components/Reveal";
 import { ButtonLink, CheckItem, Container, PageHeader, SectionHeading } from "@/components/ui";
+import { pageMetadata, softwareApplicationLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Product — GST billing, stock, accounts & customer credit",
-  description:
-    "grosumoERP brings GST billing, stock, purchases, accounts, customer credit and reports into one shop ERP for India. Run it offline on your own PC or in the cloud.",
-};
+export const metadata = pageMetadata({
+  title: "GST Billing, Stock & Accounts Software",
+  description: "GST billing, stock, purchases, accounts, customer credit and reports in one shop ERP for India. Run it offline on your PC or in the cloud.",
+  path: "/product",
+});
 
 const details: Record<string, string[]> = {
   "GST billing": ["CGST / SGST / IGST calculated automatically", "HSN codes and tax rates per item", "Print, PDF or WhatsApp the bill", "Cash, UPI and credit sales"],
@@ -23,6 +24,7 @@ const details: Record<string, string[]> = {
 export default function ProductPage() {
   return (
     <>
+      <JsonLd data={softwareApplicationLd()} />
       <PageHeader
         eyebrow="grosumoERP"
         title="Everything your shop runs on,"

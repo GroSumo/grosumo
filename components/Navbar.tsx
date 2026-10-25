@@ -5,12 +5,14 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import { WhatsAppButton } from "./ui";
-import { WA_TALK_LINK } from "@/lib/site";
+import { APP_LOGIN_URL, WA_TALK_LINK } from "@/lib/site";
 
 const nav = [
   { label: "Product", href: "/product" },
-  { label: "Editions & pricing", href: "/pricing" },
-  { label: "About", href: "/about" },
+  { label: "Cloud", href: "/cloud" },
+  { label: "Offline", href: "/offline" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Guides", href: "/guides" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -59,9 +61,15 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a href={WA_TALK_LINK} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate hover:text-brandink">
-            Talk to us
-          </a>
+          {APP_LOGIN_URL ? (
+            <a href={APP_LOGIN_URL} rel="nofollow" className="text-sm font-medium text-slate hover:text-brandink">
+              Sign in
+            </a>
+          ) : (
+            <a href={WA_TALK_LINK} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate hover:text-brandink">
+              Talk to us
+            </a>
+          )}
           <WhatsAppButton className="!px-4 !py-2 !text-sm">Start free</WhatsAppButton>
         </div>
 

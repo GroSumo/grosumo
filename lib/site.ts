@@ -32,3 +32,9 @@ export const BOTH_EDITIONS_INCLUDE = [
   "Share bills and reminders on WhatsApp",
   "Sales, profit, stock and GST reports",
 ];
+
+// Public profiles for Organization `sameAs`. Add full URLs (e.g. Instagram, LinkedIn, YouTube) as they go live.
+export const SOCIAL_LINKS: string[] = [];
+
+// Cloud app sign-in URL. Leave null until the app is live; setting it adds a "Sign in" link to the nav.
+export const APP_LOGIN_URL: string | null = null;

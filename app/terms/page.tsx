@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Terms of Service",
-  description: "Terms for using the Offline and Cloud editions of grosumoERP.",
-};
+  description: "Terms for using the Offline and Cloud editions of grosumoERP, including AMC and Cloud subscription terms.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

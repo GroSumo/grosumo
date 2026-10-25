@@ -8,8 +8,8 @@ const columns = [
     heading: "Product",
     links: [
       { label: "Features", href: "/product" },
-      { label: "Offline edition", href: "/pricing#offline" },
-      { label: "Cloud edition", href: "/pricing#cloud" },
+      { label: "Offline edition", href: "/offline" },
+      { label: "Cloud edition", href: "/cloud" },
       { label: "Compare editions", href: "/pricing#compare" },
     ],
   },
@@ -19,7 +19,7 @@ const columns = [
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
       { label: "Docs", href: "/docs" },
-      { label: "Blog", href: "/blog" },
+      { label: "Guides", href: "/guides" },
     ],
   },
   {

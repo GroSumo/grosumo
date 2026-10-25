@@ -3,39 +3,27 @@ import { DM_Mono, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import { OG_IMAGE, SITE_NAME, SITE_URL, organizationLd, websiteLd } from "@/lib/seo";
 
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", display: "swap" });
 const dmMono = DM_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-dm-mono", display: "swap" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "grosumoERP — GST billing & shop ERP, cloud or offline",
+    default: "grosumoERP — GST Billing & Inventory Software | Cloud or Offline",
     template: "%s | grosumoERP",
   },
   description:
-    "One ERP for Indian shops and businesses: GST billing, stock, purchases, accounts and customer credit. Choose the Offline edition — free software, works without internet, pay only ₹1,999/yr AMC — or the Cloud edition at ₹9,999/yr.",
-  keywords: [
-    "offline billing software",
-    "billing software without internet",
-    "GST billing software",
-    "shop ERP India",
-    "cloud billing software",
-    "free billing software",
-    "inventory and billing software",
-  ],
-  applicationName: "grosumoERP",
+    "GST billing & inventory software for Indian shops. Cloud edition ₹9,999/yr, or Offline edition: software free, pay only ₹1,999/yr AMC.",
+  applicationName: SITE_NAME,
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
   },
-  openGraph: {
-    type: "website",
-    siteName: "grosumoERP",
-    locale: "en_IN",
-    title: "grosumoERP — One ERP. Cloud or offline, your choice.",
-    description:
-      "GST billing, stock, purchases, accounts and customer credit in one platform. Offline edition: software free, pay only AMC. Cloud edition: ₹9,999/yr all-in.",
-  },
+  openGraph: { type: "website", siteName: SITE_NAME, locale: "en_IN", images: [OG_IMAGE] },
+  twitter: { card: "summary_large_image", images: [OG_IMAGE.url] },
 };
 
 export const viewport: Viewport = {
@@ -50,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
       <body className="font-sans text-ink antialiased">
+        <JsonLd data={[organizationLd(), websiteLd()]} />
         <Navbar />
         <main>{children}</main>
         <Footer />

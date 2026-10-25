@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Privacy Policy",
   description: "How Grosumo handles your information in the Offline and Cloud editions of grosumoERP.",
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

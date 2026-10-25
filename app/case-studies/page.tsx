@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
 import ComingSoon from "@/components/ComingSoon";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Case studies",
-  description: "Stories from businesses running on grosumoERP.",
-};
+export const metadata = pageMetadata({
+  title: "Case Studies",
+  description: "Stories from businesses running on grosumoERP. Coming soon.",
+  path: "/case-studies",
+  noindex: true,
+});
 
 export default function CaseStudiesPage() {
   return (

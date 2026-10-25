@@ -62,6 +62,9 @@ export function EditionCards({ showAnchors = false }: { showAnchors?: boolean })
           <WhatsAppButton href={WA_OFFLINE_LINK} className="mt-8 w-full">
             Start free on WhatsApp
           </WhatsAppButton>
+          <Link href="/offline" className="mt-4 text-center text-sm font-semibold text-brandink hover:underline">
+            More about the Offline edition →
+          </Link>
         </article>
       </Reveal>
 
@@ -99,6 +102,9 @@ export function EditionCards({ showAnchors = false }: { showAnchors?: boolean })
           <WhatsAppButton href={WA_CLOUD_LINK} variant="secondary" className="mt-8 w-full">
             Ask about Cloud on WhatsApp
           </WhatsAppButton>
+          <Link href="/cloud" className="mt-4 text-center text-sm font-semibold text-brandink hover:underline">
+            More about the Cloud edition →
+          </Link>
         </article>
       </Reveal>
     </div>

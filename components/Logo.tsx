@@ -5,13 +5,12 @@ export default function Logo({ size = 36, dark = false }: { size?: number; dark?
   const tile = Math.round(size * 1.25);
 
   return (
-    <span role="img" aria-label="Grosumo" className="inline-flex items-center" style={{ gap: size * 0.35 }}>
+    <span className="inline-flex items-center" style={{ gap: size * 0.35 }}>
       <span
-        aria-hidden
         className="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-xl bg-brand"
         style={{ width: tile, height: tile }}
       >
-        <Image src="/logo.png" alt="" width={tile} height={tile} priority className="size-full object-cover" />
+        <Image src="/logo.png" alt="Grosumo logo" width={tile} height={tile} className="size-full object-cover" />
       </span>
       <span
         aria-hidden
