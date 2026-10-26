@@ -10,6 +10,7 @@ const routes: { path: string; priority: number; changeFrequency: Freq }[] = [
   { path: "/pricing", priority: 0.9, changeFrequency: "monthly" },
   { path: "/offline", priority: 0.9, changeFrequency: "monthly" },
   { path: "/cloud", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/demo", priority: 0.9, changeFrequency: "monthly" },
   { path: "/product", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services", priority: 0.6, changeFrequency: "monthly" },
   { path: "/guides", priority: 0.7, changeFrequency: "weekly" },

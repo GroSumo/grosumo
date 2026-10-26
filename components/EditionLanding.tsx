@@ -5,7 +5,7 @@ import Faq from "./Faq";
 import PageSchema from "./PageSchema";
 import { FinalCTA } from "./HomeSections";
 import Reveal from "./Reveal";
-import { CheckItem, Container, PageHeader, SectionHeading, WhatsAppButton } from "./ui";
+import { CheckItem, Container, DemoButton, PageHeader, SectionHeading, WhatsAppButton } from "./ui";
 import { BOTH_EDITIONS_INCLUDE } from "@/lib/site";
 import { faqNode, softwareApplicationNode, type QA } from "@/lib/seo";
 
@@ -48,7 +48,8 @@ export default function EditionLanding(p: Props) {
                 <span className="text-base font-semibold text-slate">{p.price.suffix}</span>
               </p>
               <p className="mt-3 flex-1 text-[15px] text-slate">{p.price.note}</p>
-              <WhatsAppButton href={p.ctaHref} className="mt-8 w-full">
+              <DemoButton className="mt-8 w-full" />
+              <WhatsAppButton href={p.ctaHref} variant="secondary" className="mt-3 w-full">
                 {p.ctaLabel}
               </WhatsAppButton>
             </div>

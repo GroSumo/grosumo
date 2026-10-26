@@ -124,7 +124,7 @@ export default function PricingPage() {
         </Container>
       </section>
 
-      <FinalCTA title="Start free today." accent="Upgrade to Cloud whenever you like." />
+      <FinalCTA title="See it working first," accent="then pick your edition." />
     </>
   );
 }

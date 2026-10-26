@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
-import { WhatsAppButton } from "./ui";
+import { DemoButton, WhatsAppButton } from "./ui";
 import { APP_LOGIN_URL, WA_TALK_LINK } from "@/lib/site";
 
 const nav = [
@@ -70,7 +70,7 @@ export default function Navbar() {
               Talk to us
             </a>
           )}
-          <WhatsAppButton className="!px-4 !py-2 !text-sm">Start free</WhatsAppButton>
+          <DemoButton className="!px-4 !py-2 !text-sm" />
         </div>
 
         <button
@@ -94,7 +94,8 @@ export default function Navbar() {
               </Link>
             ))}
           </nav>
-          <WhatsAppButton className="mt-5 w-full" />
+          <DemoButton className="mt-5 w-full" />
+          <WhatsAppButton variant="secondary" className="mt-3 w-full" />
         </div>
       )}
     </header>

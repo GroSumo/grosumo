@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Check, Cloud, HardDrive } from "lucide-react";
 import Reveal from "./Reveal";
-import { CheckItem, Container, Eyebrow, SectionHeading, WhatsAppButton } from "./ui";
+import { CheckItem, Container, DemoButton, Eyebrow, SectionHeading, WhatsAppButton } from "./ui";
 import { BOTH_EDITIONS_INCLUDE, PRICE, WA_CLOUD_LINK, WA_OFFLINE_LINK } from "@/lib/site";
 
 export const OFFLINE_POINTS = [
@@ -59,8 +59,9 @@ export function EditionCards({ showAnchors = false }: { showAnchors?: boolean })
             ))}
           </ul>
 
-          <WhatsAppButton href={WA_OFFLINE_LINK} className="mt-8 w-full">
-            Start free on WhatsApp
+          <DemoButton className="mt-8 w-full" />
+          <WhatsAppButton href={WA_OFFLINE_LINK} variant="secondary" className="mt-3 w-full">
+            Get Offline on WhatsApp
           </WhatsAppButton>
           <Link href="/offline" className="mt-4 text-center text-sm font-semibold text-brandink hover:underline">
             More about the Offline edition →
@@ -99,7 +100,8 @@ export function EditionCards({ showAnchors = false }: { showAnchors?: boolean })
             ))}
           </ul>
 
-          <WhatsAppButton href={WA_CLOUD_LINK} variant="secondary" className="mt-8 w-full">
+          <DemoButton className="mt-8 w-full" />
+          <WhatsAppButton href={WA_CLOUD_LINK} variant="secondary" className="mt-3 w-full">
             Ask about Cloud on WhatsApp
           </WhatsAppButton>
           <Link href="/cloud" className="mt-4 text-center text-sm font-semibold text-brandink hover:underline">

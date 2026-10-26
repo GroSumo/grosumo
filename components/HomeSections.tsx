@@ -3,7 +3,7 @@ import { ArrowRight, BarChart3, BookOpen, Calculator, HandCoins, Megaphone, Pack
 import CountUp from "./CountUp";
 import DashboardMock from "./DashboardMock";
 import Reveal from "./Reveal";
-import { Container, Eyebrow, SectionHeading, WhatsAppButton } from "./ui";
+import { Container, DemoButton, Eyebrow, SectionHeading, WhatsAppButton } from "./ui";
 import { getAllDocs } from "@/lib/content";
 import { WA_TALK_LINK, waLink } from "@/lib/site";
 
@@ -113,13 +113,13 @@ export function Services({ heading = true, className = "bg-white" }: { heading?:
 }
 
 const steps = [
-  { n: "01", title: "Message us on WhatsApp", desc: "Tell us about your business and pick Offline or Cloud. Not sure? We'll help you choose." },
+  { n: "01", title: "Try the demo", desc: "Open the live demo account, make a bill and see the dashboard update — no sign-up needed." },
+  { n: "02", title: "Pick your edition", desc: "Offline on your own PC (software free, ₹1,999/yr AMC) or Cloud from anywhere (₹9,999/yr). Not sure? We'll help you choose." },
   {
-    n: "02",
-    title: "We set it up with you",
+    n: "03",
+    title: "We set you up on WhatsApp",
     desc: "We install it on your PC or open your cloud account, and bring in items and customers from your current billing app or spreadsheets.",
   },
-  { n: "03", title: "Make your first bill", desc: "Start billing the same day. We stay a WhatsApp message away while your team settles in." },
 ];
 
 export function Steps() {
@@ -138,8 +138,9 @@ export function Steps() {
             </Reveal>
           ))}
         </ol>
-        <div className="mt-10 flex justify-center">
-          <WhatsAppButton />
+        <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+          <DemoButton />
+          <WhatsAppButton variant="secondary" />
         </div>
       </Container>
     </section>
@@ -149,7 +150,7 @@ export function Steps() {
 export function FinalCTA({
   title = "Your data, your choice —",
   accent = "cloud or your own PC.",
-  body = "Start with the free Offline edition today, or go Cloud for ₹9,999/yr. Either way, it's one WhatsApp message to get going.",
+  body = "Try the live demo now — no sign-up. Then pick Offline (software free, ₹1,999/yr AMC) or Cloud (₹9,999/yr).",
 }: {
   title?: string;
   accent?: string;
@@ -168,9 +169,9 @@ export function FinalCTA({
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/70">{body}</p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-            <WhatsAppButton variant="light" className="px-7 py-3.5" />
+            <DemoButton variant="light" className="px-7 py-3.5" />
             <WhatsAppButton href={WA_TALK_LINK} variant="ghostDark" className="px-7 py-3.5">
-              Talk to us
+              Talk to us on WhatsApp
             </WhatsAppButton>
           </div>
         </div>

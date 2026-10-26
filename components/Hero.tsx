@@ -1,8 +1,8 @@
 import { CheckCheck, MessageCircle, TrendingUp } from "lucide-react";
 import Reveal from "./Reveal";
-import { Accented, ButtonLink, Container, Eyebrow, WhatsAppButton } from "./ui";
+import { Accented, ButtonLink, Container, DemoButton, Eyebrow } from "./ui";
 
-const trust = ["All 6 modules included", "No per-user charges"];
+const trust = ["No sign-up", "No card", "Opens in your browser"];
 
 // Sample bill — prices exclusive of GST at 5% (2.5% CGST + 2.5% SGST).
 const items = [
@@ -106,7 +106,7 @@ export default function Hero() {
           </div>
           <div>
             <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
-              <WhatsAppButton className="w-full px-7 py-3.5 sm:w-auto">Start free</WhatsAppButton>
+              <DemoButton className="w-full px-7 py-3.5 sm:w-auto" />
               <ButtonLink href="/pricing" className="w-full px-7 py-3.5 sm:w-auto">
                 Compare editions
               </ButtonLink>

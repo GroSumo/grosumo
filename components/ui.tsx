@@ -20,7 +20,7 @@ const showsArrow = (v: Variant) => v === "primary" || v === "light";
 /** CTA that opens WhatsApp in a new tab. */
 export function WhatsAppButton({
   href = WA_LINK,
-  children = "Start free on WhatsApp",
+  children = "Talk to us on WhatsApp",
   variant = "primary",
   className = "",
 }: {
@@ -34,6 +34,24 @@ export function WhatsAppButton({
       {children}
       {showsArrow(variant) && <ArrowRight className="size-4" strokeWidth={2.5} aria-hidden />}
     </a>
+  );
+}
+
+/** Primary CTA — goes to the live demo page. */
+export function DemoButton({
+  children = "See live demo",
+  variant = "primary",
+  className = "",
+}: {
+  children?: React.ReactNode;
+  variant?: Variant;
+  className?: string;
+}) {
+  return (
+    <Link href="/demo" className={`${base} ${variants[variant]} ${className}`}>
+      {children}
+      <ArrowRight className="size-4" strokeWidth={2.5} aria-hidden />
+    </Link>
   );
 }
 

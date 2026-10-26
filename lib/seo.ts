@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { COMPANY, SOCIAL_LINKS, SUPPORT_EMAIL, SUPPORT_PHONE_E164 } from "./site";
+import { COMPANY, DEMO, SOCIAL_LINKS, SUPPORT_EMAIL, SUPPORT_PHONE_E164 } from "./site";
 
 export const SITE_URL = "https://www.grosumo.com";
 export const SITE_NAME = "grosumoERP";
@@ -144,6 +144,7 @@ export function softwareApplicationNode(): Node {
     operatingSystem: "Windows, Web, Android, iOS",
     featureList: FEATURE_LIST,
     publisher: { "@id": ORG_ID },
+    potentialAction: { "@type": "ViewAction", name: "Try the live demo", target: DEMO.url },
     offers: [
       {
         "@type": "Offer",

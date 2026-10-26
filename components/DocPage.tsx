@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import Faq from "./Faq";
 import PageSchema from "./PageSchema";
-import { ButtonLink, Container, Eyebrow, WhatsAppButton } from "./ui";
+import { Container, DemoButton, Eyebrow, WhatsAppButton } from "./ui";
 import { getRelated, type Collection, type CtaEdition, type Doc } from "@/lib/content";
 import { articleNode, faqNode, pageMetadata, type Crumb } from "@/lib/seo";
 import { WA_CLOUD_LINK, WA_LINK, WA_OFFLINE_LINK } from "@/lib/site";
@@ -19,7 +19,7 @@ const CTA: Record<CtaEdition, { title: string; accent: string; body: string; wa:
     accent: "Offline edition",
     body: "Software free forever — pay only ₹1,999/yr AMC. Works without internet on your Windows PC, with every module included.",
     wa: WA_OFFLINE_LINK,
-    waLabel: "Start free on WhatsApp",
+    waLabel: "Get Offline on WhatsApp",
   },
   cloud: {
     title: "Run your shop on",
@@ -33,7 +33,7 @@ const CTA: Record<CtaEdition, { title: string; accent: string; body: string; wa:
     accent: "grosumoERP",
     body: "Offline edition: software free, ₹1,999/yr AMC. Cloud edition: ₹9,999/yr all-in. Every module in both.",
     wa: WA_LINK,
-    waLabel: "Start free on WhatsApp",
+    waLabel: "Talk to us on WhatsApp",
   },
 };
 
@@ -166,13 +166,14 @@ export default function DocPage({ doc }: { doc: Doc }) {
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-white/75">{cta.body}</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <WhatsAppButton href={cta.wa} variant="light">
+              <DemoButton variant="light" />
+              <WhatsAppButton href={cta.wa} variant="ghostDark">
                 {cta.waLabel}
               </WhatsAppButton>
-              <ButtonLink href="/pricing" variant="ghostDark">
-                Compare editions & pricing
-              </ButtonLink>
             </div>
+            <Link href="/pricing" className="mt-6 inline-block text-sm font-semibold text-mint hover:underline">
+              Compare editions & pricing →
+            </Link>
           </section>
         </Container>
       </article>

@@ -26,7 +26,7 @@ export default function OfflinePage() {
         note: `+ ${PRICE.offlineAmc}/yr AMC — updates, support and licence renewal. No per-user or per-bill charges.`,
       }}
       ctaHref={WA_OFFLINE_LINK}
-      ctaLabel="Start free on WhatsApp"
+      ctaLabel="Get Offline on WhatsApp"
       suits={[
         "Shops with patchy internet or frequent power cuts",
         "Owners who want their data on their own machine",

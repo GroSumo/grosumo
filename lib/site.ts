@@ -13,6 +13,13 @@ export const WA_OFFLINE_LINK = waLink("Hi Grosumo, I'd like to start with the fr
 export const WA_CLOUD_LINK = waLink("Hi Grosumo, I'd like to start with the Cloud edition of grosumoERP.");
 export const WA_TALK_LINK = waLink("Hi Grosumo, I have a few questions about grosumoERP.");
 
+// Shared, public demo account (sample shop data, resets regularly). The only place these values live.
+export const DEMO = {
+  url: "https://gsumo.grosumo.com",
+  username: "admin",
+  password: "Admin@12",
+} as const;
+
 export const SUPPORT_EMAIL = "support@grosumo.com";
 export const SUPPORT_PHONE = "+91 81061 40617";
 export const SUPPORT_PHONE_E164 = "+91-81061-40617";
