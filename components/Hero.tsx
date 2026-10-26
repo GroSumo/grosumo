@@ -1,8 +1,9 @@
-import { CheckCheck, MessageCircle, TrendingUp } from "lucide-react";
+import { CheckCheck, MessageCircle, Smartphone, TrendingUp } from "lucide-react";
 import Reveal from "./Reveal";
 import { Accented, ButtonLink, Container, DemoButton, Eyebrow } from "./ui";
+import { DEMO } from "@/lib/site";
 
-const trust = ["No sign-up", "No card", "Opens in your browser"];
+const trust = ["No sign-up", "No card", "Works on PC and phone"];
 
 // Sample bill — prices exclusive of GST at 5% (2.5% CGST + 2.5% SGST).
 const items = [
@@ -107,6 +108,15 @@ export default function Hero() {
           <div>
             <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
               <DemoButton className="w-full px-7 py-3.5 sm:w-auto" />
+              {/* Phones only: skip the /demo page and open the mobile view directly. */}
+              <a
+                href={DEMO.mobileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-2 py-1 text-sm font-semibold text-brandink underline-offset-4 hover:underline md:hidden"
+              >
+                <Smartphone className="size-4" aria-hidden /> Try on your phone
+              </a>
               <ButtonLink href="/pricing" className="w-full px-7 py-3.5 sm:w-auto">
                 Compare editions
               </ButtonLink>

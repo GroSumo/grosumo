@@ -141,10 +141,13 @@ export function softwareApplicationNode(): Node {
     description:
       "GST billing, stock and accounts software for Indian shops, available as a Cloud edition (₹9,999/yr) or an Offline edition where the software is free and you pay ₹1,999/yr AMC. Both editions include all modules.",
     applicationCategory: "BusinessApplication",
-    operatingSystem: "Windows, Web, Android, iOS",
+    operatingSystem: "Windows, Web",
     featureList: FEATURE_LIST,
     publisher: { "@id": ORG_ID },
-    potentialAction: { "@type": "ViewAction", name: "Try the live demo", target: DEMO.url },
+    potentialAction: [
+      { "@type": "ViewAction", name: "Try the live demo", target: DEMO.url },
+      { "@type": "ViewAction", name: "Try the mobile demo", target: DEMO.mobileUrl },
+    ],
     offers: [
       {
         "@type": "Offer",

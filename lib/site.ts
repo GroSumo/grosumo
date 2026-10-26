@@ -14,8 +14,10 @@ export const WA_CLOUD_LINK = waLink("Hi Grosumo, I'd like to start with the Clou
 export const WA_TALK_LINK = waLink("Hi Grosumo, I have a few questions about grosumoERP.");
 
 // Shared, public demo account (sample shop data, resets regularly). The only place these values live.
+// One login for both views; the mobile view is a separate app at /mobile on the same instance.
 export const DEMO = {
   url: "https://gsumo.grosumo.com",
+  mobileUrl: "https://gsumo.grosumo.com/mobile",
   username: "admin",
   password: "Admin@12",
 } as const;
