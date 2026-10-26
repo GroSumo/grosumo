@@ -23,7 +23,7 @@ export const DEMO = {
 export const SUPPORT_EMAIL = "support@grosumo.com";
 export const SUPPORT_PHONE = "+91 81061 40617";
 export const SUPPORT_PHONE_E164 = "+91-81061-40617";
-export const COMPANY = "Grosumo Technologies Pvt. Ltd.";
+export const COMPANY = "Grosumo Private Limited";
 
 export const PRICE = {
   offlineSoftware: "₹0",
