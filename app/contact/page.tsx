@@ -1,7 +1,7 @@
-import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Clock, Mail, MessageCircle, Phone } from "lucide-react";
 import ContactForm from "./ContactForm";
 import { Container, PageHeader } from "@/components/ui";
-import { LOCATION, SUPPORT_EMAIL, SUPPORT_PHONE, WA_LINK } from "@/lib/site";
+import { SUPPORT_EMAIL, SUPPORT_PHONE, WA_LINK } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 import PageSchema from "@/components/PageSchema";
 
@@ -15,7 +15,6 @@ const channels = [
   { icon: MessageCircle, label: "WhatsApp", value: "Start a chat", href: WA_LINK },
   { icon: Mail, label: "Email", value: SUPPORT_EMAIL, href: `mailto:${SUPPORT_EMAIL}` },
   { icon: Phone, label: "Phone", value: SUPPORT_PHONE },
-  { icon: MapPin, label: "Location", value: LOCATION },
   { icon: Clock, label: "Hours", value: "Mon–Sat, 9 AM – 6 PM IST" },
 ];
 

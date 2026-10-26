@@ -82,12 +82,6 @@ export function organizationNode(): Node {
     url: SITE_URL,
     logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png`, width: 640, height: 640 },
     email: SUPPORT_EMAIL,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Kadapa",
-      addressRegion: "Andhra Pradesh",
-      addressCountry: "IN",
-    },
     contactPoint: {
       "@type": "ContactPoint",
       telephone: SUPPORT_PHONE_E164,

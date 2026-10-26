@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 import Logo from "./Logo";
-import { COMPANY, LOCATION, SUPPORT_EMAIL, SUPPORT_PHONE, WA_LINK } from "@/lib/site";
+import { COMPANY, SUPPORT_EMAIL, SUPPORT_PHONE, WA_LINK } from "@/lib/site";
 
 const columns = [
   {
@@ -56,9 +56,6 @@ export default function Footer() {
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-mint">
                   <MessageCircle className="size-4" aria-hidden /> Chat on WhatsApp
                 </a>
-              </li>
-              <li className="inline-flex items-center gap-2">
-                <MapPin className="size-4" aria-hidden /> {LOCATION}
               </li>
             </ul>
           </div>

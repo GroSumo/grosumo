@@ -13,10 +13,9 @@ export const WA_OFFLINE_LINK = waLink("Hi Grosumo, I'd like to start with the fr
 export const WA_CLOUD_LINK = waLink("Hi Grosumo, I'd like to start with the Cloud edition of grosumoERP.");
 export const WA_TALK_LINK = waLink("Hi Grosumo, I have a few questions about grosumoERP.");
 
-export const SUPPORT_EMAIL = "hello@grosumo.com";
+export const SUPPORT_EMAIL = "support@grosumo.com";
 export const SUPPORT_PHONE = "+91 81061 40617";
 export const SUPPORT_PHONE_E164 = "+91-81061-40617";
-export const LOCATION = "Kadapa, Andhra Pradesh, India";
 export const COMPANY = "Grosumo Technologies Pvt. Ltd.";
 
 export const PRICE = {

@@ -43,7 +43,7 @@ export default function AboutPage() {
                 grosumoERP is designed for how Indian shops and small businesses really work: GST-ready billing, stock and customer credit in one
                 place, and the freedom to run it offline on your own PC or in the cloud.
               </p>
-              <p>We&apos;re a team from Kadapa, Andhra Pradesh, building software that every Indian business can afford to use.</p>
+              <p>We&apos;re building software that every Indian business can afford to use.</p>
             </div>
           </Reveal>
 
