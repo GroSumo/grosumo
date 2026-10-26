@@ -2,14 +2,16 @@ import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight } from "lucide-react";
 import Faq from "./Faq";
+import PageSchema from "./PageSchema";
 import { FinalCTA } from "./HomeSections";
 import Reveal from "./Reveal";
 import { CheckItem, Container, PageHeader, SectionHeading, WhatsAppButton } from "./ui";
 import { BOTH_EDITIONS_INCLUDE } from "@/lib/site";
-import type { QA } from "@/lib/seo";
+import { faqNode, softwareApplicationNode, type QA } from "@/lib/seo";
 
 type Props = {
   edition: "Offline" | "Cloud";
+  path: "/offline" | "/cloud";
   eyebrow: string;
   title: string;
   accent: string;
@@ -27,6 +29,10 @@ type Props = {
 export default function EditionLanding(p: Props) {
   return (
     <>
+      <PageSchema
+        crumbs={[{ name: "Home", path: "/" }, { name: `${p.edition} edition`, path: p.path }]}
+        nodes={[softwareApplicationNode(), faqNode(p.faq, p.path)]}
+      />
       <PageHeader eyebrow={p.eyebrow} title={p.title} accent={p.accent} intro={p.intro} />
 
       <section aria-labelledby="price" className="bg-wash py-16 sm:py-24">

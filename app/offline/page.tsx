@@ -14,6 +14,7 @@ export default function OfflinePage() {
   return (
     <EditionLanding
       edition="Offline"
+      path="/offline"
       eyebrow="Offline edition"
       title="Billing software that works"
       accent="without internet"

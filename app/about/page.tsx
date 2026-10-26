@@ -2,9 +2,10 @@ import { FinalCTA } from "@/components/HomeSections";
 import Reveal from "@/components/Reveal";
 import { Container, PageHeader } from "@/components/ui";
 import { pageMetadata } from "@/lib/seo";
+import PageSchema from "@/components/PageSchema";
 
 export const metadata = pageMetadata({
-  title: "About Us — Shop ERP Made in India",
+  title: "About grosumo — software for Indian shops",
   description: "Grosumo builds grosumoERP, GST billing and shop ERP software made in India, available as a Cloud edition or a free Offline edition.",
   path: "/about",
 });
@@ -19,6 +20,7 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <PageSchema crumbs={[{ name: "Home", path: "/" }, { name: "About", path: "/about" }]} />
       <PageHeader
         eyebrow="About Grosumo"
         title="Software for the shops that"

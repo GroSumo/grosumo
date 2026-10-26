@@ -3,8 +3,8 @@ import Intelligence from "@/components/Intelligence";
 import { FinalCTA, MODULES } from "@/components/HomeSections";
 import Reveal from "@/components/Reveal";
 import { ButtonLink, CheckItem, Container, PageHeader, SectionHeading } from "@/components/ui";
-import { pageMetadata, softwareApplicationLd } from "@/lib/seo";
-import JsonLd from "@/components/JsonLd";
+import { pageMetadata, softwareApplicationNode } from "@/lib/seo";
+import PageSchema from "@/components/PageSchema";
 
 export const metadata = pageMetadata({
   title: "GST Billing, Stock & Accounts Software",
@@ -24,7 +24,7 @@ const details: Record<string, string[]> = {
 export default function ProductPage() {
   return (
     <>
-      <JsonLd data={softwareApplicationLd()} />
+      <PageSchema crumbs={[{ name: "Home", path: "/" }, { name: "Product", path: "/product" }]} nodes={[softwareApplicationNode()]} />
       <PageHeader
         eyebrow="grosumoERP"
         title="Everything your shop runs on,"

@@ -3,6 +3,7 @@ import ContactForm from "./ContactForm";
 import { Container, PageHeader } from "@/components/ui";
 import { LOCATION, SUPPORT_EMAIL, SUPPORT_PHONE, WA_LINK } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
+import PageSchema from "@/components/PageSchema";
 
 export const metadata = pageMetadata({
   title: "Contact Us — Start on WhatsApp",
@@ -21,6 +22,7 @@ const channels = [
 export default function ContactPage() {
   return (
     <>
+      <PageSchema crumbs={[{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]} />
       <PageHeader
         eyebrow="Contact"
         title="Let's get your business"

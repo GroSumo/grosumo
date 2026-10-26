@@ -1,12 +1,17 @@
 ---
 title: "GST Invoice Format: What Every Bill Must Show"
+slug: "gst-invoice-format"
 description: "The details a GST tax invoice must include, when to use CGST + SGST or IGST, HSN code rules and bill of supply basics for Indian shops."
 date: "2026-10-18"
-updated: "2026-10-25"
+updated: "2026-10-26"
 keywords:
   - GST billing software
   - GST invoice format
   - tax invoice
+related:
+  - cloud-vs-offline-billing-software
+  - billing-software-without-internet
+ctaEdition: "both"
 faq:
   - q: "What is the difference between a tax invoice and a bill of supply?"
     a: "A registered regular taxpayer issues a tax invoice and charges GST on it. A composition dealer, or a seller of exempt goods, issues a bill of supply, which does not charge GST."
@@ -58,6 +63,16 @@ Saving the HSN code against each item once means it appears on every bill automa
 ## Bill of supply instead of a tax invoice
 
 If you are registered under the **composition scheme**, or you sell only exempt goods, you issue a **bill of supply**, not a tax invoice, and you do not charge GST on it. Composition dealers also need to state that they are a composition taxable person not eligible to collect tax.
+
+## E-invoicing and invoice timing
+
+> This guide is general information, not tax advice. GST rules change; confirm the current requirements with your CA.
+
+**E-invoicing threshold.** Since 1 August 2023, a business whose aggregate annual turnover has crossed **₹5 crore** in any financial year from 2017-18 onwards must generate e-invoices for B2B sales. Each such invoice is reported to the Invoice Registration Portal (IRP), which returns an Invoice Reference Number (IRN) and a QR code to print on the bill. Sales to ordinary consumers (B2C) don't need e-invoices.
+
+**When to issue the invoice.** For goods, the tax invoice is issued at or before the time the goods are removed or delivered. For services, it must be issued within **30 days** of supplying the service (45 days for banks and similar financial companies).
+
+**30-day reporting window for e-invoices.** Larger businesses must also report each e-invoice to the IRP within 30 days of its invoice date, or the IRP won't accept it. This applied from November 2023 to businesses with turnover of ₹100 crore or more, and from April 2025 to those with ₹10 crore or more.
 
 ## Common mistakes to avoid
 

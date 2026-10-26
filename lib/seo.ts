@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { COMPANY, SOCIAL_LINKS, SUPPORT_EMAIL, WHATSAPP_NUMBER } from "./site";
+import { COMPANY, SOCIAL_LINKS, SUPPORT_EMAIL, SUPPORT_PHONE_E164 } from "./site";
 
 export const SITE_URL = "https://www.grosumo.com";
 export const SITE_NAME = "grosumoERP";
-export const OG_IMAGE = { url: "/og.png", width: 1200, height: 630, alt: "grosumoERP — GST billing & inventory software, cloud or offline" };
-
-// Last content update for routes without their own date (used by the sitemap).
-export const SITE_UPDATED = "2026-10-25";
+export const SITE_OG_IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: "grosumoERP — GST billing, stock & accounts, cloud or offline" };
 
 /**
  * Locales. Only enabled ones are emitted as hreflang alternates, so adding Telugu or Hindi later is:
@@ -28,6 +25,9 @@ export function languagesFor(path: string) {
 /**
  * Per-page metadata: "<title> | grosumoERP" (keep `title` ≤ 47 chars so the whole thing stays ≤ 60),
  * description ≤ 155 chars, canonical, hreflang, Open Graph and Twitter card.
+ * OG/Twitter images: the site-wide app/opengraph-image + twitter-image routes. Next replaces a parent's whole
+ * `openGraph` object when a page sets its own, so they're referenced explicitly here. Pages with their own image
+ * files (guides, /for) pass `siteImages: false` and let those files win.
  */
 export function pageMetadata({
   title,
@@ -36,6 +36,7 @@ export function pageMetadata({
   absoluteTitle = false,
   type = "website",
   noindex = false,
+  siteImages = true,
 }: {
   title: string;
   description: string;
@@ -43,6 +44,7 @@ export function pageMetadata({
   absoluteTitle?: boolean;
   type?: "website" | "article";
   noindex?: boolean;
+  siteImages?: boolean;
 }): Metadata {
   const fullTitle = absoluteTitle ? title : `${title} | ${SITE_NAME}`;
   return {
@@ -56,48 +58,52 @@ export function pageMetadata({
       locale: "en_IN",
       title: fullTitle,
       description,
-      images: [OG_IMAGE],
+      ...(siteImages ? { images: [SITE_OG_IMAGE] } : {}),
     },
-    twitter: { card: "summary_large_image", title: fullTitle, description, images: [OG_IMAGE.url] },
+    twitter: { card: "summary_large_image", title: fullTitle, description, ...(siteImages ? { images: [SITE_OG_IMAGE.url.replace("opengraph", "twitter")] } : {}) },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
-/* ---------- JSON-LD (schema.org) ---------- */
+/* ---------- JSON-LD nodes (schema.org). Pages combine them into one @graph via <PageSchema>. ---------- */
 
-const ORG_ID = `${SITE_URL}/#organization`;
-const absolute = (path: string) => `${SITE_URL}${path}`;
+export const ORG_ID = `${SITE_URL}/#organization`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+const absolute = (path: string) => `${SITE_URL}${path === "/" ? "" : path}`;
 
-export function organizationLd() {
+type Node = Record<string, unknown>;
+
+export function organizationNode(): Node {
   return {
-    "@context": "https://schema.org",
     "@type": "Organization",
     "@id": ORG_ID,
-    name: "grosumo",
-    legalName: COMPANY,
+    name: COMPANY,
+    alternateName: "grosumo",
     url: SITE_URL,
-    logo: absolute("/logo.png"),
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png`, width: 640, height: 640 },
     email: SUPPORT_EMAIL,
-    ...(SOCIAL_LINKS.length ? { sameAs: SOCIAL_LINKS } : {}),
-    contactPoint: [
-      {
-        "@type": "ContactPoint",
-        contactType: "customer support",
-        telephone: `+${WHATSAPP_NUMBER}`,
-        email: SUPPORT_EMAIL,
-        url: `https://wa.me/${WHATSAPP_NUMBER}`,
-        areaServed: "IN",
-        availableLanguage: ["en"],
-      },
-    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Kadapa",
+      addressRegion: "Andhra Pradesh",
+      addressCountry: "IN",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: SUPPORT_PHONE_E164,
+      contactType: "sales",
+      email: SUPPORT_EMAIL,
+      areaServed: "IN",
+      availableLanguage: ["en", "te", "hi"],
+    },
+    sameAs: SOCIAL_LINKS,
   };
 }
 
-export function websiteLd() {
+export function websiteNode(): Node {
   return {
-    "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": `${SITE_URL}/#website`,
+    "@id": WEBSITE_ID,
     name: SITE_NAME,
     url: SITE_URL,
     inLanguage: "en-IN",
@@ -106,28 +112,30 @@ export function websiteLd() {
 }
 
 export const FEATURE_LIST = [
-  "GST billing with CGST, SGST and IGST",
-  "Stock and inventory management",
-  "Purchases and supplier dues",
-  "Accounts: cash, bank, expenses and ledgers",
-  "Customer credit and receivables aging",
-  "Sales, profit, stock and GST reports",
-  "Share bills and payment reminders on WhatsApp",
-  "Offline edition works without internet, with local daily backups",
-  "Cloud edition with access from any device and data hosted in India",
+  "GST billing",
+  "Quotations",
+  "Inventory",
+  "Purchases",
+  "Returns",
+  "Double-entry accounts",
+  "Day close",
+  "Customer credit (udhaar)",
+  "Expenses",
+  "Reports",
+  "WhatsApp sharing",
 ];
 
-export function softwareApplicationLd() {
+export function softwareApplicationNode(): Node {
   return {
-    "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": `${SITE_URL}/#software`,
     name: "grosumoERP",
     url: SITE_URL,
-    image: absolute("/logo.png"),
+    image: `${SITE_URL}/logo.png`,
     description:
-      "GST billing and inventory software for Indian shops, available as a Cloud edition (₹9,999/yr) or an Offline edition where the software is free and you pay ₹1,999/yr AMC.",
+      "GST billing, stock and accounts software for Indian shops, available as a Cloud edition (₹9,999/yr) or an Offline edition where the software is free and you pay ₹1,999/yr AMC. Both editions include all modules.",
     applicationCategory: "BusinessApplication",
-    operatingSystem: "Windows, Web",
+    operatingSystem: "Windows, Web, Android, iOS",
     featureList: FEATURE_LIST,
     publisher: { "@id": ORG_ID },
     offers: [
@@ -135,32 +143,23 @@ export function softwareApplicationLd() {
         "@type": "Offer",
         name: "Offline edition",
         url: absolute("/offline"),
-        price: "0",
+        price: 0,
         priceCurrency: "INR",
-        description: "Software free forever; annual maintenance contract (AMC) ₹1,999 per year for updates, support and licence renewal.",
-        priceSpecification: [
-          { "@type": "UnitPriceSpecification", name: "Software licence", price: "0", priceCurrency: "INR" },
-          {
-            "@type": "UnitPriceSpecification",
-            name: "Annual maintenance contract (AMC)",
-            price: "1999",
-            priceCurrency: "INR",
-            referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "ANN" },
-          },
-        ],
+        description: "Software free; ₹1,999/yr AMC for updates, support and license renewal",
       },
       {
         "@type": "Offer",
         name: "Cloud edition",
         url: absolute("/cloud"),
-        price: "9999",
+        price: 9999,
         priceCurrency: "INR",
-        description: "All-in yearly subscription: hosting in India, cloud backups, updates and support.",
+        description: "All-inclusive yearly subscription: hosting in India, cloud backups, updates and support",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: "9999",
+          price: 9999,
           priceCurrency: "INR",
-          referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "ANN" },
+          unitText: "YEAR",
+          billingIncrement: 1,
         },
       },
     ],
@@ -169,10 +168,10 @@ export function softwareApplicationLd() {
 
 export type QA = { q: string; a: string };
 
-export function faqLd(faq: QA[]) {
+export function faqNode(faq: QA[], path: string): Node {
   return {
-    "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": `${absolute(path)}#faq`,
     mainEntity: faq.map(({ q, a }) => ({
       "@type": "Question",
       name: q,
@@ -181,20 +180,36 @@ export function faqLd(faq: QA[]) {
   };
 }
 
-export function breadcrumbLd(items: { name: string; path: string }[]) {
+export type Crumb = { name: string; path: string };
+
+export function breadcrumbNode(crumbs: Crumb[]): Node {
+  const last = crumbs[crumbs.length - 1];
   return {
-    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, i) => ({
+    "@id": `${absolute(last.path)}#breadcrumb`,
+    itemListElement: crumbs.map((c, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      name: item.name,
-      item: absolute(item.path),
+      name: c.name,
+      item: absolute(c.path),
     })),
   };
 }
 
-export function articleLd({
+export function itemListNode(path: string, items: { name: string; path: string }[]): Node {
+  return {
+    "@type": "ItemList",
+    "@id": `${absolute(path)}#list`,
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      url: absolute(it.path),
+    })),
+  };
+}
+
+export function articleNode({
   title,
   description,
   path,
@@ -208,20 +223,29 @@ export function articleLd({
   datePublished: string;
   dateModified: string;
   keywords: string[];
-}) {
+}): Node {
   return {
-    "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${absolute(path)}#article`,
     headline: title,
     description,
     mainEntityOfPage: absolute(path),
     url: absolute(path),
-    image: absolute(OG_IMAGE.url),
+    image: `${absolute(path)}/opengraph-image`,
     datePublished,
     dateModified,
     inLanguage: "en-IN",
-    keywords: keywords.join(", "),
-    author: { "@type": "Organization", name: "grosumo team", url: SITE_URL },
+    ...(keywords.length ? { keywords: keywords.join(", ") } : {}),
+    author: { "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
+  };
+}
+
+/** One JSON-LD document per page: Organization once, plus WebSite on home, BreadcrumbList elsewhere, plus page nodes. */
+export function buildGraph({ crumbs, nodes = [] }: { crumbs?: Crumb[]; nodes?: Node[] }) {
+  const isHome = !crumbs;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [organizationNode(), ...(isHome ? [websiteNode()] : [breadcrumbNode(crumbs)]), ...nodes],
   };
 }

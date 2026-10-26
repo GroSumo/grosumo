@@ -14,6 +14,7 @@ export default function CloudPage() {
   return (
     <EditionLanding
       edition="Cloud"
+      path="/cloud"
       eyebrow="Cloud edition"
       title="Cloud billing software,"
       accent="anywhere, any device"

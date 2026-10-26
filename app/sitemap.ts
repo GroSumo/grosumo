@@ -1,15 +1,17 @@
 import type { MetadataRoute } from "next";
-import { getAllGuides } from "@/lib/guides";
-import { SITE_UPDATED, SITE_URL, languagesFor } from "@/lib/seo";
+import { getAllDocs, type Collection } from "@/lib/content";
+import { SITE_URL, languagesFor } from "@/lib/seo";
 
 // Marketing site only — the cloud app (its own subdomain) is never listed here.
-// "Coming soon" pages (docs, blog, case studies) are noindex and left out until they have content.
-const routes: { path: string; priority: number; changeFrequency: "weekly" | "monthly" | "yearly" }[] = [
-  { path: "/", priority: 1, changeFrequency: "weekly" },
+// /blog, /docs and /case-studies are noindex "coming soon" pages and stay out until they have content.
+type Freq = "weekly" | "monthly" | "yearly";
+const routes: { path: string; priority: number; changeFrequency: Freq }[] = [
+  { path: "/", priority: 1.0, changeFrequency: "weekly" },
   { path: "/pricing", priority: 0.9, changeFrequency: "monthly" },
   { path: "/offline", priority: 0.9, changeFrequency: "monthly" },
   { path: "/cloud", priority: 0.9, changeFrequency: "monthly" },
   { path: "/product", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/services", priority: 0.6, changeFrequency: "monthly" },
   { path: "/guides", priority: 0.7, changeFrequency: "weekly" },
   { path: "/about", priority: 0.5, changeFrequency: "yearly" },
   { path: "/contact", priority: 0.6, changeFrequency: "yearly" },
@@ -17,25 +19,34 @@ const routes: { path: string; priority: number; changeFrequency: "weekly" | "mon
   { path: "/terms", priority: 0.2, changeFrequency: "yearly" },
 ];
 
-const absoluteLanguages = (path: string) =>
-  Object.fromEntries(Object.entries(languagesFor(path)).map(([lang, p]) => [lang, `${SITE_URL}${p === "/" ? "" : p}`]));
+const url = (path: string) => `${SITE_URL}${path === "/" ? "" : path}`;
+const alternates = (path: string) => ({
+  languages: Object.fromEntries(Object.entries(languagesFor(path)).map(([lang, p]) => [lang, url(p)])),
+});
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = routes.map(r => ({
-    url: `${SITE_URL}${r.path === "/" ? "" : r.path}`,
-    lastModified: SITE_UPDATED,
+  const buildTime = new Date();
+  const guides = getAllDocs("guides");
+  const forPages = getAllDocs("for");
+
+  const pages: MetadataRoute.Sitemap = routes.map(r => ({
+    url: url(r.path),
+    lastModified: r.path === "/guides" && guides[0] ? guides[0].updated : buildTime,
     changeFrequency: r.changeFrequency,
     priority: r.priority,
-    alternates: { languages: absoluteLanguages(r.path) },
+    alternates: alternates(r.path),
   }));
 
-  const guides = getAllGuides().map(g => ({
-    url: `${SITE_URL}/guides/${g.slug}`,
-    lastModified: g.updated,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-    alternates: { languages: absoluteLanguages(`/guides/${g.slug}`) },
-  }));
+  // /for is listed once it has at least one published page (it's noindex while empty).
+  if (forPages.length) {
+    pages.push({ url: url("/for"), lastModified: forPages[0].updated, changeFrequency: "weekly", priority: 0.7, alternates: alternates("/for") });
+  }
 
-  return [...pages, ...guides];
+  const docs = (collection: Collection, list: typeof guides, priority: number): MetadataRoute.Sitemap =>
+    list.map(d => {
+      const path = `/${collection}/${d.slug}`;
+      return { url: url(path), lastModified: d.updated, changeFrequency: "monthly", priority, alternates: alternates(path) };
+    });
+
+  return [...pages, ...docs("guides", guides, 0.7), ...docs("for", forPages, 0.7)];
 }

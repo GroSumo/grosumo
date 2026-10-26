@@ -11,6 +11,7 @@ export const metadata = pageMetadata({
 export default function CaseStudiesPage() {
   return (
     <ComingSoon
+      path="/case-studies"
       eyebrow="Case studies"
       title="Customer stories,"
       accent="coming soon"

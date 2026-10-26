@@ -1,21 +1,20 @@
 import Hero from "@/components/Hero";
 import EditionsSection from "@/components/Editions";
 import Intelligence from "@/components/Intelligence";
-import { DashboardSection, FinalCTA, Modules, Services, StatBand, Steps, WhyBoth } from "@/components/HomeSections";
-import JsonLd from "@/components/JsonLd";
-import { pageMetadata, softwareApplicationLd } from "@/lib/seo";
+import { DashboardSection, FinalCTA, GuidesTeaser, Modules, Services, StatBand, Steps, WhyBoth } from "@/components/HomeSections";
+import PageSchema from "@/components/PageSchema";
+import { pageMetadata, softwareApplicationNode } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "grosumoERP — GST Billing & Inventory Software | Cloud or Offline",
-  description: "GST billing & inventory software for Indian shops. Cloud edition ₹9,999/yr, or Offline edition: software free, pay only ₹1,999/yr AMC.",
+  title: "GST billing software, cloud or offline",
+  description: "GST billing, stock & accounts for Indian shops. Offline edition: free software + ₹1,999/yr AMC. Cloud: ₹9,999/yr. All modules included.",
   path: "/",
-  absoluteTitle: true,
 });
 
 export default function Home() {
   return (
     <>
-      <JsonLd data={softwareApplicationLd()} />
+      <PageSchema nodes={[softwareApplicationNode()]} />
       <Hero />
       <StatBand />
       <DashboardSection />
@@ -25,6 +24,7 @@ export default function Home() {
       <Intelligence />
       <Steps />
       <Services />
+      <GuidesTeaser />
       <FinalCTA />
     </>
   );

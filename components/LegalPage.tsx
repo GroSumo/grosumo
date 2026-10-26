@@ -1,12 +1,15 @@
 import { Container, PageHeader } from "./ui";
 import { SUPPORT_EMAIL } from "@/lib/site";
+import PageSchema from "./PageSchema";
 
 export default function LegalPage({
+  path,
   title,
   accent,
   intro,
   sections,
 }: {
+  path: string;
   title: string;
   accent: string;
   intro: string;
@@ -14,6 +17,7 @@ export default function LegalPage({
 }) {
   return (
     <>
+      <PageSchema crumbs={[{ name: "Home", path: "/" }, { name: `${title} ${accent}`, path }]} />
       <PageHeader eyebrow="Legal" title={title} accent={accent} intro={intro} />
       <section className="bg-white py-16 sm:py-20">
         <Container className="max-w-3xl">

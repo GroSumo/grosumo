@@ -5,11 +5,12 @@ import { FinalCTA } from "@/components/HomeSections";
 import Reveal from "@/components/Reveal";
 import { Container, PageHeader, SectionHeading } from "@/components/ui";
 import { PRICING_FAQ } from "@/lib/faq";
-import { pageMetadata } from "@/lib/seo";
+import { faqNode, pageMetadata, softwareApplicationNode } from "@/lib/seo";
+import PageSchema from "@/components/PageSchema";
 import { PRICE, SUPPORT_EMAIL } from "@/lib/site";
 
 export const metadata = pageMetadata({
-  title: "Pricing: Free Offline or ₹9,999/yr Cloud",
+  title: "Pricing: offline free + AMC, cloud ₹9,999/yr",
   description: "grosumoERP pricing: Offline edition software free + ₹1,999/yr AMC, or Cloud edition ₹9,999/yr all-in. Compare both editions side by side.",
   path: "/pricing",
 });
@@ -42,6 +43,10 @@ function CellValue({ value }: { value: Cell }) {
 export default function PricingPage() {
   return (
     <>
+      <PageSchema
+        crumbs={[{ name: "Home", path: "/" }, { name: "Pricing", path: "/pricing" }]}
+        nodes={[softwareApplicationNode(), faqNode(PRICING_FAQ, "/pricing")]}
+      />
       <PageHeader
         eyebrow="Editions & pricing"
         title="Free on your PC, or"

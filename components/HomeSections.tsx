@@ -1,8 +1,10 @@
-import { BarChart3, BookOpen, Calculator, HandCoins, Megaphone, Package, Receipt, Scale, Share2, ShoppingCart } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, BarChart3, BookOpen, Calculator, HandCoins, Megaphone, Package, Receipt, Scale, Share2, ShoppingCart } from "lucide-react";
 import CountUp from "./CountUp";
 import DashboardMock from "./DashboardMock";
 import Reveal from "./Reveal";
-import { Container, SectionHeading, WhatsAppButton } from "./ui";
+import { Container, Eyebrow, SectionHeading, WhatsAppButton } from "./ui";
+import { getAllDocs } from "@/lib/content";
 import { WA_TALK_LINK, waLink } from "@/lib/site";
 
 export const MODULES = [
@@ -74,17 +76,17 @@ const services = [
   },
 ];
 
-export function Services() {
+export const SERVICES_INTRO =
+  "Software is one part of running a business. When you need a hand with the books, the paperwork or getting the word out, we can connect you.";
+
+/** Services cards; `heading={false}` when the page already has its own header (e.g. /services). */
+export function Services({ heading = true, className = "bg-white" }: { heading?: boolean; className?: string }) {
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section className={`${className} py-20 sm:py-28`}>
       <Container>
-        <SectionHeading
-          eyebrow="Beyond software"
-          title="Help with the rest"
-          accent="of the business"
-          intro="Software is one part of running a business. When you need a hand with the books, the paperwork or getting the word out, we can connect you."
-        />
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        {heading && <SectionHeading eyebrow="Beyond software" title="Help with the rest" accent="of the business" intro={SERVICES_INTRO} />}
+        {!heading && <h2 className="sr-only">Our services</h2>}
+        <div className={`${heading ? "mt-14 " : ""}grid gap-5 md:grid-cols-3`}>
           {services.map(({ icon: Icon, title, desc, msg }, i) => (
             <Reveal key={title} delay={i * 60} className="h-full">
               <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-7 shadow-card">
@@ -235,6 +237,45 @@ export function WhyBoth() {
           at any time, and we help you move your data.
         </p>
         </div>
+      </Container>
+    </section>
+  );
+}
+
+/** Latest guides above the final CTA; renders nothing until at least one guide is published. */
+export function GuidesTeaser() {
+  const guides = getAllDocs("guides").slice(0, 3);
+  if (guides.length === 0) return null;
+  return (
+    <section aria-labelledby="home-guides" className="bg-wash py-20 sm:py-28">
+      <Container>
+        <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+          <div className="max-w-2xl">
+            <Eyebrow>Guides</Eyebrow>
+            <h2 id="home-guides" className="mt-4 text-3xl headline text-ink sm:text-[2.6rem]">
+              Guides for <span className="text-brandink">shop owners</span>
+            </h2>
+          </div>
+          <Link href="/guides" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brandink hover:underline">
+            All guides <ArrowRight className="size-4" aria-hidden />
+          </Link>
+        </div>
+        <ul className="mt-10 grid gap-5 md:grid-cols-3">
+          {guides.map(g => (
+            <li key={g.slug}>
+              <Link
+                href={`/guides/${g.slug}`}
+                className="flex h-full flex-col rounded-2xl border border-line bg-white p-6 shadow-card transition-colors hover:border-brand"
+              >
+                <span className="text-lg font-bold tracking-tight text-ink">{g.title}</span>
+                <span className="mt-2 flex-1 text-[15px] leading-relaxed text-slate">{g.description}</span>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brandink">
+                  Read guide <ArrowRight className="size-4" aria-hidden />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );

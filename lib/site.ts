@@ -14,8 +14,8 @@ export const WA_CLOUD_LINK = waLink("Hi Grosumo, I'd like to start with the Clou
 export const WA_TALK_LINK = waLink("Hi Grosumo, I have a few questions about grosumoERP.");
 
 export const SUPPORT_EMAIL = "hello@grosumo.com";
-// TODO: replace with the real support phone number.
-export const SUPPORT_PHONE = "+91 XXXXX XXXXX";
+export const SUPPORT_PHONE = "+91 81061 40617";
+export const SUPPORT_PHONE_E164 = "+91-81061-40617";
 export const LOCATION = "Kadapa, Andhra Pradesh, India";
 export const COMPANY = "Grosumo Technologies Pvt. Ltd.";
 

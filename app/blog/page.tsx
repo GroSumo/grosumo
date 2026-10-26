@@ -11,6 +11,7 @@ export const metadata = pageMetadata({
 export default function BlogPage() {
   return (
     <ComingSoon
+      path="/blog"
       eyebrow="Blog"
       title="Articles are"
       accent="on the way"

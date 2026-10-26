@@ -11,6 +11,7 @@ export const metadata = pageMetadata({
 export default function DocsPage() {
   return (
     <ComingSoon
+      path="/docs"
       eyebrow="Docs"
       title="Help guides are"
       accent="coming soon"

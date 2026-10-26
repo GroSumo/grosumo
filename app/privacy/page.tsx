@@ -10,6 +10,7 @@ export const metadata = pageMetadata({
 export default function PrivacyPage() {
   return (
     <LegalPage
+      path="/privacy"
       title="Privacy"
       accent="Policy"
       intro="Your data, your choice — cloud or your own PC."
