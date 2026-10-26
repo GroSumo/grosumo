@@ -11,7 +11,7 @@ import { PRICE, SUPPORT_EMAIL } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Pricing: offline free + AMC, cloud ₹9,999/yr",
-  description: "grosumoERP pricing: Offline edition software free + ₹1,999/yr AMC, or Cloud edition ₹9,999/yr all-in. Compare both editions side by side.",
+  description: "Offline edition: software free, ₹1,999/yr AMC. Cloud: ₹9,999/yr all-in. All modules, unlimited bills. Compare both editions side by side.",
   path: "/pricing",
 });
 

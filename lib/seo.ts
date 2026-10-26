@@ -3,6 +3,8 @@ import { COMPANY, SOCIAL_LINKS, SUPPORT_EMAIL, SUPPORT_PHONE_E164 } from "./site
 
 export const SITE_URL = "https://www.grosumo.com";
 export const SITE_NAME = "grosumoERP";
+export const TITLE_MAX = 60;
+export const DESCRIPTION_MAX = 155;
 export const SITE_OG_IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: "grosumoERP — GST billing, stock & accounts, cloud or offline" };
 
 /**
@@ -47,6 +49,10 @@ export function pageMetadata({
   siteImages?: boolean;
 }): Metadata {
   const fullTitle = absoluteTitle ? title : `${title} | ${SITE_NAME}`;
+  // Fail the build rather than ship a title or description search engines will truncate.
+  const len = (s: string) => Array.from(s).length;
+  if (len(fullTitle) > TITLE_MAX) throw new Error(`[seo] ${path}: title is ${len(fullTitle)} chars (max ${TITLE_MAX}): "${fullTitle}"`);
+  if (len(description) > DESCRIPTION_MAX) throw new Error(`[seo] ${path}: description is ${len(description)} chars (max ${DESCRIPTION_MAX})`);
   return {
     title: { absolute: fullTitle },
     description,

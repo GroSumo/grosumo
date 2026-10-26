@@ -64,7 +64,7 @@ Saving the HSN code against each item once means it appears on every bill automa
 
 If you are registered under the **composition scheme**, or you sell only exempt goods, you issue a **bill of supply**, not a tax invoice, and you do not charge GST on it. Composition dealers also need to state that they are a composition taxable person not eligible to collect tax.
 
-## E-invoicing and invoice timing
+## E-invoicing and timing
 
 > This guide is general information, not tax advice. GST rules change; confirm the current requirements with your CA.
 

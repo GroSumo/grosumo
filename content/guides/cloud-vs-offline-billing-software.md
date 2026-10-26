@@ -15,7 +15,7 @@ related:
 ctaEdition: "both"
 faq:
   - q: "Is offline billing software safe?"
-    a: "Yes, as long as it is backed up. Your business data stays on your PC; sharing a bill on WhatsApp is optional and only sends that bill. The risk to plan for is losing the PC itself, which is why the grosumoERP Offline edition takes an automatic local backup every day. Copy those backups to a pen drive or second disk regularly."
+    a: "Yes, as long as it is backed up. Nothing is needed from the internet to bill; your data stays on your PC, and sharing a bill on WhatsApp is optional and only sends that bill. The risk to plan for is losing the PC itself, which is why the grosumoERP Offline edition takes an automatic local backup every day. Copy those backups to a pen drive or second disk regularly."
   - q: "Can I use cloud billing software on my phone?"
     a: "Yes. The grosumoERP Cloud edition runs in a web browser, so you can open it on a phone, tablet or laptop with an internet connection."
   - q: "Which is cheaper, cloud or offline?"

@@ -42,7 +42,6 @@ const formatDate = (d: string) =>
 
 export function docMetadata(doc: Doc): Metadata {
   const path = `${COLLECTION_LABEL[doc.collection].path}/${doc.slug}`;
-  if (`${doc.title} | grosumoERP`.length > 60) console.warn(`[seo] "${doc.title}" makes a title over 60 characters (${path})`);
   const meta = pageMetadata({ title: doc.title, description: doc.description, path, type: "article", siteImages: false });
   return {
     ...meta,

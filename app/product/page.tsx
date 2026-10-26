@@ -7,7 +7,7 @@ import { pageMetadata, softwareApplicationNode } from "@/lib/seo";
 import PageSchema from "@/components/PageSchema";
 
 export const metadata = pageMetadata({
-  title: "GST Billing, Stock & Accounts Software",
+  title: "Product: GST billing, stock & accounts",
   description: "GST billing, stock, purchases, accounts, customer credit and reports in one shop ERP for India. Run it offline on your PC or in the cloud.",
   path: "/product",
 });
