@@ -1,0 +1,31 @@
+name: IndexNow
+
+# After each push to main, give Vercel time to finish the production deploy,
+# then submit the live sitemap to IndexNow. The script always exits 0.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Wait for the Vercel production deploy
+        run: sleep 90
+
+      - name: Submit sitemap URLs to IndexNow
+        run: npm run indexnow
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
