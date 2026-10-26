@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 import PageSchema from "@/components/PageSchema";
 
 export const metadata = pageMetadata({
-  title: "Contact grosumo — WhatsApp, email & phone",
+  title: "Contact grosumo — WhatsApp, email, Kadapa",
   description: "Talk to the grosumoERP team on WhatsApp or email. Start with the free Offline edition or the Cloud edition at ₹9,999/yr.",
   path: "/contact",
 });

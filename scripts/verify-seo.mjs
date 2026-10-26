@@ -63,7 +63,7 @@ async function checkPage(path) {
     canonical: canonical.replace(CANONICAL_HOST, "") || (canonical ? "/" : "MISSING"),
     ogImage: ogImage ? ogImage.replace(CANONICAL_HOST, "").replace(/\?.*$/, "") : "MISSING",
     xxxxx: hasPlaceholder ? "YES" : "no",
-    oneH1: h1 === 1 ? "yes" : `no (${h1})`,
+    h1Count: h1,
     problems,
   };
 }
@@ -76,7 +76,7 @@ function printTable(rows) {
     ["canonical", "canonical"],
     ["ogImage", "og:image"],
     ["xxxxx", 'has "XXXXX"'],
-    ["oneH1", "one h1"],
+    ["h1Count", "h1 count"],
   ];
   const width = cols.map(([k, label]) => Math.max(label.length, ...rows.map(r => String(r[k]).length)));
   const line = cells => cells.map((c, i) => String(c).padEnd(width[i])).join(" | ");
