@@ -53,7 +53,7 @@ export default function Navbar() {
             <Link
               key={href}
               href={href}
-              className={`text-sm font-medium transition-colors hover:text-brandink ${pathname === href ? "text-brandink" : "text-slate"}`}
+              className={`text-sm font-semibold transition-colors hover:text-brandink ${pathname === href ? "text-brandink" : "text-slate"}`}
             >
               {label}
             </Link>
@@ -62,11 +62,11 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           {APP_LOGIN_URL ? (
-            <a href={APP_LOGIN_URL} rel="nofollow" className="text-sm font-medium text-slate hover:text-brandink">
+            <a href={APP_LOGIN_URL} rel="nofollow" className="text-sm font-semibold text-slate hover:text-brandink">
               Sign in
             </a>
           ) : (
-            <a href={WA_TALK_LINK} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate hover:text-brandink">
+            <a href={WA_TALK_LINK} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate hover:text-brandink">
               Talk to us
             </a>
           )}
@@ -89,7 +89,7 @@ export default function Navbar() {
         <div id="mobile-menu" className="border-t border-line bg-white px-4 pb-6 pt-2 lg:hidden">
           <nav aria-label="Mobile" className="flex flex-col">
             {nav.map(({ label, href }) => (
-              <Link key={href} href={href} className="border-b border-line py-3 text-base font-medium text-ink">
+              <Link key={href} href={href} className="border-b border-line py-3 text-base font-semibold text-ink">
                 {label}
               </Link>
             ))}

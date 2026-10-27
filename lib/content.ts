@@ -27,10 +27,12 @@ export type DocMeta = {
   faq: QA[];
   related: string[];
   ctaEdition: CtaEdition;
+  /** Shown in the eyebrow pill as "Guide · <category>". */
+  category: string;
 };
 
 export type TocItem = { id: string; text: string };
-export type Doc = DocMeta & { html: string; toc: TocItem[] };
+export type Doc = DocMeta & { html: string; toc: TocItem[]; words: number };
 
 const dirFor = (c: Collection) => path.join(process.cwd(), "content", c);
 
@@ -57,6 +59,7 @@ function readFile(collection: Collection, file: string) {
     faq: Array.isArray(data.faq) ? data.faq.map((f: { q: unknown; a: unknown }) => ({ q: String(f.q), a: String(f.a) })) : [],
     related: Array.isArray(data.related) ? data.related.map(String) : [],
     ctaEdition: cta === "offline" || cta === "cloud" ? cta : "both",
+    category: String(data.category ?? "Guides"),
   };
   return { meta, content };
 }
@@ -108,18 +111,75 @@ function demoteH1() {
   };
 }
 
+const isElement = (node: Root["children"][number] | undefined): node is Element => node?.type === "element";
+
+/**
+ * Template structure, applied to the top level of every doc:
+ * - the first <p> becomes the opening callout;
+ * - if the next block is exactly "**Key takeaways**" followed by a list, both are grouped into one box;
+ * - tables are wrapped so they scroll sideways on narrow screens.
+ */
+function structureDoc() {
+  return (tree: Root) => {
+    const blocks = tree.children;
+    const nextElement = (from: number) => {
+      for (let i = from; i < blocks.length; i++) if (isElement(blocks[i])) return i;
+      return -1;
+    };
+
+    const first = blocks.findIndex(n => isElement(n) && n.tagName === "p");
+    if (first !== -1) {
+      const lead = blocks[first] as Element;
+      lead.properties.className = ["guide-callout"];
+
+      const label = nextElement(first + 1);
+      const list = label === -1 ? -1 : nextElement(label + 1);
+      const p = blocks[label] as Element | undefined;
+      // The paragraph must be nothing but **Key takeaways** — a lone <strong> with that text.
+      const parts = p?.tagName === "p" ? p.children.filter(c => c.type !== "text" || c.value.trim()) : [];
+      const isLabel = parts.length === 1 && isElement(parts[0]) && parts[0].tagName === "strong" && toString(parts[0]) === "Key takeaways";
+      if (isLabel && list !== -1 && (blocks[list] as Element).tagName === "ul") {
+        const box: Element = {
+          type: "element",
+          tagName: "div",
+          properties: { className: ["guide-takeaways"] },
+          children: blocks.slice(label, list + 1) as Element["children"],
+        };
+        blocks.splice(label, list - label + 1, box);
+      }
+    }
+
+    for (let i = 0; i < blocks.length; i++) {
+      const node = blocks[i];
+      if (isElement(node) && node.tagName === "table") {
+        blocks[i] = { type: "element", tagName: "div", properties: { className: ["guide-table"] }, children: [node] };
+      }
+    }
+  };
+}
+
+/** Counts words in the rendered body (before heading anchors add their "#"). */
+function countWords(out: { words: number }) {
+  return () => (tree: Root) => {
+    out.words = toString(tree).split(/\s+/).filter(w => /[\p{L}\p{N}]/u.test(w)).length;
+  };
+}
+
 export async function getDoc(collection: Collection, slug: string): Promise<Doc | null> {
   const file = publishedFiles(collection).find(f => readFile(collection, f).meta.slug === slug);
   if (!file) return null;
   const { meta, content } = readFile(collection, file);
 
   const toc: TocItem[] = [];
+  const stats = { words: 0 };
   const html = String(
     await unified()
       .use(remarkParse)
       .use(remarkGfm)
       .use(remarkRehype)
       .use(demoteH1)
+      .use(structureDoc)
+      .use(countWords(stats))
       .use(rehypeSlug)
       .use(collectToc(toc))
       .use(rehypeAutolinkHeadings, {
@@ -131,7 +191,7 @@ export async function getDoc(collection: Collection, slug: string): Promise<Doc 
       .process(content),
   );
 
-  return { ...meta, html, toc };
+  return { ...meta, html, toc, words: stats.words };
 }
 
 /** Frontmatter `related` slugs first, then other docs sharing keywords, then the most recent. */

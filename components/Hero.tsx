@@ -144,7 +144,7 @@ export default function Hero() {
               <p className="text-xs font-medium text-slate">Today&apos;s collection</p>
               <div className="mt-1 flex items-center justify-between">
                 <p className="font-mono text-xl font-medium text-ink">₹34,760</p>
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald/10 px-2 py-0.5 text-xs font-bold text-emerald">
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald/10 px-2 py-0.5 text-xs font-bold text-[#047857]">
                   <TrendingUp className="size-3" aria-hidden /> 12%
                 </span>
               </div>

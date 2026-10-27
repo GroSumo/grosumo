@@ -37,6 +37,8 @@ const CTA: Record<CtaEdition, { title: string; accent: string; body: string; wa:
   },
 };
 
+const WORDS_PER_MINUTE = 220;
+
 const formatDate = (d: string) =>
   new Date(`${d}T00:00:00Z`).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
@@ -94,11 +96,13 @@ export default function DocPage({ doc }: { doc: Doc }) {
           </nav>
 
           <header className="mt-8 max-w-3xl">
-            <Eyebrow>{section.eyebrow}</Eyebrow>
+            <Eyebrow>{doc.collection === "guides" ? `${section.eyebrow} · ${doc.category}` : section.eyebrow}</Eyebrow>
             <h1 className="mt-5 text-4xl headline text-ink sm:text-5xl">{doc.title}</h1>
             <p className="mt-5 text-lg leading-relaxed text-slate">{doc.description}</p>
-            <p className="mt-5 font-mono text-xs text-faint">
-              Updated <time dateTime={doc.updated}>{formatDate(doc.updated)}</time> · By the grosumo team
+            <p className="mt-5 font-mono text-[12.5px] uppercase tracking-[0.08em] text-faint">
+              Published <time dateTime={doc.date}>{formatDate(doc.date)}</time> · Updated{" "}
+              <time dateTime={doc.updated}>{formatDate(doc.updated)}</time> · {doc.words.toLocaleString("en-IN")} words · ~
+              {Math.max(1, Math.ceil(doc.words / WORDS_PER_MINUTE))} min read
             </p>
           </header>
 

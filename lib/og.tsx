@@ -31,10 +31,10 @@ export async function renderOgImage({ eyebrow, title }: { eyebrow?: string; titl
   const headline = title ?? "GST billing, stock & accounts — cloud or offline";
   const allText = `grosumoERP ${eyebrow ?? ""} ${headline} ${SUBLINE} www.grosumo.com`;
 
-  const [bold, medium] = await Promise.all([googleFont("DM+Sans", 800, allText), googleFont("DM+Sans", 500, allText)]);
+  const [bold, medium] = await Promise.all([googleFont("Inter", 800, allText), googleFont("Inter", 500, allText)]);
   const fonts = [
-    ...(bold ? [{ name: "DM Sans", data: bold, weight: 800 as const, style: "normal" as const }] : []),
-    ...(medium ? [{ name: "DM Sans", data: medium, weight: 500 as const, style: "normal" as const }] : []),
+    ...(bold ? [{ name: "Inter", data: bold, weight: 800 as const, style: "normal" as const }] : []),
+    ...(medium ? [{ name: "Inter", data: medium, weight: 500 as const, style: "normal" as const }] : []),
   ];
 
   // Satori doesn't flow mixed-style text, so the headline is laid out word by word in a wrapping row;
@@ -47,7 +47,7 @@ export async function renderOgImage({ eyebrow, title }: { eyebrow?: string; titl
 
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", background: "#FFFFFF", fontFamily: "DM Sans" }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", background: "#FFFFFF", fontFamily: "Inter" }}>
         <div style={{ position: "absolute", right: -160, top: -160, width: 560, height: 560, borderRadius: 9999, background: SOFT, display: "flex" }} />
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "72px 80px", width: "100%" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 22 }}>

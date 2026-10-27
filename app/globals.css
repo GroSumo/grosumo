@@ -4,8 +4,8 @@
    brand = logo blue for fills/decoration (too light for white text); brandink = darker shade for text and buttons.
    Emerald/amber/coral are data colours, not brand. */
 @theme {
-  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
 
   --color-ink: #0F172A;     /* headlines and strong text */
   --color-slate: #475569;   /* body text */
@@ -27,10 +27,11 @@
   --shadow-brand: 0 10px 24px -8px rgba(7, 159, 243, 0.35);
 }
 
+/* Display headlines (the spec's ".h-display"). */
 @utility headline {
   font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.04;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
 }
 
 html {
@@ -43,6 +44,14 @@ body {
   background: #fff;
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.7;
+  font-feature-settings: "cv11", "ss01", "liga";
+}
+
+@media (max-width: 639px) {
+  body { font-size: 16.5px; }
+  h1 { font-size: clamp(30px, 8vw, 40px); }
 }
 
 :focus-visible {
@@ -81,12 +90,12 @@ details > summary { list-style: none; }
 details > summary::-webkit-details-marker { display: none; }
 
 /* Rendered markdown in guides */
-.guide-prose { color: var(--color-slate); font-size: 1.0625rem; line-height: 1.75; max-width: 46rem; }
+.guide-prose { color: #334155; font-size: 1.0625rem; line-height: 1.75; max-width: 46rem; }
 .guide-prose > * + * { margin-top: 1.1em; }
-.guide-prose h2 { margin-top: 2.2em; color: var(--color-ink); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; scroll-margin-top: 6rem; }
-.guide-prose h3 { margin-top: 1.8em; color: var(--color-ink); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; scroll-margin-top: 6rem; }
-.guide-prose h4 { margin-top: 1.5em; color: var(--color-ink); font-weight: 700; }
-.guide-prose strong { color: var(--color-ink); font-weight: 650; }
+.guide-prose h2 { margin-top: 2.2em; color: var(--color-ink); font-size: 28px; font-weight: 700; letter-spacing: -0.022em; line-height: 1.2; scroll-margin-top: 6rem; }
+.guide-prose h3 { margin-top: 1.8em; color: var(--color-ink); font-size: 19px; font-weight: 600; letter-spacing: -0.01em; scroll-margin-top: 6rem; }
+.guide-prose h4 { margin-top: 1.5em; color: var(--color-ink); font-weight: 600; }
+.guide-prose strong { color: var(--color-ink); font-weight: 600; }
 .guide-prose a { color: var(--color-brandink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .guide-prose ul, .guide-prose ol { padding-left: 1.4em; }
 .guide-prose ul { list-style: disc; }
@@ -95,7 +104,22 @@ details > summary::-webkit-details-marker { display: none; }
 .guide-prose li::marker { color: var(--color-brand); }
 .guide-prose blockquote { border-left: 3px solid var(--color-brand); background: var(--color-soft); border-radius: 0 0.75rem 0.75rem 0; padding: 0.9em 1.2em; color: var(--color-ink); font-size: 0.95rem; }
 .guide-prose blockquote p { margin: 0; }
-.guide-prose table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; font-size: 0.95rem; }
-.guide-prose th, .guide-prose td { border-bottom: 1px solid var(--color-line); padding: 0.65em 0.9em; text-align: left; }
-.guide-prose thead th { background: var(--color-wash); color: var(--color-ink); font-weight: 700; }
 .guide-prose code { background: var(--color-wash); border-radius: 0.35rem; padding: 0.1em 0.35em; font-family: var(--font-mono); font-size: 0.9em; }
+
+/* First paragraph of every guide (classed by lib/content.ts) */
+.guide-prose .guide-callout { background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 4px solid #079FF3; border-radius: 12px; padding: 18px 22px; font-size: 18.5px; line-height: 1.7; font-weight: 500; color: #0B1220; }
+
+/* "**Key takeaways**" + the list after it, when it directly follows the callout */
+.guide-prose .guide-takeaways { background: #E6F5FE; border: 1px solid #BFE5FC; border-radius: 12px; padding: 16px 22px; }
+.guide-takeaways > p { margin-bottom: 0; color: #0B1220; }
+.guide-takeaways > ul { margin-top: 0.5em; }
+.guide-takeaways li { color: #0B1220; }
+
+/* Tables: the wrapper scrolls sideways on narrow screens instead of the page */
+.guide-prose .guide-table { overflow-x: auto; }
+.guide-prose table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; font-size: 15px; line-height: 1.55; }
+.guide-prose th, .guide-prose td { padding: 11px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid #E2E8F0; color: #334155; }
+.guide-prose tbody tr:last-child td { border-bottom: 0; }
+.guide-prose thead th { background: #F8FAFC; color: #0B1220; font-weight: 600; }
+.guide-prose th:first-child, .guide-prose td:first-child { width: 38%; }
+.guide-prose td:first-child { color: #0B1220; font-weight: 500; }
