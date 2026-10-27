@@ -17,7 +17,7 @@ const details: Record<string, string[]> = {
   Stock: ["Stock updates with every sale and purchase", "Low-stock alerts", "Stock value at cost", "Sleeping-stock report"],
   Purchases: ["Supplier bills and returns", "Supplier dues and payments", "Purchase price history", "Input GST captured for reports"],
   Accounts: ["Cash and bank books", "Expense tracking", "Party ledgers", "Daily profit, worked out per bill"],
-  "Customer credit": ["Credit limit per customer", "Receivables aging", "One-tap WhatsApp reminders", "Statements you can share"],
+  "Customer credit": ["Due date on every credit bill", "Overdue list of who's late", "A WhatsApp reminder with one tap"],
   Reports: ["Sales and profit reports", "GST reports for filing", "Stock and movement reports", "Export for your CA"],
 };
 
@@ -73,7 +73,7 @@ export default function ProductPage() {
                 icon: HardDrive,
                 title: "Offline",
                 price: "Software free · ₹1,999/yr AMC",
-                body: "Installed on your Windows PC. Bill with zero internet, keep every record on your own machine, with automatic daily backups.",
+                body: "Installed on your Windows PC. Bill with zero internet, keep every record on your own machine. Download a full backup any time; optional scheduled encrypted email backup.",
               },
               {
                 icon: Cloud,

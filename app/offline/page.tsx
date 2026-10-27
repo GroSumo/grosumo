@@ -6,7 +6,7 @@ import { PRICE, WA_OFFLINE_LINK } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Offline Billing Software, Free & No Internet",
-  description: "GST billing software that works without internet on your Windows PC. Software free forever — pay only ₹1,999/yr AMC. Local daily backups.",
+  description: "GST billing software that works without internet on your Windows PC. Software free forever — pay only ₹1,999/yr AMC. Full backup any time.",
   path: "/offline",
 });
 
@@ -36,7 +36,7 @@ export default function OfflinePage() {
       benefits={[
         { icon: WifiOff, title: "Bill with zero internet", desc: "Billing, stock and reports run on your PC, so the counter never waits for a connection." },
         { icon: HardDrive, title: "Your data stays with you", desc: "Every bill and record is stored on your own computer and never leaves it." },
-        { icon: DatabaseBackup, title: "Automatic daily backups", desc: "A local backup is taken every day, ready to restore if you ever need it." },
+        { icon: DatabaseBackup, title: "Backups you control", desc: "Download a full backup any time; optional scheduled encrypted email backup." },
         { icon: Layers, title: "Every module included", desc: "GST billing, stock, purchases, accounts, customer credit and reports — nothing held back." },
       ]}
       faq={OFFLINE_FAQ}

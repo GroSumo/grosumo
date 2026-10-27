@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       sections={[
         {
           heading: "Offline edition",
-          body: "Your business data — bills, items, customers and accounts — is stored on your own computer. It is not sent to Grosumo. Backups are written to your machine. We only receive information you choose to share with us, for example when you ask for support.",
+          body: "Your business data — bills, items, customers and accounts — is stored on your own computer. It is not sent to Grosumo. You can download a full backup to your machine any time, or turn on a scheduled encrypted backup to your own email. We only receive information you choose to share with us, for example when you ask for support.",
         },
         {
           heading: "Cloud edition",

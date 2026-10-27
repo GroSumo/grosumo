@@ -10,7 +10,7 @@ const amcCovers: QA = {
 };
 const noRenewal: QA = {
   q: "What happens if I don't renew the AMC?",
-  a: "The offline software keeps working and your data stays yours, on your PC. You'll miss new updates and support. After a grace period, features that depend on an active licence pause until you renew — your bills and records are never locked away from you.",
+  a: "Your data lives on your own PC in both editions' backups. After the 7-day trial there is a 7-day grace period; after that the software pauses until the licence is renewed. Download a backup before expiry — we recommend the scheduled email backup — and everything is restored on renewal. We're working on keeping backup download available after expiry.",
 };
 const cloudIncludes: QA = {
   q: "What's included in the Cloud price?",

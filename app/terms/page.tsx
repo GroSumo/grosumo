@@ -17,7 +17,7 @@ export default function TermsPage() {
       sections={[
         {
           heading: "Offline edition",
-          body: "The Offline edition software is provided free of charge. The annual maintenance contract (AMC, ₹1,999 per year plus applicable taxes) covers updates, support and licence renewal. If the AMC is not renewed, the software continues to run and your data remains yours; updates and support stop, and after a grace period features that depend on an active licence may pause until renewal.",
+          body: "The Offline edition software is provided free of charge. The annual maintenance contract (AMC, ₹1,999 per year plus applicable taxes) covers updates, support and licence renewal. If the AMC is not renewed, updates and support stop and, after a 7-day grace period, the software pauses until the licence is renewed. Download a backup before expiry; everything is restored on renewal.",
         },
         {
           heading: "Cloud edition",

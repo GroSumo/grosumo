@@ -23,7 +23,7 @@ const comparison: { feature: string; offline: Cell; cloud: Cell }[] = [
   { feature: "Internet required", offline: "No — works fully offline", cloud: "Yes" },
   { feature: "Access from anywhere", offline: false, cloud: true },
   { feature: "Use on multiple devices", offline: "On the PC it's installed on", cloud: "Any device with a browser" },
-  { feature: "Backups", offline: "Automatic daily backups on your PC", cloud: "Automatic cloud backups" },
+  { feature: "Backups", offline: "Download a full backup any time; optional scheduled encrypted email backup", cloud: "Automatic cloud backups" },
   { feature: "Updates", offline: "Included with AMC", cloud: "Automatic, always up to date" },
   { feature: "Modules included", offline: "All modules", cloud: "All modules" },
   { feature: "Bills, items & customers", offline: "Unlimited", cloud: "Unlimited" },

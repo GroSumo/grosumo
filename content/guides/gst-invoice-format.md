@@ -3,7 +3,7 @@ title: "GST Invoice Format: What Every Bill Must Show"
 slug: "gst-invoice-format"
 description: "The details a GST tax invoice must include, when to use CGST + SGST or IGST, HSN code rules and bill of supply basics for Indian shops."
 date: "2026-10-18"
-updated: "2026-10-26"
+updated: "2026-10-27"
 keywords:
   - GST billing software
   - GST invoice format
@@ -68,7 +68,7 @@ If you are registered under the **composition scheme**, or you sell only exempt 
 
 > This guide is general information, not tax advice. GST rules change; confirm the current requirements with your CA.
 
-**E-invoicing threshold.** Since 1 August 2023, a business whose aggregate annual turnover has crossed **₹5 crore** in any financial year from 2017-18 onwards must generate e-invoices for B2B sales. Each such invoice is reported to the Invoice Registration Portal (IRP), which returns an Invoice Reference Number (IRN) and a QR code to print on the bill. Sales to ordinary consumers (B2C) don't need e-invoices.
+**E-invoicing threshold.** Since 1 August 2023, a business whose aggregate annual turnover has crossed **₹5 crore** in any financial year from 2017-18 onwards must generate e-invoices for B2B sales. Each such invoice is reported to the Invoice Registration Portal (IRP), which returns an Invoice Reference Number (IRN) and a QR code to print on the bill. Sales to ordinary consumers (B2C) don't need e-invoices. grosumoERP does not generate e-invoices or connect to the IRP, so a business above the threshold needs to raise its B2B e-invoices on the IRP separately.
 
 **When to issue the invoice.** For goods, the tax invoice is issued at or before the time the goods are removed or delivered. For services, it must be issued within **30 days** of supplying the service (45 days for banks and similar financial companies).
 

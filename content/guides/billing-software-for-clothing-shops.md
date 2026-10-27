@@ -153,7 +153,7 @@ Every clothing shop runs a little differently, so this is the question owners as
 
 **4. Layouts and dashboard (no code).** An invoice designer for A4 and 80 mm — reorder sections, pick columns, colours and fonts — plus HTML templates for A4, A5 and thermal, with your logo and terms. Dashboard widgets — KPIs, charts, alerts, saved searches — are built by the admin and published per role.
 
-**5. Built for you (grosumo).** For rules and new screens — block a sale below cost, require a customer on bills over ₹10,000, a nightly list of stock untouched for 90 days — grosumo writes scripts against grosumoERP's script engine. A real example: an **employee attendance screen** — check-in and check-out, half-day leaves, scheduled holidays, today's roster — built for a client on top of Lists, without changing the core product. Most shops never need this level; the ones that do get it as part of a services engagement.
+**5. Built for you (grosumo).** For rules and new screens — block a sale below cost, require a customer on bills over ₹10,000, a nightly list of stock untouched for 90 days — grosumo writes scripts against grosumoERP's script engine. Most shops never need this level; the ones that do get it as part of a services engagement.
 
 **What you can't change:** the accounting underneath. Double-entry rules, GST calculation and FIFO costing are fixed on purpose — that's what keeps your books right.
 

@@ -12,7 +12,7 @@ export const MODULES = [
   { icon: Package, title: "Stock", desc: "Live stock levels, low-stock alerts and stock value — updated with every bill and purchase." },
   { icon: ShoppingCart, title: "Purchases", desc: "Record supplier bills, track what you owe and keep purchase prices current." },
   { icon: BookOpen, title: "Accounts", desc: "Cash, bank, expenses and party ledgers kept in step with your bills — no double entry by hand." },
-  { icon: HandCoins, title: "Customer credit", desc: "Credit limits, dues and payment history for every customer, with reminders that go out on WhatsApp." },
+  { icon: HandCoins, title: "Customer credit", desc: "A due date on every credit bill and an overdue list of who's late, with a WhatsApp reminder in one tap." },
   { icon: BarChart3, title: "Reports", desc: "Sales, profit, stock and GST reports ready when you or your CA need them." },
 ];
 
@@ -45,8 +45,8 @@ export function Modules() {
               <Share2 className="size-5" aria-hidden />
             </span>
             <p className="text-[15px] text-slate">
-              <span className="font-semibold text-ink">WhatsApp sharing everywhere.</span> Send bills, statements and payment reminders straight
-              from the app — your customers already use it.
+              <span className="font-semibold text-ink">WhatsApp sharing everywhere.</span> Send bills straight from the app, and a WhatsApp reminder with one tap
+              — your customers already use it.
             </p>
           </div>
         </Reveal>

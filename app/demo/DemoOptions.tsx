@@ -18,7 +18,7 @@ const VIEWS = [
     key: "mobile",
     Icon: Smartphone,
     title: "Mobile view",
-    line: "Bills, today's sales, customer dues and stock lookup on your phone — made for the shop floor.",
+    line: "GST bills for standard and variant items, printed to Bluetooth on Android — plus today's sales, customer dues and stock lookup.",
     cta: "Open mobile demo",
     href: DEMO.mobileUrl,
   },

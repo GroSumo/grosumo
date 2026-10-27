@@ -8,7 +8,7 @@ export const OFFLINE_POINTS = [
   "Runs on your own Windows PC",
   "Works with zero internet",
   "Your data never leaves your machine",
-  "Automatic local daily backups",
+  "Download a full backup any time; optional scheduled encrypted email backup",
   "All modules included",
 ];
 

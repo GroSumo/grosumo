@@ -4,7 +4,6 @@ import {
   LayoutDashboard,
   Package,
   Receipt,
-  RefreshCw,
   Settings,
   ShoppingCart,
   Users,
@@ -52,19 +51,17 @@ export default function DashboardMock() {
       {/* Floating insight cards */}
       <div className="absolute -bottom-8 -left-6 z-10 hidden w-52 rounded-2xl border border-line bg-white p-4 shadow-lift lg:block xl:-left-14">
         <div className="flex items-center gap-2 text-xs font-medium text-slate">
-          <RefreshCw className="size-3.5 text-brand" aria-hidden /> Capital rotation
+          <span className="size-2 rounded-full bg-amber" aria-hidden /> Slow stock
         </div>
-        <p className="mt-1.5 font-mono text-2xl font-medium text-ink">
-          <CountUp value={6.2} decimals={1} suffix="×" />
-        </p>
-        <p className="mt-1 text-xs text-emerald">Stock money turned 6.2 times this year</p>
+        <p className="mt-1.5 font-mono text-2xl font-medium text-ink">₹1.8L</p>
+        <p className="mt-1 text-xs text-amber">Idle 60+ days</p>
       </div>
       <div className="absolute -right-6 -top-10 z-10 hidden w-56 rounded-2xl border border-line bg-white px-4 py-3 shadow-lift lg:block xl:-right-14">
         <div className="flex items-center gap-2 text-xs font-medium text-slate">
-          <span className="size-2 rounded-full bg-coral" aria-hidden /> Dead stock
+          <span className="size-2 rounded-full bg-coral" aria-hidden /> Overdue credit
         </div>
-        <p className="mt-1.5 font-mono text-2xl font-medium text-ink">₹1.8L</p>
-        <p className="mt-1 text-xs text-coral">Idle 90+ days · 37 items</p>
+        <p className="mt-1.5 font-mono text-2xl font-medium text-ink">₹32,330</p>
+        <p className="mt-1 text-xs text-coral">3 customers · reminders ready</p>
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-lift ring-1 ring-brand/5">
