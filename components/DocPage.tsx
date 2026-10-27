@@ -24,7 +24,7 @@ const CTA: Record<CtaEdition, { title: string; accent: string; body: string; wa:
   cloud: {
     title: "Run your shop on",
     accent: "grosumoERP Cloud",
-    body: "₹9,999/yr all-in: open it on any device, with data hosted in India, automatic backups and updates included.",
+    body: "₹9,999/yr all-in: open it on any device, with data hosted in India and updates included.",
     wa: WA_CLOUD_LINK,
     waLabel: "Ask about Cloud on WhatsApp",
   },

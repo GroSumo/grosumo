@@ -11,7 +11,7 @@ export const MODULES = [
   { icon: Receipt, title: "GST billing", desc: "Fast GST invoices with CGST, SGST and IGST worked out for you. Print, save as PDF or share." },
   { icon: Package, title: "Stock", desc: "Live stock levels, low-stock alerts and stock value — updated with every bill and purchase." },
   { icon: ShoppingCart, title: "Purchases", desc: "Record supplier bills, track what you owe and keep purchase prices current." },
-  { icon: BookOpen, title: "Accounts", desc: "Cash, bank, expenses and party ledgers kept in step with your bills — no double entry by hand." },
+  { icon: BookOpen, title: "Accounts", desc: "Cash, bank, expenses and customer and supplier dues kept in step with your bills — no double entry by hand." },
   { icon: HandCoins, title: "Customer credit", desc: "A due date on every credit bill and an overdue list of who's late, with a WhatsApp reminder in one tap." },
   { icon: BarChart3, title: "Reports", desc: "Sales, profit, stock and GST reports ready when you or your CA need them." },
 ];

@@ -163,7 +163,7 @@ export function softwareApplicationNode(): Node {
         url: absolute("/cloud"),
         price: 9999,
         priceCurrency: "INR",
-        description: "All-inclusive yearly subscription: hosting in India, cloud backups, updates and support",
+        description: "All-inclusive yearly subscription: hosting in India, updates and support",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: 9999,

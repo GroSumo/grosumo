@@ -22,7 +22,7 @@ const sidebar = [
 
 const tiles = [
   { label: "Today's sales", value: 48250, delta: "+12% vs yesterday", up: true },
-  { label: "Profit today", value: 6920, delta: "14.3% margin", up: true },
+  { label: "Net income today", value: 6920, delta: "After cost and expenses", up: true },
   { label: "Receivables", value: 342800, delta: "₹41,200 overdue", up: false },
   { label: "Stock value", value: 1864000, delta: "1,284 items", up: true },
 ];

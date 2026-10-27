@@ -16,7 +16,7 @@ const details: Record<string, string[]> = {
   "GST billing": ["CGST / SGST / IGST calculated automatically", "HSN codes and tax rates per item", "Print, PDF or WhatsApp the bill", "Cash, UPI and credit sales"],
   Stock: ["Stock updates with every sale and purchase", "Low-stock alerts", "Stock value at cost", "Sleeping-stock report"],
   Purchases: ["Supplier bills and returns", "Supplier dues and payments", "Purchase price history", "Input GST captured for reports"],
-  Accounts: ["Cash and bank books", "Expense tracking", "Party ledgers", "Daily profit, worked out per bill"],
+  Accounts: ["Cash and bank books", "Expense tracking", "Customer and supplier dues", "Day close shows net income after cost of goods and expenses"],
   "Customer credit": ["Due date on every credit bill", "Overdue list of who's late", "A WhatsApp reminder with one tap"],
   Reports: ["Sales and profit reports", "GST reports for filing", "Stock and movement reports", "Export for your CA"],
 };
@@ -79,7 +79,7 @@ export default function ProductPage() {
                 icon: Cloud,
                 title: "Cloud",
                 price: "₹9,999/yr all-in",
-                body: "Open it from the shop, home or on the road, on any device. Hosted in India with automatic cloud backups.",
+                body: "Open it from the shop, home or on the road, on any device. Hosted in India. Download a full backup any time; optional scheduled encrypted email backup.",
               },
             ].map(({ icon: Icon, title, price, body }) => (
               <Reveal key={title} className="h-full">

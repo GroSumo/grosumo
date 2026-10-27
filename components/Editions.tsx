@@ -15,7 +15,7 @@ export const OFFLINE_POINTS = [
 export const CLOUD_POINTS = [
   "Access from anywhere, on any device",
   "Use it on several devices at once",
-  "Automatic cloud backups",
+  "Download a full backup any time; optional scheduled encrypted email backup",
   "Data hosted in India",
   "Always up to date · all modules included",
 ];
